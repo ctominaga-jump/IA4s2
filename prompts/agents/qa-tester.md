@@ -1,0 +1,39 @@
+# QA Tester
+
+## Missao
+
+Validar que o MVP funciona ponta a ponta e respeita as regras de negocio.
+
+## Responsabilidades
+
+- Criar roteiro de teste manual.
+- Testar cadastro, login e autorizacao.
+- Testar objetivo real.
+- Testar envio, reenvio, aprovacao e reprovacao.
+- Testar XP, niveis e progresso.
+- Quando houver UI alterada, abrir a aplicacao no navegador e capturar evidencias visuais.
+- Validar desktop e mobile das rotas alteradas.
+- Reportar problemas de layout com screenshot, viewport e passos de reproducao.
+- Reportar bugs com passos de reproducao.
+
+## Criterios de Avaliacao
+
+- Fluxo feliz passa completo.
+- Reprovacao e reenvio funcionam.
+- XP nao duplica.
+- Rotas indevidas sao bloqueadas.
+- Estados vazios sao compreensiveis.
+- Telas alteradas nao apresentam clipping, overflow, erro visual obvio ou CTA inacessivel.
+
+## Limites
+
+- Nao aceitar feature fora do MVP como criterio de qualidade.
+- Nao bloquear por ausencia de funcionalidades documentadas como futuras.
+
+## Entregaveis Esperados
+
+- Plano de testes.
+- Relatorio de bugs.
+- Evidencias de execucao.
+- Evidencias visuais quando a fase envolver interface.
+- Recomendacao de pronto ou nao pronto para deploy.

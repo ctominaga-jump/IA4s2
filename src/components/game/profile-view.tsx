@@ -1,0 +1,222 @@
+import Link from "next/link";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock,
+  Mail,
+  RotateCcw,
+  Sparkles,
+  User,
+  Zap,
+} from "lucide-react";
+import type { ReactNode } from "react";
+
+import { AvatarFigure } from "@/components/game/avatar-figure";
+import { PHASES } from "@/components/game/journey-phases";
+import { Badge } from "@/components/ui/badge";
+import { EmptyState } from "@/components/empty-state";
+import type { AvatarVariant } from "@/lib/database.types";
+import type { MissionStatus } from "@/lib/domain";
+
+export interface ProfileViewModel {
+  name: string;
+  email: string;
+  avatarVariant: AvatarVariant;
+  levelNumber: number;
+  levelTitle: string;
+  nextLevelTitle: string | null;
+  totalXp: number;
+  levelProgressPercent: number;
+  xpForNext: number;
+  currentPhaseIndex: number;
+  approvedCount: number;
+  totalMissions: number;
+  approvedMissions: { id: string; title: string; xpReward: number }[];
+  inProgressMissions: {
+    id: string;
+    title: string;
+    status: Exclude<MissionStatus, "approved" | "not_started">;
+  }[];
+}
+
+export function ProfileView({
+  vm,
+  goalSlot,
+  avatarPickerSlot,
+}: {
+  vm: ProfileViewModel;
+  goalSlot: ReactNode;
+  avatarPickerSlot: ReactNode;
+}) {
+  const pct = Math.min(100, Math.max(0, vm.levelProgressPercent));
+  const phase = PHASES[vm.currentPhaseIndex] ?? PHASES[0];
+
+  return (
+    <div className="space-y-5">
+      {/* Hero de identidade */}
+      <section className="relative overflow-hidden rounded-3xl border border-border bg-card/80 p-5 md:p-6">
+        <div className="pointer-events-none absolute -right-12 -top-16 size-52 rounded-full bg-primary/15 blur-3xl" />
+        <div className="relative flex flex-col items-center gap-5 sm:flex-row sm:items-center">
+          <AvatarFigure
+            variant={vm.avatarVariant}
+            levelNumber={vm.levelNumber}
+            phaseIndex={vm.currentPhaseIndex}
+            progressPercent={vm.levelProgressPercent}
+            size="lg"
+          />
+          <div className="min-w-0 flex-1 text-center sm:text-left">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#16D9E3]/25 bg-[#16D9E3]/10 px-3 py-1 text-xs font-medium text-[#9CEBF0]">
+              <Sparkles className="size-3.5" />
+              Identidade do agente
+            </span>
+            <h1 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+              {vm.name}
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              Nivel {vm.levelNumber} · {vm.levelTitle} · Fase {phase.name}
+            </p>
+
+            <div className="mt-4 max-w-md">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <span className="tabular-nums">{vm.totalXp} XP</span>
+                <span className="tabular-nums">{pct}%</span>
+              </div>
+              <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-white/10">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[#16D9E3] to-success"
+                  style={{ width: `${pct}%` }}
+                />
+              </div>
+              <p className="mt-1.5 text-[11px] text-muted-foreground">
+                {vm.nextLevelTitle
+                  ? `${vm.xpForNext} XP para ${vm.nextLevelTitle}.`
+                  : "Nivel maximo alcancado."}
+              </p>
+            </div>
+
+            <div className="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
+              <StatChip label="XP total" value={vm.totalXp} />
+              <StatChip
+                label="Missoes aprovadas"
+                value={`${vm.approvedCount}/${vm.totalMissions}`}
+              />
+              <StatChip label="Fase atual" value={phase.name} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="space-y-5">
+          {goalSlot}
+
+          <section className="rounded-3xl border border-border bg-card/80 p-5">
+            <h2 className="font-semibold">
+              Missoes aprovadas ({vm.approvedMissions.length})
+            </h2>
+            <div className="mt-3">
+              {vm.approvedMissions.length === 0 ? (
+                <EmptyState
+                  icon={CheckCircle2}
+                  title="Nenhuma missao aprovada ainda"
+                  description="Conclua sua primeira missao para comecar a somar XP."
+                  className="px-4 py-8"
+                  action={
+                    <Link
+                      href="/aluno/missoes"
+                      className="text-sm font-medium text-primary hover:underline"
+                    >
+                      Ir para a jornada
+                    </Link>
+                  }
+                />
+              ) : (
+                <ul className="space-y-2">
+                  {vm.approvedMissions.map((m) => (
+                    <li key={m.id}>
+                      <Link
+                        href={`/aluno/missoes/${m.id}`}
+                        className="flex items-center justify-between rounded-2xl border border-border bg-background/40 p-3 text-sm transition-colors hover:border-primary/40"
+                      >
+                        <span className="flex items-center gap-2 font-medium">
+                          <CheckCircle2 className="size-4 text-success" />
+                          {m.title}
+                        </span>
+                        <Badge variant="success">+{m.xpReward} XP</Badge>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </section>
+
+          {vm.inProgressMissions.length > 0 ? (
+            <section className="rounded-3xl border border-border bg-card/80 p-5">
+              <h2 className="font-semibold">Missoes em andamento</h2>
+              <ul className="mt-3 space-y-2">
+                {vm.inProgressMissions.map((m) => (
+                  <li key={m.id}>
+                    <Link
+                      href={`/aluno/missoes/${m.id}`}
+                      className="flex items-center justify-between rounded-2xl border border-border bg-background/40 p-3 text-sm transition-colors hover:border-primary/40"
+                    >
+                      <span className="flex items-center gap-2 font-medium">
+                        {m.status === "pending" ? (
+                          <Clock className="size-4 text-warning" />
+                        ) : (
+                          <RotateCcw className="size-4 text-destructive" />
+                        )}
+                        {m.title}
+                      </span>
+                      <ArrowRight className="size-4 text-muted-foreground" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+        </div>
+
+        <div className="space-y-5">
+          <section className="rounded-3xl border border-border bg-card/80 p-5">
+            {avatarPickerSlot}
+          </section>
+
+          <section className="rounded-3xl border border-border bg-card/80 p-5">
+            <div className="flex items-center gap-2">
+              <User className="size-4 text-primary" />
+              <h2 className="font-semibold">Dados do perfil</h2>
+            </div>
+            <div className="mt-3 space-y-2 text-sm">
+              <p className="flex items-center gap-2 text-muted-foreground">
+                <User className="size-4" />
+                {vm.name}
+              </p>
+              <p className="flex items-center gap-2 text-muted-foreground">
+                <Mail className="size-4" />
+                {vm.email}
+              </p>
+            </div>
+            <div className="mt-4 flex items-start gap-2 rounded-2xl border border-border bg-background/40 p-3 text-xs text-muted-foreground">
+              <Zap className="mt-0.5 size-3.5 shrink-0 text-warning" />
+              Seu nivel sobe automaticamente conforme voce acumula XP em missoes
+              aprovadas. Cada missao concede XP uma unica vez.
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StatChip({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="rounded-2xl border border-border bg-background/40 px-3 py-2 text-left">
+      <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+        {label}
+      </p>
+      <p className="mt-0.5 text-sm font-bold tabular-nums">{value}</p>
+    </div>
+  );
+}
