@@ -1,0 +1,40 @@
+# ============================================================
+# Render Blueprint — IA para Vida Real (Next.js App Router)
+# ------------------------------------------------------------
+# Web Service Node (NAO e static export). Roda `next build` e
+# `next start`. Os secrets (sync: false) NUNCA ficam no repo —
+# voce cadastra os valores no dashboard do Render.
+#
+# Passo a passo de uso: docs/deploy/render.md
+# ============================================================
+services:
+  - type: web
+    name: ia-para-vida
+    runtime: node
+    plan: free
+    region: oregon          # free tier: oregon | virginia | frankfurt | singapore
+    branch: main            # ajuste para a branch que voce vai publicar
+    autoDeploy: true        # redeploy automatico a cada push na branch
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      # ---- Build-time + runtime ----
+      # Versao do Node usada no build e no runtime. Next 15 exige >= 18.18;
+      # 22 e LTS e a recomendada.
+      - key: NODE_VERSION
+        value: "22"
+
+      # ---- Build-time + client (NEXT_PUBLIC_*) ----
+      # Inlined no bundle do client durante `next build`, entao PRECISAM
+      # existir no momento do build. Nao sao secretas (vao para o navegador),
+      # mas mesmo assim cadastre pelo dashboard (sync: false).
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+
+      # ---- Runtime / server-only (SECRETO) ----
+      # Service role do Supabase. Ignora RLS — usada so no servidor.
+      # NUNCA versionar. Cadastre o valor no dashboard do Render.
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
