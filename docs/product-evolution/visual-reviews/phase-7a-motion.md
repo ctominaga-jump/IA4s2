@@ -32,6 +32,10 @@ mobile (390×844) → 8 PNGs `phase-7a-*` neste diretório.
   dark premium coerente, mapa lê como progressão, modal legível. Ressalvas (não-bloqueantes):
   rótulo "Construtor" no mock do preview vs taxonomia de avatar; backdrop do level-up mobile;
   densidade do mapa horizontal no mobile.
+  - **Resolução (2026-06-01):** o item "Construtor" foi um **falso positivo**. "Construtor" é
+    o título oficial do **nível 4** em `database/seeds/0001_seed.sql` (sistema de níveis por XP),
+    distinto da taxonomia de fases/avatar. O preview já reflete o banco real; mantido sem
+    alteração por decisão do usuário.
 - **QA Tester:** PRONTO. test+typecheck verdes; zero toque em server/auth/XP/review/submissão;
   formulários intactos; `prefers-reduced-motion` 100% coberto; rotas públicas HTTP 200 sem erro.
 - **Codex Reviewer:** aprovado com ressalvas. Boundaries e fronteira server/client corretos;
