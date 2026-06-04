@@ -19,13 +19,8 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Appear,
-  FloatLoop,
-  Reveal,
-  Stagger,
-  StaggerItem,
-} from "@/components/motion";
+import { Appear, Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { HeroAgentCore } from "@/components/three/hero-core";
 import { dashboardPathForRole, getSessionUser } from "@/lib/auth/session";
 
 export const dynamic = "force-dynamic";
@@ -342,11 +337,7 @@ function HeroCockpit() {
 
         <div className="grid gap-4 sm:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-2xl border border-cyan-300/15 bg-cyan-300/10 p-4">
-            <div className="mx-auto flex aspect-square max-w-[180px] items-center justify-center rounded-full border border-cyan-200/30 bg-[radial-gradient(circle,rgba(22,217,227,0.30),rgba(109,93,247,0.08)_58%,transparent_60%)]">
-              <FloatLoop className="flex size-24 items-center justify-center rounded-full border border-white/20 bg-[#141B2E] shadow-[0_0_42px_rgba(22,217,227,0.28)]">
-                <Bot className="size-12 text-cyan-100" />
-              </FloatLoop>
-            </div>
+            <HeroAgentCore />
             <div className="mt-4 rounded-xl bg-black/20 p-3">
               <div className="flex items-center justify-between text-xs text-slate-300">
                 <span>XP para proxima fase</span>
