@@ -1,0 +1,80 @@
+{
+  "id": "verdant",
+  "variant": "verdant",
+  "name": "Agente Verdejante",
+  "role": "companheiro de jornada em IA",
+  "product_context": "avatar do aluno para cockpit, perfil, level-up e boss final",
+  "visual_identity": {
+    "archetype": "agente de crescimento e aprendizagem",
+    "personality": [
+      "paciente",
+      "otimista",
+      "organico",
+      "acolhedor",
+      "metodico"
+    ],
+    "silhouette": "humanoide compacto com contornos suaves, cabeca levemente maior, corpo pequeno, maos simples sem dedos detalhados",
+    "shape_language": [
+      "formas arredondadas",
+      "placas inspiradas em folhas sem parecer planta literal",
+      "curvas limpas",
+      "detalhes luminosos de progresso"
+    ]
+  },
+  "palette": {
+    "primary": "#3EE58F",
+    "secondary": "#16D9E3",
+    "neutral_dark": "#0E1A18",
+    "neutral_mid": "#17302B",
+    "emissive": "#3EE58F"
+  },
+  "materials": [
+    "polimero fosco verde escuro",
+    "vidro emissivo verde",
+    "metal escuro acetinado",
+    "detalhes ciano discretos"
+  ],
+  "base_model_constraints": {
+    "pose": "A-pose neutra e simetrica",
+    "face": "visor abstrato sem rosto humano realista",
+    "scale": "game-ready, legivel em tamanho pequeno",
+    "forbidden": [
+      "texto",
+      "logo",
+      "armas",
+      "folhas realistas em excesso",
+      "aparencia de arvore ou planta literal",
+      "rosto humano realista",
+      "cabelo realista",
+      "particulas",
+      "aura",
+      "aneis orbitais",
+      "fundo complexo",
+      "detalhe fino demais"
+    ]
+  },
+  "nano_banana_prompt_notes": [
+    "stylized 3D character concept",
+    "front side back orthographic turnaround sheet",
+    "clean studio lighting",
+    "white or transparent background",
+    "small friendly AI learning companion",
+    "green and cyan growth-oriented premium technology palette"
+  ],
+  "tripo_prompt_notes": [
+    "clean game-ready stylized GLB character",
+    "preserve compact soft readable silhouette",
+    "simple symmetrical geometry",
+    "matte dark green polymer body with green emissive visor accents",
+    "no particles, no aura, no floating rings, no text, no logo"
+  ],
+  "procedural_evolution_layers": {
+    "despertar": ["aura verde muito leve"],
+    "explorador": ["um anel orbital verde", "micro nos de progresso"],
+    "estrategista": ["anel ciano secundario", "badge abstrato de plano"],
+    "criador": ["brilho suave de prototipo"],
+    "operador": ["linhas finas de automacao"],
+    "arquiteto": ["wireframe estrutural ao redor"],
+    "boss_final": ["halo contido", "coroa orbital pequena", "particulas ambar"]
+  }
+}

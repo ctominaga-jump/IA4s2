@@ -1,0 +1,80 @@
+{
+  "id": "nebula",
+  "variant": "nebula",
+  "name": "Agente Nebulosa",
+  "role": "companheiro de jornada em IA",
+  "product_context": "avatar do aluno para cockpit, perfil, level-up e boss final",
+  "visual_identity": {
+    "archetype": "agente de criatividade e estrategia",
+    "personality": [
+      "imaginativo",
+      "estrategico",
+      "sereno",
+      "sofisticado",
+      "exploratorio"
+    ],
+    "silhouette": "humanoide compacto e elegante, cabeca levemente maior, corpo pequeno, maos simples sem dedos detalhados",
+    "shape_language": [
+      "formas curvas e assimetria muito sutil",
+      "placas suaves",
+      "visor amplo",
+      "detalhes luminosos discretos"
+    ]
+  },
+  "palette": {
+    "primary": "#6D5DF7",
+    "secondary": "#FF5C7A",
+    "neutral_dark": "#111025",
+    "neutral_mid": "#211A3A",
+    "emissive": "#6D5DF7"
+  },
+  "materials": [
+    "polimero fosco violeta escuro",
+    "vidro emissivo violeta",
+    "metal escuro acetinado",
+    "detalhes rosa discretos"
+  ],
+  "base_model_constraints": {
+    "pose": "A-pose neutra e simetrica",
+    "face": "visor abstrato sem rosto humano realista",
+    "scale": "game-ready, legivel em tamanho pequeno",
+    "forbidden": [
+      "texto",
+      "logo",
+      "armas",
+      "estrelas ou galaxia literal no corpo",
+      "visual mistico demais",
+      "rosto humano realista",
+      "cabelo realista",
+      "particulas",
+      "aura",
+      "aneis orbitais",
+      "fundo complexo",
+      "detalhe fino demais"
+    ]
+  },
+  "nano_banana_prompt_notes": [
+    "stylized 3D character concept",
+    "front side back orthographic turnaround sheet",
+    "clean studio lighting",
+    "white or transparent background",
+    "small friendly AI learning companion",
+    "violet and pink creative premium technology palette"
+  ],
+  "tripo_prompt_notes": [
+    "clean game-ready stylized GLB character",
+    "preserve compact elegant readable silhouette",
+    "simple symmetrical geometry",
+    "matte dark violet polymer body with violet emissive visor accents",
+    "no particles, no aura, no floating rings, no text, no logo"
+  ],
+  "procedural_evolution_layers": {
+    "despertar": ["aura violeta muito leve"],
+    "explorador": ["um anel orbital violeta", "micro nos de progresso"],
+    "estrategista": ["anel rosa secundario", "badge abstrato de plano"],
+    "criador": ["brilho suave de prototipo"],
+    "operador": ["linhas finas de automacao"],
+    "arquiteto": ["wireframe estrutural ao redor"],
+    "boss_final": ["halo contido", "coroa orbital pequena", "particulas ambar"]
+  }
+}

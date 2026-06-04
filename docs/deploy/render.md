@@ -56,6 +56,7 @@ o que faz o Render pedir o valor na primeira criação.
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY`  | build + cliente | idem acima                | Não      |
 | `SUPABASE_SERVICE_ROLE_KEY`      | runtime/server  | só no servidor, ignora RLS | **SIM — secreta** |
 | `NODE_VERSION`                   | build           | fixa a versão do Node     | Não      |
+| `ENABLE_PREVIEW_ROUTES`          | runtime/server (opcional) | `1` libera `/preview/avatar-evolution` em produção para validar os avatares 3D online; remova a variável para voltar a bloquear | Não      |
 
 **Importante sobre `NEXT_PUBLIC_*`:** essas variáveis são "assadas" no
 bundle do client **na hora do `next build`**. O Render disponibiliza as
@@ -130,7 +131,8 @@ Você tem **duas opções** — escolha **uma**:
    - o serviço subindo com `next start`.
 
 ### 3.8 Validar a URL final
-1. O Render dá uma URL pública tipo `https://ia-para-vida.onrender.com`.
+1. O Blueprint cria o serviço `ia-para-vida`, então a URL pública esperada é
+   `https://ia-para-vida.onrender.com/`.
 2. Abra a URL e cheque:
    - a página de **login** (`/login`) carrega;
    - login com um usuário de teste funciona (a sessão depende do middleware
@@ -170,7 +172,7 @@ migrations:
 2. **New + → Blueprint** → escolher este repo.
 3. Colar os valores das 3 env vars do Supabase quando solicitado.
 4. **Apply** e acompanhar o build.
-5. Abrir a URL `*.onrender.com` e validar `/login`.
+5. Abrir `https://ia-para-vida.onrender.com/` e validar `/login`.
 
 Nada disso exige suas credenciais aqui — é tudo no painel do Render,
 feito por você.

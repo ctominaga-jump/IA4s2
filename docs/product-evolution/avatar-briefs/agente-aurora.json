@@ -1,0 +1,78 @@
+{
+  "id": "aurora",
+  "variant": "aurora",
+  "name": "Agente Aurora",
+  "role": "companheiro de jornada em IA",
+  "product_context": "avatar do aluno para cockpit, perfil, level-up e boss final",
+  "visual_identity": {
+    "archetype": "agente tecnologico calmo",
+    "personality": [
+      "claro",
+      "confiavel",
+      "curioso",
+      "focado",
+      "premium"
+    ],
+    "silhouette": "humanoide compacto e agentivo, cabeca levemente maior, corpo pequeno, ombros suaves, maos simples sem dedos detalhados",
+    "shape_language": [
+      "formas geometricas arredondadas",
+      "linhas limpas",
+      "volumes simples",
+      "detalhes luminosos contidos"
+    ]
+  },
+  "palette": {
+    "primary": "#16D9E3",
+    "secondary": "#6D5DF7",
+    "neutral_dark": "#10172A",
+    "neutral_mid": "#1B2540",
+    "emissive": "#16D9E3"
+  },
+  "materials": [
+    "polimero fosco azul quase preto",
+    "vidro emissivo ciano",
+    "metal escuro acetinado",
+    "detalhes violetas discretos"
+  ],
+  "base_model_constraints": {
+    "pose": "A-pose neutra e simetrica",
+    "face": "visor abstrato sem rosto humano realista",
+    "scale": "game-ready, legivel em tamanho pequeno",
+    "forbidden": [
+      "texto",
+      "logo",
+      "armas",
+      "rosto humano realista",
+      "cabelo realista",
+      "particulas",
+      "aura",
+      "aneis orbitais",
+      "fundo complexo",
+      "detalhe fino demais"
+    ]
+  },
+  "nano_banana_prompt_notes": [
+    "stylized 3D character concept",
+    "front side back orthographic turnaround sheet",
+    "clean studio lighting",
+    "white or transparent background",
+    "small friendly AI learning companion",
+    "cyan and violet premium technology palette"
+  ],
+  "tripo_prompt_notes": [
+    "clean game-ready stylized GLB character",
+    "preserve compact readable silhouette",
+    "simple symmetrical geometry",
+    "matte polymer body with cyan emissive visor accents",
+    "no particles, no aura, no floating rings, no text, no logo"
+  ],
+  "procedural_evolution_layers": {
+    "despertar": ["aura ciano muito leve"],
+    "explorador": ["um anel orbital ciano", "micro nos de progresso"],
+    "estrategista": ["anel violeta secundario", "badge abstrato de plano"],
+    "criador": ["brilho suave de prototipo"],
+    "operador": ["linhas finas de automacao"],
+    "arquiteto": ["wireframe estrutural ao redor"],
+    "boss_final": ["halo contido", "coroa orbital pequena", "particulas ambar"]
+  }
+}

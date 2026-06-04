@@ -112,7 +112,7 @@ O avatar deve representar evolucao, nao apenas foto de perfil.
 Opcoes:
 
 - Curto prazo: avatar 2D/ilustrado com estado visual por nivel.
-- Medio prazo: Ready Player Me ou avatar GLB embutido no dashboard.
+- Medio prazo: avatar GLB proprio/licenciado embutido no dashboard (sem Ready Player Me — descontinuado em 31/01/2026).
 - Longo prazo: itens cosmeticos desbloqueados por badges/fases.
 
 Locais de exibicao:

@@ -76,7 +76,7 @@ Tecnologia sugerida:
 
 Fontes de assets:
 
-- Ready Player Me para avatar.
+- GLB proprio/licenciado de fonte estavel para o avatar base (sem Ready Player Me — descontinuado em 31/01/2026); avatar procedural/interno ate definir a fonte.
 - Sketchfab, CGTrader, KitBash3D e BlenderKit para props/laboratorio.
 - Blender para compactar, limpar materiais e gerar LOD quando necessario.
 

@@ -155,7 +155,7 @@ Arquivos impactados:
 
 Tarefas:
 
-- Criar avatar 2D inicial ou integrar Ready Player Me em fase posterior.
+- Criar avatar 2D inicial ou plugar GLB proprio/licenciado em fase posterior (sem RPM — descontinuado 31/01/2026).
 - Mapear estado visual por nivel/fase.
 - Mostrar conquistas e progressao no perfil.
 - Criar celebracao de level up.

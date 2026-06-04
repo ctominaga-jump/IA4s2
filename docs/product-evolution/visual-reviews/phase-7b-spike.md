@@ -67,7 +67,7 @@ do 7B final. **Custo conhecido: ~182 kB gzip sob demanda por cena.**
 
 ## Pré-requisitos para o 7B final (com decisão de assets)
 
-1. Decidir assets (procedural vs GLB/HDR; Ready Player Me p/ avatar) — define o orçamento de bytes.
+1. Decidir assets (procedural vs GLB/HDR; GLB próprio/licenciado p/ avatar — sem Ready Player Me, descontinuado 31/01/2026) — define o orçamento de bytes.
 2. Ao usar assets: `<Suspense>` interno + estratégia de preload; o payload async crescerá.
 3. Medir FPS em device móvel real (material distorcido + sparkles); considerar `antialias:false`/dpr menor.
 4. Pausar render fora da viewport (`frameloop="demand"` quando a cena sai da tela).

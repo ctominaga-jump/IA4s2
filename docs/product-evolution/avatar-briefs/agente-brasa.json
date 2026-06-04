@@ -1,0 +1,80 @@
+{
+  "id": "ember",
+  "variant": "ember",
+  "name": "Agente Brasa",
+  "role": "companheiro de jornada em IA",
+  "product_context": "avatar do aluno para cockpit, perfil, level-up e boss final",
+  "visual_identity": {
+    "archetype": "agente de energia e acao",
+    "personality": [
+      "dinamico",
+      "corajoso",
+      "direto",
+      "motivador",
+      "intenso sem ser agressivo"
+    ],
+    "silhouette": "humanoide compacto e atletico, postura pronta para agir, cabeca levemente maior, corpo pequeno, maos simples sem dedos detalhados",
+    "shape_language": [
+      "formas triangulares suavizadas",
+      "placas curvas",
+      "linhas de energia contidas",
+      "volumes simples e fortes"
+    ]
+  },
+  "palette": {
+    "primary": "#FFC857",
+    "secondary": "#FF5C7A",
+    "neutral_dark": "#141018",
+    "neutral_mid": "#2A1824",
+    "emissive": "#FFC857"
+  },
+  "materials": [
+    "polimero fosco grafite quente",
+    "vidro emissivo ambar",
+    "metal escuro acetinado",
+    "detalhes vermelho-rosa discretos"
+  ],
+  "base_model_constraints": {
+    "pose": "A-pose neutra e simetrica, com energia visual mas sem pose de combate",
+    "face": "visor abstrato sem rosto humano realista",
+    "scale": "game-ready, legivel em tamanho pequeno",
+    "forbidden": [
+      "texto",
+      "logo",
+      "armas",
+      "chamas realistas",
+      "expressao agressiva",
+      "rosto humano realista",
+      "cabelo realista",
+      "particulas",
+      "aura",
+      "aneis orbitais",
+      "fundo complexo",
+      "detalhe fino demais"
+    ]
+  },
+  "nano_banana_prompt_notes": [
+    "stylized 3D character concept",
+    "front side back orthographic turnaround sheet",
+    "clean studio lighting",
+    "white or transparent background",
+    "small friendly AI learning companion",
+    "amber and red-pink energetic premium palette"
+  ],
+  "tripo_prompt_notes": [
+    "clean game-ready stylized GLB character",
+    "preserve compact energetic silhouette",
+    "simple symmetrical geometry",
+    "matte dark warm polymer body with amber emissive visor accents",
+    "no particles, no aura, no floating rings, no text, no logo"
+  ],
+  "procedural_evolution_layers": {
+    "despertar": ["aura ambar muito leve"],
+    "explorador": ["um anel orbital ambar", "micro nos de progresso"],
+    "estrategista": ["anel vermelho-rosa secundario", "badge abstrato de plano"],
+    "criador": ["brilho suave de prototipo"],
+    "operador": ["linhas finas de automacao"],
+    "arquiteto": ["wireframe estrutural ao redor"],
+    "boss_final": ["halo contido", "coroa orbital pequena", "particulas ambar"]
+  }
+}
