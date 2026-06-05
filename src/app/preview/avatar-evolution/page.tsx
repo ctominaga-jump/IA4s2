@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { Boxes } from "lucide-react";
 
 import { EvolvingAvatar } from "@/components/three/avatar/lazy-avatar";
+import { LazyAvatarMatrix } from "@/components/three/avatar/lazy-avatar-matrix";
 import {
   AVATAR_IDENTITIES,
+  AVATAR_KITS,
   AVATAR_MODELS,
   AVATAR_STATES,
 } from "@/components/three/avatar/avatar-states";
@@ -15,8 +17,9 @@ export const dynamic = "force-dynamic";
 
 /**
  * Preview sem autenticacao dos avatares 3D reais. Mostra a separacao:
- * IDENTIDADE = GLB por variante (AVATAR_MODELS) e EVOLUCAO = 7 estados
- * procedurais (aneis, particulas, cores, coroa). Guardado em producao.
+ * IDENTIDADE = GLB por variante (AVATAR_MODELS), EVOLUCAO = camadas
+ * procedurais por fase (AVATAR_STATES) + Evolution Kit por variante/fase
+ * (AVATAR_KITS) e a matriz 4x7 completa. Guardado em producao.
  *
  * Query params: `?variant=` seleciona a identidade do strip de evolucao;
  * `?fallback=1` forca o AvatarFigure 2D (rollback).
@@ -66,14 +69,17 @@ export default async function AvatarEvolutionPreviewPage({
           Avatares 3D reais - identidade por GLB + evolucao procedural
         </span>
         <h1 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
-          4 identidades com GLB proprio, 7 estados de evolucao procedural.
+          4 identidades com GLB proprio, 7 estados com Evolution Kits.
         </h1>
         <p className="mt-3 max-w-3xl text-slate-300">
           A identidade do avatar e o modelo base: cada variante (Aurora, Brasa,
           Verdejante e Nebulosa) carrega seu proprio GLB de{" "}
           <code className="text-cyan-200">/assets/3d</code>. A evolucao por fase
-          continua procedural: aura, aneis orbitais, particulas, cores e coroa
-          no Boss Final. Sem WebGL/JS, cai para o avatar 2D de mesma dimensao.
+          combina camadas procedurais (aura, aneis, particulas) com um{" "}
+          <strong className="text-white">Evolution Kit</strong> modular por
+          variante/fase: acessorios, placas, halos, badges e wireframes que se
+          somam ao base sem substitui-lo. Sem WebGL/JS, cai para o avatar 2D de
+          mesma dimensao.
         </p>
         <p className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-cyan-200">
           {forceFallback ? "Modo fallback (AvatarFigure 2D)" : "Modo 3D (GLB por identidade)"}
@@ -157,8 +163,29 @@ export default async function AvatarEvolutionPreviewPage({
                 Estado {state.index + 1} - {state.rings} aneis -{" "}
                 {state.particles} part.
               </p>
+              <p className="text-[11px] font-medium text-cyan-100">
+                {AVATAR_KITS[stripVariant][state.index]
+                  ? `kit: ${AVATAR_KITS[stripVariant][state.index]?.split("-kit-").pop()?.replace(".glb", "")}`
+                  : "sem kit (base)"}
+              </p>
             </article>
           ))}
+        </div>
+
+        {/* Secao 3: matriz 4x7 (1 unico canvas WebGL). */}
+        <h2 className="mt-12 text-lg font-semibold text-white">
+          Matriz 4 identidades x 7 estados
+        </h2>
+        <p className="mt-1 max-w-3xl text-sm text-slate-400">
+          Visao completa num unico contexto WebGL (28 canvases estourariam o
+          limite do browser). Util para comparar maturidade visual entre fases
+          e checar que nenhum avatar vira recolor de outro.
+        </p>
+        <div className="mt-4 overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.04] p-4 pl-16">
+          {/* min-w: células legíveis no mobile via scroll horizontal. */}
+          <div className="min-w-[820px]">
+            <LazyAvatarMatrix forceFallback={forceFallback} />
+          </div>
         </div>
 
         <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-6 text-sm leading-6 text-slate-300">
@@ -171,13 +198,24 @@ export default async function AvatarEvolutionPreviewPage({
               <code className="text-cyan-200">avatar-states.ts</code> mapeia
               identidade -&gt; GLB (url, escala, rotacao).{" "}
               <code className="text-cyan-200">AVATAR_STATES</code> mantem as
-              camadas procedurais por fase.
+              camadas procedurais por fase.{" "}
+              <code className="text-cyan-200">AVATAR_KITS</code> mapeia
+              variante + fase -&gt; Evolution Kit (GLB modular, lazy).
             </li>
             <li>
               Rollback por variante: entrada <code className="text-cyan-200">null</code>{" "}
               em <code className="text-cyan-200">AVATAR_MODELS</code> volta ao
-              nucleo procedural; <code className="text-cyan-200">?fallback=1</code>{" "}
-              forca o AvatarFigure 2D.
+              nucleo procedural. Rollback por variante/fase: entrada{" "}
+              <code className="text-cyan-200">null</code> em{" "}
+              <code className="text-cyan-200">AVATAR_KITS</code> volta a fase
+              sem kit (a coroa procedural do Boss reaparece).{" "}
+              <code className="text-cyan-200">?fallback=1</code> forca o
+              AvatarFigure 2D.
+            </li>
+            <li>
+              Kits gerados por <code className="text-cyan-200">scripts/generate-evolution-kits.mjs</code>{" "}
+              (24 GLBs, ~0,75 MB no total, 7-71 KB cada) e auditados por{" "}
+              <code className="text-cyan-200">scripts/inspect-kits.mjs</code>.
             </li>
             <li>
               Ressalva de producao: Brasa, Verdejante e Nebulosa estao em

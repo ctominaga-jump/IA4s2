@@ -84,12 +84,68 @@ export const AVATAR_MODELS: Record<AvatarVariant, AvatarModelSource | null> = {
 };
 
 /**
+ * Registry IDENTIDADE + FASE -> Evolution Kit (GLB modular sobre o base).
+ *
+ * Os kits são acessórios/placas/halos/wireframes gerados por
+ * `scripts/generate-evolution-kits.mjs` (ver
+ * docs/product-evolution/15-evolution-kits-design-spec.md). Índice do array =
+ * phaseIndex (0..6); Despertar (0) é sempre `null` — o estado base não tem kit.
+ *
+ * Rollback por variante/fase: trocar a entrada por `null` volta àquela fase
+ * sem kit (camadas procedurais continuam), sem remover código nem asset.
+ */
+const KIT_PHASE_SLUGS = [
+  null, // Despertar: GLB base + camadas procedurais, sem kit.
+  "explorador",
+  "estrategista",
+  "criador",
+  "operador",
+  "arquiteto",
+  "boss-final",
+] as const;
+
+/** Slug de arquivo por variante (GLBs usam os nomes em português). */
+const KIT_AVATAR_SLUGS: Record<AvatarVariant, string> = {
+  aurora: "aurora",
+  ember: "brasa",
+  verdant: "verdejante",
+  nebula: "nebulosa",
+};
+
+function kitUrlsFor(variant: AvatarVariant): ReadonlyArray<string | null> {
+  return KIT_PHASE_SLUGS.map((phase) =>
+    phase
+      ? `/assets/3d/avatar-${KIT_AVATAR_SLUGS[variant]}-kit-${phase}.glb`
+      : null,
+  );
+}
+
+export const AVATAR_KITS: Record<AvatarVariant, ReadonlyArray<string | null>> = {
+  aurora: kitUrlsFor("aurora"),
+  ember: kitUrlsFor("ember"),
+  verdant: kitUrlsFor("verdant"),
+  nebula: kitUrlsFor("nebula"),
+};
+
+/** Resolve o kit de evolução (`null` => fase sem kit, ex.: Despertar). */
+export function avatarKitForPhase(
+  variant: AvatarVariant,
+  phaseIndex: number,
+): string | null {
+  const kits = AVATAR_KITS[variant];
+  if (!kits) return null;
+  const i = Math.min(Math.max(phaseIndex, 0), kits.length - 1);
+  return kits[i];
+}
+
+/**
  * Registry dos 7 estados de evolução do avatar.
  *
- * A evolução por fase é PROCEDURAL: aura, anéis orbitais, partículas, cor,
- * distorção do núcleo e props (coroa no Boss). O modelo base NÃO varia por
- * fase — ele varia por IDENTIDADE (AVATAR_MODELS). Ver
- * docs/product-evolution/13-real-3d-assets-plan.md.
+ * A evolução por fase combina camadas PROCEDURAIS (aura, anéis orbitais,
+ * partículas, cor, distorção, coroa) com o Evolution Kit da fase
+ * (AVATAR_KITS). O modelo base NÃO varia por fase — ele varia por IDENTIDADE
+ * (AVATAR_MODELS). Ver docs/product-evolution/13-real-3d-assets-plan.md e
+ * docs/product-evolution/15-evolution-kits-design-spec.md.
  */
 export interface AvatarStateConfig {
   index: number;
@@ -109,9 +165,11 @@ export interface AvatarStateConfig {
   crown: boolean;
 }
 
-/** Config de render do avatar: camadas procedurais + modelo base (ou null). */
+/** Config de render: camadas procedurais + modelo base + kit (ou null). */
 export type AvatarRenderConfig = AvatarStateConfig & {
   model: AvatarModelSource | null;
+  /** Evolution Kit da fase (GLB modular) ou `null` (fase sem kit/rollback). */
+  kitUrl: string | null;
 };
 
 export type ResolvedAvatarStateConfig = AvatarRenderConfig & AvatarIdentityConfig;
@@ -155,5 +213,6 @@ export function resolvedAvatarStateForPhase(
     ...avatarStateForPhase(phaseIndex),
     ...avatarIdentityForVariant(variant),
     model: avatarModelForVariant(variant),
+    kitUrl: avatarKitForPhase(variant, phaseIndex),
   };
 }

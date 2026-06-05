@@ -7,17 +7,26 @@ import type { Group } from "three";
 
 import type { AvatarRenderConfig } from "@/components/three/avatar/avatar-states";
 import { AvatarModel } from "@/components/three/avatar/avatar-model";
+import { SceneErrorBoundary } from "@/components/three/scene-error-boundary";
 
 /**
  * Avatar 3D de um estado, como scene-graph (sem `<Canvas>` próprio) — pode ser
- * usado isolado (EvolvingAvatar) ou em lote (strip de preview). A evolução é
- * PROCEDURAL: núcleo + casca wireframe + N anéis orbitais + partículas + coroa
- * (Boss). O núcleo central é o PLUG POINT: se `config.model` existir (GLB da
- * IDENTIDADE da variante), carrega o GLB dentro de `<Suspense>` (as camadas
- * procedurais permanecem ao redor); senão, usa o núcleo procedural.
+ * usado isolado (EvolvingAvatar) ou em lote (strip/matriz de preview). A
+ * evolução combina camadas PROCEDURAIS (anéis, partículas, coroa) com o
+ * Evolution Kit da fase (`config.kitUrl`, GLB modular gerado por
+ * `scripts/generate-evolution-kits.mjs`). O núcleo central é o PLUG POINT: se
+ * `config.model` existir (GLB da IDENTIDADE da variante), carrega o GLB dentro
+ * de `<Suspense>`; senão, usa o núcleo procedural.
+ *
+ * O kit é autorado no MESMO espaço do GLB base (Y-up, origem central, altura
+ * 1.0), então entra no grupo de spin com a mesma escala/rotação do modelo —
+ * acompanha rotação e flutuação. Harmonização: a coroa procedural do Boss é
+ * suprimida quando o kit Boss Final está ativo (o kit já entrega halo +
+ * coroa); rollback do kit (`kitUrl=null`) restaura a coroa procedural.
  *
  * `animate=false` (reduced-motion) congela toda rotação/flutuação.
  */
+const KIT_FALLBACK_SCALE = 1.9; // núcleo procedural ~ altura visual do GLB base
 export function ProceduralAvatar({
   config,
   animate,
@@ -62,15 +71,35 @@ export function ProceduralAvatar({
           ) : (
             <ProceduralCore config={config} animate={animate} />
           )}
+          {/* Evolution Kit da fase: mesmo espaço/escala do base. Boundary
+              próprio: se o GLB do kit falhar, SÓ o kit some — o avatar
+              continua 3D (base + camadas procedurais), sem derrubar o card. */}
+          {config.kitUrl ? (
+            <SceneErrorBoundary fallback={null}>
+              <Suspense fallback={null}>
+                <AvatarModel
+                  url={config.kitUrl}
+                  scale={config.model?.scale ?? KIT_FALLBACK_SCALE}
+                  rotation={config.model?.rotation ?? [0, 0, 0]}
+                />
+              </Suspense>
+            </SceneErrorBoundary>
+          ) : null}
         </group>
       </Float>
 
-      {/* Anéis orbitais + partículas (camadas de evolução). */}
+      {/* Anéis orbitais + partículas (camadas de evolução). Com kit ativo, os
+          anéis procedurais recuam (opacidade menor) para o equipamento do kit
+          ler como protagonista — harmonização da revisão UX. */}
       <group ref={orbit}>
         {rings.map((i) => (
           <mesh key={i} rotation={[Math.PI / 2.4 + i * 0.5, i * 0.4, 0]}>
             <torusGeometry args={[1.25 + i * 0.2, 0.012, 8, 80]} />
-            <meshBasicMaterial color={config.secondary} transparent opacity={0.4} />
+            <meshBasicMaterial
+              color={config.secondary}
+              transparent
+              opacity={config.kitUrl ? 0.26 : 0.4}
+            />
           </mesh>
         ))}
       </group>
@@ -84,7 +113,8 @@ export function ProceduralAvatar({
         opacity={0.7}
       />
 
-      {config.crown ? <Crown color={config.accent} /> : null}
+      {/* Coroa procedural só quando o Boss não tem kit (kit traz halo+coroa). */}
+      {config.crown && !config.kitUrl ? <Crown color={config.accent} /> : null}
     </group>
   );
 }
