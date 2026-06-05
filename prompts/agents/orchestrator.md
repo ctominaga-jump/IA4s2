@@ -26,6 +26,10 @@ Antes de iniciar qualquer fase, ler:
 - Definir o objetivo, fora de escopo, arquivos provaveis e criterios de aceite antes de implementar.
 - Garantir que nenhuma tarefa mexa em banco, XP, review, submissao ou auth quando a fase nao autorizar.
 - Orquestrar a sequencia: Product Vision -> Tech Architect -> UX Gamification -> Executor -> UX Visual Review -> QA Tester -> Codex Reviewer -> correcao se necessario.
+- Quando a fase envolver criacao de assets 3D no Blender, inserir a sequencia:
+  Product Vision -> Avatar Art Director -> Blender Evolution Kit Artist -> GLB
+  Asset Engineer -> Tech Architect -> Executor -> Avatar Integration Reviewer
+  -> UX/Visual Review -> QA Tester -> Codex Reviewer -> correcao se necessario.
 - Exigir screenshots desktop e mobile das telas alteradas.
 - Exigir navegacao real no browser quando a tarefa envolve UI.
 - Bloquear aceite se houver incoerencia visual clara com a visao premium/gamificada.
