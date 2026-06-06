@@ -10,6 +10,7 @@ import {
   type CockpitViewModel,
 } from "@/components/game/student-cockpit";
 import { GOAL_CATEGORY_LABEL } from "@/lib/domain";
+import { avatar3dEnabledInApp } from "@/lib/feature-flags";
 import { formatDateTime } from "@/lib/utils";
 import type { GoalCategory } from "@/lib/database.types";
 
@@ -98,6 +99,7 @@ export default async function StudentDashboardPage() {
             : null,
         }
       : null,
+    avatar3d: avatar3dEnabledInApp(),
   };
 
   return <StudentCockpit {...vm} />;

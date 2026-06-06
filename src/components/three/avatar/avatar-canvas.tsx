@@ -34,10 +34,15 @@ export function AvatarCanvas({
       <ambientLight intensity={0.7} />
       <pointLight position={[3, 2, 4]} intensity={55} color={config.accent} />
       <pointLight position={[-3, -1, 2]} intensity={42} color={config.secondary} />
-      {/* Key light neutra só para o asset GLB (material escuro/texturizado);
-          o núcleo procedural emissivo dispensa e mantém o look original. */}
+      {/* Key + fill neutras só para o asset GLB (material escuro/texturizado);
+          o núcleo procedural emissivo dispensa e mantém o look original.
+          Fill frontal-baixa: levanta identidades escuras (Aurora/Nebulosa)
+          sobre cards escuros do app — ajuste da revisão UX da fase 17. */}
       {config.model ? (
-        <directionalLight position={[2, 3, 5]} intensity={2.4} />
+        <>
+          <directionalLight position={[2, 3, 5]} intensity={3.2} />
+          <directionalLight position={[0, -1, 4]} intensity={1.2} />
+        </>
       ) : null}
       <ProceduralAvatar config={config} animate={animate} />
     </Canvas>

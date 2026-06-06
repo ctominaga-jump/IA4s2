@@ -5,6 +5,7 @@ import {
   StudentCockpit,
   type CockpitViewModel,
 } from "@/components/game/student-cockpit";
+import type { AvatarVariant } from "@/lib/database.types";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,13 @@ export const dynamic = "force-dynamic";
  * Rota de preview SEM autenticacao usada apenas para validacao visual por
  * screenshot (Visual Reviewer / QA). Renderiza o cockpit com dados ficticios,
  * sem tocar em Supabase, XP, review ou auth. Nunca disponivel em producao.
+ *
+ * Query params (evidencia do EvolvingAvatar 3D no painel "Seu agente"):
+ * `?variant=aurora|ember|verdant|nebula` troca a identidade da fixture;
+ * `?phase=0..6` troca a fase (kit); `?fallback=1` forca o AvatarFigure 2D.
  */
+
+const VARIANTS: AvatarVariant[] = ["aurora", "ember", "verdant", "nebula"];
 
 const VM: CockpitViewModel = {
   firstName: "Marina",
@@ -65,18 +72,38 @@ const VM: CockpitViewModel = {
   },
 };
 
-export default function CockpitPreviewPage() {
+export default async function CockpitPreviewPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ variant?: string; phase?: string; fallback?: string }>;
+}) {
   if (process.env.NODE_ENV === "production") {
     notFound();
   }
 
+  const { variant, phase, fallback } = await searchParams;
+  const avatarVariant: AvatarVariant = VARIANTS.includes(
+    variant as AvatarVariant,
+  )
+    ? (variant as AvatarVariant)
+    : VM.avatarVariant;
+  const phaseIndex = /^[0-6]$/.test(phase ?? "")
+    ? Number(phase)
+    : VM.currentPhaseIndex;
+  const vm: CockpitViewModel = {
+    ...VM,
+    avatarVariant,
+    currentPhaseIndex: phaseIndex,
+    avatar3d: !(fallback === "1" || fallback === "true"),
+  };
+
   return (
     <StudentGameShell
       userName="Marina Souza"
-      totalXp={VM.totalXp}
-      levelLabel={`Nv ${VM.levelNumber} · ${VM.levelTitle}`}
+      totalXp={vm.totalXp}
+      levelLabel={`Nv ${vm.levelNumber} · ${vm.levelTitle}`}
     >
-      <StudentCockpit {...VM} />
+      <StudentCockpit {...vm} />
     </StudentGameShell>
   );
 }

@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { AvatarFigure } from "@/components/game/avatar-figure";
+import { EvolvingAvatar } from "@/components/three/avatar/lazy-avatar";
 import { PHASES } from "@/components/game/journey-phases";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/empty-state";
@@ -37,6 +37,12 @@ export interface ProfileViewModel {
     title: string;
     status: Exclude<MissionStatus, "approved" | "not_started">;
   }[];
+  /**
+   * Liga o EvolvingAvatar 3D no hero de identidade. Resolvido pela page via
+   * `avatar3dEnabledInApp()`; ausente/false mantém o AvatarFigure 2D de
+   * mesma dimensão (rollback sem código).
+   */
+  avatar3d?: boolean;
 }
 
 export function ProfileView({
@@ -57,12 +63,15 @@ export function ProfileView({
       <section className="relative overflow-hidden rounded-3xl border border-border bg-card/80 p-5 md:p-6">
         <div className="pointer-events-none absolute -right-12 -top-16 size-52 rounded-full bg-primary/15 blur-3xl" />
         <div className="relative flex flex-col items-center gap-5 sm:flex-row sm:items-center">
-          <AvatarFigure
+          {/* 3D (GLB + kit da fase); gate desligado => AvatarFigure 2D de
+              mesma dimensão (sem CLS, sem chunk three.js). */}
+          <EvolvingAvatar
             variant={vm.avatarVariant}
             levelNumber={vm.levelNumber}
             phaseIndex={vm.currentPhaseIndex}
             progressPercent={vm.levelProgressPercent}
             size="lg"
+            forceFallback={!vm.avatar3d}
           />
           <div className="min-w-0 flex-1 text-center sm:text-left">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#16D9E3]/25 bg-[#16D9E3]/10 px-3 py-1 text-xs font-medium text-[#9CEBF0]">

@@ -17,7 +17,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/empty-state";
 import { Appear, MotionBar } from "@/components/motion";
-import { AvatarFigure, AvatarTrophyTag } from "@/components/game/avatar-figure";
+import { AvatarTrophyTag } from "@/components/game/avatar-figure";
+import { EvolvingAvatar } from "@/components/three/avatar/lazy-avatar";
 import { LevelUpCelebration } from "@/components/game/level-up-celebration";
 import { PHASES, type PhaseMeta } from "@/components/game/journey-phases";
 import { cn } from "@/lib/utils";
@@ -59,6 +60,12 @@ export interface CockpitViewModel {
     description: string | null;
     categoryLabel: string | null;
   } | null;
+  /**
+   * Liga o EvolvingAvatar 3D no painel "Seu agente". Resolvido pela page via
+   * `avatar3dEnabledInApp()` (gate `ENABLE_3D_AVATAR_IN_APP`); ausente/false
+   * mantém o AvatarFigure 2D de mesma dimensão (rollback sem código).
+   */
+  avatar3d?: boolean;
 }
 
 export function StudentCockpit(vm: CockpitViewModel) {
@@ -184,12 +191,17 @@ function AvatarPanel({ vm }: { vm: CockpitViewModel }) {
       </div>
 
       <div className="mx-auto mt-5">
-        <AvatarFigure
+        {/* 3D (GLB da identidade + Evolution Kit da fase) com envelope
+            validado: dynamic ssr:false + mount-on-visible + ErrorBoundary.
+            `forceFallback` (gate desligado) mantém o AvatarFigure 2D de
+            MESMA dimensão — sem CLS e sem baixar o chunk three.js. */}
+        <EvolvingAvatar
           variant={vm.avatarVariant}
           levelNumber={vm.levelNumber}
           phaseIndex={vm.currentPhaseIndex}
           progressPercent={vm.levelProgressPercent}
           size="md"
+          forceFallback={!vm.avatar3d}
         />
       </div>
 

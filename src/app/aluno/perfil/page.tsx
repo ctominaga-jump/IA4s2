@@ -7,6 +7,7 @@ import {
 } from "@/server/student-data";
 import { GoalCard } from "@/components/goal-card";
 import { AvatarPicker } from "@/components/game/avatar-picker";
+import { avatar3dEnabledInApp } from "@/lib/feature-flags";
 import {
   ProfileView,
   type ProfileViewModel,
@@ -65,6 +66,7 @@ export default async function StudentProfilePage() {
         title: item.mission.title,
         status: item.status as "pending" | "rejected",
       })),
+    avatar3d: avatar3dEnabledInApp(),
   };
 
   return (

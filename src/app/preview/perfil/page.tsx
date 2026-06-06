@@ -7,11 +7,16 @@ import {
   ProfileView,
   type ProfileViewModel,
 } from "@/components/game/profile-view";
-import type { LearningGoalRow } from "@/lib/database.types";
+import type { AvatarVariant, LearningGoalRow } from "@/lib/database.types";
 
 export const dynamic = "force-dynamic";
 
-/** Preview SEM autenticacao do perfil/identidade, apenas para screenshot. */
+/**
+ * Preview SEM autenticacao do perfil/identidade, apenas para screenshot.
+ * `?variant=` troca a identidade; `?fallback=1` forca o AvatarFigure 2D.
+ */
+
+const VARIANTS: AvatarVariant[] = ["aurora", "ember", "verdant", "nebula"];
 
 const VM: ProfileViewModel = {
   name: "Marina Souza",
@@ -48,21 +53,37 @@ const GOAL: LearningGoalRow = {
   updated_at: "2026-05-20T12:00:00.000Z",
 };
 
-export default function ProfilePreviewPage() {
+export default async function ProfilePreviewPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ variant?: string; fallback?: string }>;
+}) {
   if (process.env.NODE_ENV === "production") {
     notFound();
   }
 
+  const { variant, fallback } = await searchParams;
+  const avatarVariant: AvatarVariant = VARIANTS.includes(
+    variant as AvatarVariant,
+  )
+    ? (variant as AvatarVariant)
+    : VM.avatarVariant;
+  const vm: ProfileViewModel = {
+    ...VM,
+    avatarVariant,
+    avatar3d: !(fallback === "1" || fallback === "true"),
+  };
+
   return (
     <StudentGameShell
-      userName={VM.name}
-      totalXp={VM.totalXp}
-      levelLabel={`Nv ${VM.levelNumber} · ${VM.levelTitle}`}
+      userName={vm.name}
+      totalXp={vm.totalXp}
+      levelLabel={`Nv ${vm.levelNumber} · ${vm.levelTitle}`}
     >
       <ProfileView
-        vm={VM}
+        vm={vm}
         goalSlot={<GoalCard goal={GOAL} />}
-        avatarPickerSlot={<AvatarPicker current={VM.avatarVariant} />}
+        avatarPickerSlot={<AvatarPicker current={vm.avatarVariant} />}
       />
     </StudentGameShell>
   );

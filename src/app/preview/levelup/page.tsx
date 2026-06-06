@@ -25,6 +25,7 @@ const VM: CockpitViewModel = {
   overallPercent: 80,
   currentPhaseIndex: 4,
   counts: { not_started: 1, pending: 0, approved: 4, rejected: 0 },
+  avatar3d: true,
   nextMission: {
     id: "preview-mission",
     title: "Use IA para aprender algo novo",
