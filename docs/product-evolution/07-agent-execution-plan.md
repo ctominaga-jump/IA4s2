@@ -8,14 +8,20 @@ Este plano organiza a transformacao para execucao futura com multiplos agentes, 
 
 1. Product Vision Agent.
 2. Learning Experience Agent.
-3. Gamification Agent.
-4. Frontend Architecture Agent.
-5. UX/UI Agent.
-6. Motion Design Agent.
-7. 3D Asset Agent.
-8. Visual Reviewer Agent.
-9. QA/Validation Agent.
-10. Code Review Agent.
+3. AI Pedagogy Agent, quando houver avatar tutor, IA avaliadora ou curriculo
+   avancado.
+4. Evaluation Rubric Agent, quando houver avaliacao humana/IA, novas missoes ou
+   evidencias tecnicas.
+5. LLM Integration Architect, quando houver chamada a modelo, IA avaliadora,
+   avatar tutor ou multiagentes em runtime.
+6. Gamification Agent.
+7. Frontend Architecture Agent.
+8. UX/UI Agent.
+9. Motion Design Agent.
+10. 3D Asset Agent.
+11. Visual Reviewer Agent.
+12. QA/Validation Agent.
+13. Code Review Agent.
 
 ## Protocolo de validacao obrigatorio
 
@@ -237,7 +243,7 @@ Entradas:
 
 Saidas:
 
-- Conteudo das sete fases.
+- Conteudo das oito fases (ver `19-advanced-curriculum-content.md`).
 - Criterios de avaliacao.
 - Briefings para professor.
 
@@ -252,6 +258,85 @@ Criterios de validacao:
 - Cada missao tem objetivo, instrucao, entrega e criterio.
 - Jornada leva ao Boss Final.
 - Linguagem e adequada para iniciantes.
+
+## AI Pedagogy Agent
+
+Responsabilidade:
+
+- Garantir que IA avaliadora, avatar tutor e curriculo avancado preservem
+  autonomia do aluno e progressao segura.
+
+Entradas:
+
+- `docs/product-evolution/18-advanced-curriculum-and-ai-agents.md`;
+- `prompts/agents/ai-pedagogy.md`;
+- missoes e rubricas vigentes.
+
+Saidas:
+
+- Diretrizes pedagogicas para avatar tutor e IA avaliadora.
+- Limites de ajuda por fase.
+- Riscos pedagogicos e mitigacoes.
+
+Criterios de validacao:
+
+- A IA orienta sem entregar a resposta final.
+- Feedback e especifico, acionavel e seguro.
+- Terminal/VS Code nao aparecem cedo demais.
+- Casos inconclusivos sao encaminhados para revisao humana.
+
+## Evaluation Rubric Agent
+
+Responsabilidade:
+
+- Transformar missoes em rubricas objetivas para professor e avaliacao assistida
+  por IA.
+
+Entradas:
+
+- `docs/product-evolution/18-advanced-curriculum-and-ai-agents.md`;
+- `prompts/agents/evaluation-rubric.md`;
+- seeds de conteudo.
+
+Saidas:
+
+- Criterios de aceite revisados.
+- Evidencias esperadas por missao.
+- Exemplos de aprovado, revisar e inconclusivo.
+
+Criterios de validacao:
+
+- Rubricas sao verificaveis pela plataforma atual.
+- Missoes tecnicas pedem evidencia concreta.
+- A avaliacao nao depende de subjetividade excessiva.
+- XP continua separado da decisao assistida por IA.
+
+## LLM Integration Architect
+
+Responsabilidade:
+
+- Projetar integracoes LLM para IA avaliadora, avatar tutor e futuros agentes
+  com seguranca, custo controlado e fallback.
+
+Entradas:
+
+- `docs/product-evolution/18-advanced-curriculum-and-ai-agents.md`;
+- `prompts/agents/llm-integration-architect.md`;
+- `docs/tech-stack.md`;
+- `src/server/*`.
+
+Saidas:
+
+- Contratos de entrada/saida.
+- Prompts de sistema versionados.
+- Plano de logging, privacidade, custo, rate limit e fallback.
+
+Criterios de validacao:
+
+- Chamadas a modelo ficam no servidor.
+- Saidas sao validadas por schema.
+- Falha da IA nao bloqueia o fluxo principal.
+- IA nao concede XP diretamente sem fase aprovada.
 
 ## QA/Validation Agent
 

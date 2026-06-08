@@ -89,19 +89,25 @@ export const AVATAR_MODELS: Record<AvatarVariant, AvatarModelSource | null> = {
  * Os kits são acessórios/placas/halos/wireframes gerados por
  * `scripts/generate-evolution-kits.mjs` (ver
  * docs/product-evolution/15-evolution-kits-design-spec.md). Índice do array =
- * phaseIndex (0..6); Despertar (0) é sempre `null` — o estado base não tem kit.
+ * phaseIndex (0..7); Despertar (0) é sempre `null` — o estado base não tem kit.
+ *
+ * Operador Tecnico (índice 5) ainda NÃO tem GLB próprio: reusa o kit
+ * `operador` como fallback consciente (a diferenciação visual vem das camadas
+ * procedurais em AVATAR_STATES). Follow-up: gerar
+ * `avatar-{variante}-kit-operador-tecnico.glb` e trocar o slug aqui.
  *
  * Rollback por variante/fase: trocar a entrada por `null` volta àquela fase
  * sem kit (camadas procedurais continuam), sem remover código nem asset.
  */
 const KIT_PHASE_SLUGS = [
-  null, // Despertar: GLB base + camadas procedurais, sem kit.
-  "explorador",
-  "estrategista",
-  "criador",
-  "operador",
-  "arquiteto",
-  "boss-final",
+  null, // 0 Despertar: GLB base + camadas procedurais, sem kit.
+  "explorador", // 1
+  "estrategista", // 2
+  "criador", // 3
+  "operador", // 4 Operador de IA
+  "operador", // 5 Operador Tecnico — FALLBACK: reusa o kit operador (sem GLB próprio).
+  "arquiteto", // 6 Arquiteto de Agentes
+  "boss-final", // 7 Boss Final
 ] as const;
 
 /** Slug de arquivo por variante (GLBs usam os nomes em português). */
@@ -139,7 +145,7 @@ export function avatarKitForPhase(
 }
 
 /**
- * Registry dos 7 estados de evolução do avatar.
+ * Registry dos 8 estados de evolução do avatar (Despertar … Boss Final).
  *
  * A evolução por fase combina camadas PROCEDURAIS (aura, anéis orbitais,
  * partículas, cor, distorção, coroa) com o Evolution Kit da fase
@@ -186,11 +192,12 @@ export const AVATAR_STATES: AvatarStateConfig[] = [
   { index: 2, name: PHASES[2].name, accent: VIOLET, secondary: CYAN, rings: 1, particles: 22, distort: 0.26, crown: false },
   { index: 3, name: PHASES[3].name, accent: VIOLET, secondary: CYAN, rings: 2, particles: 26, distort: 0.28, crown: false },
   { index: 4, name: PHASES[4].name, accent: CYAN, secondary: VIOLET, rings: 2, particles: 30, distort: 0.3, crown: false },
-  { index: 5, name: PHASES[5].name, accent: VIOLET, secondary: CYAN, rings: 3, particles: 36, distort: 0.32, crown: false },
-  { index: 6, name: PHASES[6].name, accent: AMBER, secondary: ROSE, rings: 3, particles: 44, distort: 0.36, crown: true },
+  { index: 5, name: PHASES[5].name, accent: CYAN, secondary: GREEN, rings: 3, particles: 34, distort: 0.32, crown: false },
+  { index: 6, name: PHASES[6].name, accent: VIOLET, secondary: CYAN, rings: 3, particles: 40, distort: 0.34, crown: false },
+  { index: 7, name: PHASES[7].name, accent: AMBER, secondary: ROSE, rings: 3, particles: 44, distort: 0.36, crown: true },
 ];
 
-/** Resolve um estado por índice de fase, com clamp seguro (0..6). */
+/** Resolve um estado por índice de fase, com clamp seguro (0..7). */
 export function avatarStateForPhase(phaseIndex: number): AvatarStateConfig {
   const i = Math.min(Math.max(phaseIndex, 0), AVATAR_STATES.length - 1);
   return AVATAR_STATES[i];

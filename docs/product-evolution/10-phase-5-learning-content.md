@@ -3,6 +3,14 @@
 Data: 2026-05-31
 Fonte de dados: `database/seeds/0003_journey_content.sql` (aplicado no projeto `gvivzcajymwhljvjrjoq`).
 
+> **Atualizacao (2026-06-07):** as fases avancadas deste documento (5
+> "Operador" e 6 "Arquiteto de IA") foram redesenhadas pela rodada de
+> curriculo avancado. A jornada agora tem **8 fases e 24 missoes (2170 XP)**:
+> 5 "Operador de IA", 6 "Operador Tecnico" (nova), 7 "Arquiteto de Agentes"
+> e 8 "Boss Final" com 3 niveis de entrega. As fases 1-4 deste documento
+> permanecem validas. Ver `19-advanced-curriculum-content.md` e
+> `database/seeds/0004_advanced_curriculum.sql`.
+
 A jornada vai do primeiro contato com IA ao desenho de solucoes proprias.
 Sao 6 fases de aprendizagem (Despertar -> Arquiteto de IA) com 3 missoes cada
 (18 no total), todas com objetivo, instrucoes, entrega esperada e **criterio de

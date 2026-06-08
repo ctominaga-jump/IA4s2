@@ -12,7 +12,7 @@ import {
 import type { AvatarVariant } from "@/lib/database.types";
 
 /**
- * Matriz 4 identidades x 7 estados num ÚNICO `<Canvas>` (1 contexto WebGL).
+ * Matriz 4 identidades x 8 estados num ÚNICO `<Canvas>` (1 contexto WebGL).
  *
  * 28 canvases estourariam o limite de contextos do browser (~16); como o
  * `ProceduralAvatar` é scene-graph puro (sem canvas próprio, com
@@ -22,7 +22,7 @@ import type { AvatarVariant } from "@/lib/database.types";
  */
 
 const VARIANTS: AvatarVariant[] = ["aurora", "ember", "verdant", "nebula"];
-const COLS = AVATAR_STATES.length; // 7 fases
+const COLS = AVATAR_STATES.length; // 8 fases
 const ROWS = VARIANTS.length; // 4 identidades
 const CELL_X = 2.5;
 const CELL_Y = 2.9;

@@ -5,6 +5,8 @@ import {
   getStudentMissionData,
   resolveLevelProgress,
 } from "@/server/student-data";
+import { getJourneyPhases } from "@/server/content";
+import { buildJourneyMap, resolveCurrentPhaseIndex } from "@/lib/journey";
 import {
   StudentCockpit,
   type CockpitViewModel,
@@ -16,15 +18,14 @@ import type { GoalCategory } from "@/lib/database.types";
 
 export const dynamic = "force-dynamic";
 
-const JOURNEY_PHASE_COUNT = 7;
-
 export default async function StudentDashboardPage() {
   const { appUser, studentProfile } = await requireStudentContext();
 
-  const [goal, levels, missionData] = await Promise.all([
+  const [goal, levels, missionData, phases] = await Promise.all([
     getActiveLearningGoal(studentProfile.active_learning_goal_id),
     getAllLevels(),
     getStudentMissionData(studentProfile.id),
+    getJourneyPhases(),
   ]);
 
   const progress = resolveLevelProgress(studentProfile.total_xp, levels);
@@ -41,13 +42,13 @@ export default async function StudentDashboardPage() {
       ? Math.round((approvedCount / missionData.total) * 100)
       : 0;
 
-  const currentPhaseIndex =
-    missionData.total > 0
-      ? Math.min(
-          JOURNEY_PHASE_COUNT - 1,
-          Math.floor((approvedCount / missionData.total) * JOURNEY_PHASE_COUNT),
-        )
-      : 0;
+  const journeyMap = buildJourneyMap(
+    phases,
+    missionData.items,
+    (item) => item.mission.phase_id,
+    (item) => item.status,
+  );
+  const currentPhaseIndex = resolveCurrentPhaseIndex(journeyMap);
 
   const recentFeedback = missionData.items
     .filter((item) => item.latestFeedback)

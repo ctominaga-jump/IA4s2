@@ -56,6 +56,7 @@ describe("evolution kit registry", () => {
     "estrategista",
     "criador",
     "operador",
+    "operador", // Operador Tecnico: fallback reusa o kit operador (sem GLB proprio).
     "arquiteto",
     "boss-final",
   ];
@@ -88,6 +89,9 @@ describe("evolution kit registry", () => {
     for (const variant of VARIANTS) {
       expect(resolvedAvatarStateForPhase(0, variant).kitUrl).toBeNull();
       expect(resolvedAvatarStateForPhase(6, variant).kitUrl).toContain(
+        "kit-arquiteto",
+      );
+      expect(resolvedAvatarStateForPhase(7, variant).kitUrl).toContain(
         "kit-boss-final",
       );
       expect(avatarKitForPhase(variant, -3)).toBeNull();
@@ -126,11 +130,11 @@ describe("procedural evolution states", () => {
 
   it("keeps the crown exclusive to the Boss Final state", () => {
     expect(AVATAR_STATES.filter((s) => s.crown)).toHaveLength(1);
-    expect(AVATAR_STATES[6].crown).toBe(true);
+    expect(AVATAR_STATES[7].crown).toBe(true);
   });
 
   it("clamps the phase index safely", () => {
     expect(avatarStateForPhase(-5).index).toBe(0);
-    expect(avatarStateForPhase(99).index).toBe(6);
+    expect(avatarStateForPhase(99).index).toBe(7);
   });
 });

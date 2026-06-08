@@ -69,7 +69,7 @@ export default async function AvatarEvolutionPreviewPage({
           Avatares 3D reais - identidade por GLB + evolucao procedural
         </span>
         <h1 className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
-          4 identidades com GLB proprio, 7 estados com Evolution Kits.
+          4 identidades com GLB proprio, 8 estados com Evolution Kits.
         </h1>
         <p className="mt-3 max-w-3xl text-slate-300">
           A identidade do avatar e o modelo base: cada variante (Aurora, Brasa,
@@ -172,9 +172,9 @@ export default async function AvatarEvolutionPreviewPage({
           ))}
         </div>
 
-        {/* Secao 3: matriz 4x7 (1 unico canvas WebGL). */}
+        {/* Secao 3: matriz 4x8 (1 unico canvas WebGL). */}
         <h2 className="mt-12 text-lg font-semibold text-white">
-          Matriz 4 identidades x 7 estados
+          Matriz 4 identidades x 8 estados
         </h2>
         <p className="mt-1 max-w-3xl text-sm text-slate-400">
           Visao completa num unico contexto WebGL (28 canvases estourariam o

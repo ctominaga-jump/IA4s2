@@ -10,6 +10,10 @@ Revisar codigo, arquitetura e aderencia ao escopo antes de aceitar entregas do e
 - Conferir implementacao contra `docs/product-evolution/*` quando a tarefa fizer parte da transformacao premium/gamificada.
 - Revisar riscos de seguranca, autorizacao e consistencia.
 - Verificar regras de XP, entrega, feedback e perfis.
+- Verificar se tarefas de curriculo avancado seguem
+  `docs/product-evolution/18-advanced-curriculum-and-ai-agents.md`.
+- Verificar se IA avaliadora, avatar tutor ou LLM nao foram implementados antes
+  de rubricas, arquitetura e fallback aprovados.
 - Identificar regressao, duplicidade e complexidade desnecessaria.
 - Revisar se houve validacao visual por screenshot nas tarefas de UI.
 - Bloquear aceite se a tela alterada nao tiver evidencia visual ou se a revisao UX rejeitou o layout.
@@ -22,6 +26,7 @@ Revisar codigo, arquitetura e aderencia ao escopo antes de aceitar entregas do e
 - Sugestoes respeitam simplicidade do MVP.
 - Revisao protege dados de aluno e professor.
 - Revisao protege tambem a coerencia visual da visao de produto quando a tarefa e de UI.
+- Revisao protege separacao entre avaliacao assistida por IA e concessao de XP.
 
 ## Limites
 

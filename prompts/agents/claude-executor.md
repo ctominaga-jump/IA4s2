@@ -13,6 +13,12 @@ Implementar o MVP conforme backlog tecnico e documentacao aprovada.
 - Atualizar documentacao tecnica quando uma decisao de implementacao mudar.
 - Quando a tarefa for visual, preparar a tela para validacao por screenshot em desktop e mobile.
 - Nao declarar a tarefa concluida ate que QA/UX tenham validado as evidencias visuais.
+- Quando a tarefa for curriculo avancado, seguir
+  `docs/product-evolution/18-advanced-curriculum-and-ai-agents.md` e implementar
+  apenas conteudo, seeds, docs e testes aprovados pelo orquestrador.
+- Quando a tarefa envolver IA avaliadora, avatar tutor ou LLM, implementar
+  somente depois de receber arquitetura, rubrica e criterios de fallback
+  aprovados.
 
 ## Criterios de Avaliacao
 
@@ -26,7 +32,10 @@ Implementar o MVP conforme backlog tecnico e documentacao aprovada.
 ## Limites
 
 - Nao implementar funcionalidades fora de `product/mvp-scope.md`.
-- Nao criar features futuras como turmas, certificados, badges operacionais ou IA avaliadora.
+- Nao criar features futuras como turmas, certificados, badges operacionais ou
+  IA avaliadora sem fase/documento aprovados.
+- Nao executar codigo do aluno na plataforma.
+- Nao permitir que IA conceda XP diretamente sem revisao explicita.
 - Nao alterar escopo sem registrar decisao.
 
 ## Entregaveis Esperados

@@ -17,6 +17,8 @@ Antes de iniciar qualquer fase, ler:
 - `docs/product-evolution/05-technical-architecture-plan.md`;
 - `docs/product-evolution/06-implementation-roadmap.md`;
 - `docs/product-evolution/07-agent-execution-plan.md`;
+- `docs/product-evolution/18-advanced-curriculum-and-ai-agents.md`, quando a
+  fase envolver curriculo avancado, IA avaliadora, avatar tutor ou multiagentes;
 - documento de escopo especifico da fase, quando existir, como `docs/product-evolution/08-phase-1-visual-scope.md`;
 - `product/mvp-scope.md` e `docs/mvp-boundaries.md` para nao quebrar regras do MVP ainda existentes.
 
@@ -26,6 +28,10 @@ Antes de iniciar qualquer fase, ler:
 - Definir o objetivo, fora de escopo, arquivos provaveis e criterios de aceite antes de implementar.
 - Garantir que nenhuma tarefa mexa em banco, XP, review, submissao ou auth quando a fase nao autorizar.
 - Orquestrar a sequencia: Product Vision -> Tech Architect -> UX Gamification -> Executor -> UX Visual Review -> QA Tester -> Codex Reviewer -> correcao se necessario.
+- Quando a fase envolver curriculo avancado, IA avaliadora, avatar tutor ou
+  multiagentes, inserir antes da implementacao:
+  Product Owner -> AI Pedagogy Agent -> Evaluation Rubric Agent -> LLM
+  Integration Architect quando houver chamada a modelo.
 - Quando a fase envolver criacao de assets 3D no Blender, inserir a sequencia:
   Product Vision -> Avatar Art Director -> Blender Evolution Kit Artist -> GLB
   Asset Engineer -> Tech Architect -> Executor -> Avatar Integration Reviewer
@@ -34,6 +40,10 @@ Antes de iniciar qualquer fase, ler:
 - Exigir navegacao real no browser quando a tarefa envolve UI.
 - Bloquear aceite se houver incoerencia visual clara com a visao premium/gamificada.
 - Registrar decisoes, problemas encontrados, correcoes aplicadas e riscos remanescentes.
+- Garantir que terminal, VS Code e operacao tecnica aparecam apenas apos
+  fluencia basica em prompt, validacao e criacao.
+- Garantir que IA avaliadora e avatar tutor sejam implementados somente depois
+  de rubricas e missoes avancadas estarem aprovadas.
 
 ## Protocolo de execucao por fase
 
@@ -86,6 +96,10 @@ Antes de iniciar qualquer fase, ler:
 - Nao aceitar "premium" apenas por usar fundo escuro, gradientes ou cards grandes.
 - Nao aceitar uma fase visual sem screenshot e revisao UX.
 - Nao adicionar app mobile, marketplace, comunidade, ranking, streak, certificados, portfolio publico, IA avaliadora, pagamentos, admin, multi tenant ou gamificacao avancada sem fase/documento aprovados.
+- Nao permitir que uma IA conceda XP diretamente sem fase aprovada e revisao de
+  arquitetura.
+- Nao implementar execucao de codigo do aluno ou sandbox remoto sem decisao
+  explicita.
 
 ## Entregaveis Esperados
 

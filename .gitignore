@@ -17,6 +17,8 @@ next-env.d.ts
 
 # artefatos de trabalho local (renders/logs de scripts Blender etc.)
 /tmp/
+# screenshots de validacao visual (script scripts/cohesion-shots.mjs)
+/scripts/.cohesion-shots/
 
 # debug
 npm-debug.log*

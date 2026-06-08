@@ -39,35 +39,56 @@ Exemplo observado no dashboard do aluno:
 - Protege banco, auth, XP, review e performance.
 - Indica se a fase exige ou nao mudanca de modelo.
 
-3. UX Gamification Agent
+3. AI Pedagogy Agent, quando a fase envolver curriculo, avatar tutor ou IA
+   avaliadora
+
+- Define limites de ajuda.
+- Protege autonomia do aluno.
+- Evita que a IA entregue respostas prontas.
+- Valida progressao gradual antes de terminal/VS Code.
+
+4. Evaluation Rubric Agent, quando a fase envolver novas missoes ou avaliacao
+
+- Define criterios objetivos.
+- Define evidencias esperadas.
+- Separa aprovado, revisar e inconclusivo.
+- Garante que professor e IA possam usar a mesma rubrica.
+
+5. LLM Integration Architect, quando a fase envolver chamada a modelo
+
+- Define arquitetura server-side.
+- Define schema de saida, fallback, logging e custo.
+- Garante que IA nao controle XP, auth ou regras transacionais.
+
+6. UX Gamification Agent
 
 - Define experiencia, hierarquia, narrativa e criterios visuais.
 - Especifica o que deve aparecer na primeira dobra.
 - Define o que faria a tela ser rejeitada visualmente.
 
-4. Claude Executor
+7. Claude Executor
 
 - Implementa a fase.
 - Mantem escopo.
 - Roda validacoes automatizadas.
 
-5. Visual Reviewer Agent
+8. Visual Reviewer Agent
 
 - Abre a tela implementada.
 - Captura screenshots desktop e mobile.
 - Analisa os prints contra a visao.
 - Decide: aprovado, aprovado com ressalvas ou rejeitado.
 
-6. QA Tester
+9. QA Tester
 
 - Valida fluxos, rotas, estados, responsividade e regressao funcional.
 
-7. Codex Reviewer
+10. Codex Reviewer
 
 - Revisa codigo, riscos, boundaries e se as validacoes de UX/QA existem.
 - Nao aceita tarefa visual sem evidencia visual.
 
-8. Orchestrator
+11. Orchestrator
 
 - Consolida as decisoes.
 - Se houver rejeicao, manda voltar para Executor/UX.
@@ -110,3 +131,25 @@ Antes de seguir para `/aluno/missoes`, recomenda-se uma subfase `2.1 - Visual Co
 - capturar screenshots desktop/mobile;
 - submeter ao Visual Reviewer antes de aceitar.
 
+## Aplicacao para curriculo avancado
+
+Antes de implementar IA avaliadora, avatar tutor ou multiagentes em runtime,
+executar uma fase de desenho curricular usando:
+
+- `docs/product-evolution/18-advanced-curriculum-and-ai-agents.md`;
+- Product Owner;
+- AI Pedagogy Agent;
+- Evaluation Rubric Agent;
+- Tech Architect;
+- Claude Executor;
+- QA Tester;
+- Codex Reviewer.
+
+Criterios de aceite desta fase:
+
+- fases avancadas definidas com progressao gradual;
+- terminal/VS Code aparecem apenas apos fluencia basica;
+- rubricas das missoes avancadas incluem evidencias verificaveis;
+- Boss Final aceita niveis conceitual, operacional sem codigo e tecnico;
+- IA avaliadora e avatar tutor ficam documentados como fases futuras, sem
+  implementacao prematura.

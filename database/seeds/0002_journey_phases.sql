@@ -7,6 +7,12 @@
 --
 -- As fases Operador, Arquiteto e Boss Final ficam sem missoes por ora
 -- (conteudo completo previsto para a Fase 5/6); a jornada ja exibe as 7.
+--
+-- ATENCAO: o seed 0004_advanced_curriculum.sql e a AUTORIDADE da numeracao
+-- de fases (renumera para 8 fases). Por isso o upsert abaixo usa
+-- ON CONFLICT (id) e NAO atualiza `number` em re-execucao: re-rodar este
+-- arquivo apos o 0004 nao desfaz a renumeracao nem viola UNIQUE(number).
+-- Re-execute a cadeia completa em ordem (0001 -> 0004) ou apenas o 0004.
 -- ============================================================
 
 -- ------------------------------------------------------------
@@ -27,7 +33,7 @@ insert into public.journey_phases (id, number, slug, name, tagline) values
    'Arquiteto de IA', 'Desenhe agentes, arquitetura e produto de ponta a ponta.'),
   ('00000000-0000-0000-0000-0000000f0007', 7, 'boss-final',
    'Boss Final', 'Integre tudo em um produto com IA: do problema a validacao.')
-on conflict (number) do update
+on conflict (id) do update
   set slug = excluded.slug,
       name = excluded.name,
       tagline = excluded.tagline;

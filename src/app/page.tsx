@@ -5,16 +5,17 @@ import {
   BrainCircuit,
   CheckCircle2,
   ChevronRight,
-  Code2,
   Compass,
-  Cpu,
   FlaskConical,
   MessageSquareText,
+  Network,
   Rocket,
   ShieldCheck,
   Sparkles,
   Target,
+  TerminalSquare,
   Trophy,
+  Workflow,
   Zap,
 } from "lucide-react";
 
@@ -55,17 +56,27 @@ const phaseRows = [
     tone: "from-amber-200 to-cyan-300",
   },
   {
-    name: "Operador",
-    title: "Use IA nas ferramentas",
-    description: "Terminal, VS Code, Codex, Claude e rotinas produtivas.",
-    icon: Code2,
+    name: "Operador de IA",
+    title: "Opere fluxos com IA",
+    description:
+      "Monte e reutilize fluxos de trabalho com IA nas ferramentas do seu dia a dia.",
+    icon: Workflow,
     tone: "from-cyan-300 to-emerald-300",
   },
   {
-    name: "Arquiteto de IA",
-    title: "Orquestre agentes e produto",
-    description: "Front-end, back-end, API, banco e arquitetura de agentes.",
-    icon: Cpu,
+    name: "Operador Tecnico",
+    title: "Pilote IA no ambiente tecnico",
+    description:
+      "Use terminal e editor de forma guiada, com a IA de copiloto, sem virar programador.",
+    icon: TerminalSquare,
+    tone: "from-emerald-300 to-violet-300",
+  },
+  {
+    name: "Arquiteto de Agentes",
+    title: "Desenhe agentes e cadeias",
+    description:
+      "Planeje objetivos, papeis, etapas e limites de agentes de IA no papel.",
+    icon: Network,
     tone: "from-violet-300 to-cyan-300",
   },
   {
@@ -194,7 +205,7 @@ export default async function HomePage() {
             </div>
 
             <div className="mt-8 grid gap-3 text-sm text-slate-300 sm:grid-cols-3">
-              <ProofPoint value="7 fases" label="do despertar ao Boss Final" />
+              <ProofPoint value="8 fases" label="do despertar ao Boss Final" />
               <ProofPoint value="XP real" label="ganho por missao aprovada" />
               <ProofPoint value="Mentoria" label="feedback humano no loop" />
             </div>
@@ -221,7 +232,10 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <Stagger className="grid gap-3 lg:grid-cols-7" gap={0.06}>
+          <Stagger
+            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8"
+            gap={0.06}
+          >
             {phaseRows.map((phase, index) => (
               <StaggerItem key={phase.name} className="h-full">
               <article

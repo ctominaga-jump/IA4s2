@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
  *
  * Query params (evidencia do EvolvingAvatar 3D no painel "Seu agente"):
  * `?variant=aurora|ember|verdant|nebula` troca a identidade da fixture;
- * `?phase=0..6` troca a fase (kit); `?fallback=1` forca o AvatarFigure 2D.
+ * `?phase=0..7` troca a fase (kit); `?fallback=1` forca o AvatarFigure 2D.
  */
 
 const VARIANTS: AvatarVariant[] = ["aurora", "ember", "verdant", "nebula"];
@@ -87,7 +87,7 @@ export default async function CockpitPreviewPage({
   )
     ? (variant as AvatarVariant)
     : VM.avatarVariant;
-  const phaseIndex = /^[0-6]$/.test(phase ?? "")
+  const phaseIndex = /^[0-7]$/.test(phase ?? "")
     ? Number(phase)
     : VM.currentPhaseIndex;
   const vm: CockpitViewModel = {

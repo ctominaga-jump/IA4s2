@@ -81,3 +81,24 @@ export function buildJourneyMap<T>(
 
   return { groups, orphans, activePhaseNumber };
 }
+
+/**
+ * Indice 0-based da fase atual do aluno, derivado da jornada REAL (nao de
+ * proporcao de XP). Usado por cockpit/perfil/avatar para nunca mostrar uma
+ * fase adiantada (ex.: Boss Final) antes de ela ser alcancada.
+ *
+ * - fase em andamento -> `activePhaseNumber - 1`;
+ * - sem nenhuma missao em fase alguma -> 0 (Despertar);
+ * - todas as fases com missoes concluidas -> ultima fase (Boss Final).
+ */
+export function resolveCurrentPhaseIndex<T>(map: JourneyMap<T>): number {
+  if (map.activePhaseNumber !== null) {
+    return map.activePhaseNumber - 1;
+  }
+  const withMissions = map.groups.filter((group) => group.total > 0);
+  if (withMissions.length === 0) return 0;
+  if (withMissions.every((group) => group.state === "complete")) {
+    return map.groups.length - 1;
+  }
+  return 0;
+}

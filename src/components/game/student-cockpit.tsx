@@ -306,7 +306,7 @@ function JourneyMap({ currentPhaseIndex }: { currentPhaseIndex: number }) {
             Mapa da jornada
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Sete fases do Despertar ao Boss Final.
+            Oito fases do Despertar ao Boss Final.
           </p>
         </div>
         <Button variant="outline" size="sm" asChild>
