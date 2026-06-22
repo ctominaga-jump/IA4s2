@@ -34,7 +34,7 @@ export function StudentGameShell({
 
   return (
     <div className="theme-game relative flex min-h-screen flex-col bg-background text-foreground">
-      {/* Canvas ambiente: glow controlado + grid sutil de laboratorio */}
+      {/* Canvas ambiente: glow controlado + grid sútil de laboratorio */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_-5%,rgba(109,93,247,0.22),transparent_42%),radial-gradient(circle_at_88%_0%,rgba(22,217,227,0.16),transparent_40%)]"

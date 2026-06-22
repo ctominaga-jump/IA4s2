@@ -2,9 +2,9 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
 /**
- * Renova a sessao do Supabase em cada request e a mantem nos cookies.
- * Tambem aplica o guard basico de autenticacao: rotas internas exigem
- * usuario logado. A autorizacao fina por perfil acontece nos layouts
+ * Renova a sessão do Supabase em cada request e a mantém nos cookies.
+ * Tambem aplica o guard basico de autenticação: rotas internas exigem
+ * usuário logado. A autorização fina por perfil acontece nos layouts
  * de cada area (aluno/professor).
  */
 export async function updateSession(request: NextRequest) {

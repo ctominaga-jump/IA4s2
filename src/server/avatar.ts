@@ -17,7 +17,7 @@ const avatarSchema = z.object({
 
 /**
  * Atualiza a variante cosmetica do avatar do aluno. Apenas customizacao
- * visual: nao toca XP, nivel, missoes nem fluxo de submissao/review.
+ * visual: nao toca XP, nível, missoes nem fluxo de submissao/review.
  */
 export async function updateAvatarVariantAction(
   _prev: AvatarFormState,
@@ -37,7 +37,7 @@ export async function updateAvatarVariantAction(
     .eq("id", studentProfile.id);
 
   if (error) {
-    return { error: "Nao foi possivel atualizar seu avatar. Tente novamente." };
+    return { error: "Não foi possível atualizar seu avatar. Tente novamente." };
   }
 
   revalidatePath("/aluno");

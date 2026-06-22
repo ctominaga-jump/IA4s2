@@ -55,7 +55,7 @@ export async function completeOnboardingAction(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message ?? "Dados invalidos." };
+    return { error: parsed.error.errors[0]?.message ?? "Dados inválidos." };
   }
 
   const service = createSupabaseServiceClient();
@@ -73,7 +73,7 @@ export async function completeOnboardingAction(
     .single();
 
   if (goalError || !goal) {
-    return { error: "Nao foi possivel salvar seu objetivo. Tente novamente." };
+    return { error: "Não foi possível salvar seu objetivo. Tente novamente." };
   }
 
   const { error: profileError } = await service
@@ -86,7 +86,7 @@ export async function completeOnboardingAction(
     .eq("id", studentProfile.id);
 
   if (profileError) {
-    return { error: "Nao foi possivel concluir o onboarding. Tente novamente." };
+    return { error: "Não foi possível concluir o onboarding. Tente novamente." };
   }
 
   redirect("/aluno");
@@ -105,7 +105,7 @@ export async function updateGoalAction(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message ?? "Dados invalidos." };
+    return { error: parsed.error.errors[0]?.message ?? "Dados inválidos." };
   }
 
   if (!studentProfile.active_learning_goal_id) {
@@ -124,7 +124,7 @@ export async function updateGoalAction(
     .eq("student_profile_id", studentProfile.id);
 
   if (error) {
-    return { error: "Nao foi possivel atualizar o objetivo." };
+    return { error: "Não foi possível atualizar o objetivo." };
   }
 
   revalidatePath("/aluno");

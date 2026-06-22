@@ -9,7 +9,7 @@ import {
 export const dynamic = "force-dynamic";
 
 /**
- * Preview SEM autenticacao do Boss Final, usado apenas para validacao visual
+ * Preview SEM autenticação do Boss Final, usado apenas para validação visual
  * por screenshot. Dados ficticios; nao toca Supabase/XP/auth.
  */
 
@@ -18,9 +18,9 @@ const VM: BossFinalViewModel = {
   title: "Atende Facil — assistente de respostas para pequenos negocios",
   stages: {
     problem:
-      "Pequenos comerciantes perdem horas respondendo as mesmas duvidas no WhatsApp (horario, preco, entrega), e demoram a responder novos clientes.",
+      "Pequenos comerciantes perdem horas respondendo as mesmas dúvidas no WhatsApp (horário, preço, entrega), e demoram a responder novos clientes.",
     solution:
-      "Um assistente que responde as duvidas frequentes a partir de um roteiro aprovado pelo dono, sempre deixando a decisao final com ele.",
+      "Um assistente que responde as dúvidas frequentes a partir de um roteiro aprovado pelo dono, sempre deixando a decisão final com ele.",
     architecture:
       "Cliente pergunta -> o assistente busca no roteiro -> a IA redige uma resposta no tom do negocio -> o dono aprova antes de enviar.",
     prototype: "",

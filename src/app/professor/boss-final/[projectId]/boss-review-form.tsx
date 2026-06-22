@@ -27,7 +27,7 @@ function ConfirmButton({ decision }: { decision: Decision | null }) {
     >
       {pending ? <Loader2 className="animate-spin" /> : null}
       {decision === "rejected"
-        ? "Confirmar reprovacao"
+        ? "Confirmar reprovação"
         : "Aprovar projeto final"}
     </Button>
   );
@@ -79,16 +79,16 @@ export function BossReviewForm({ projectId }: { projectId: string }) {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="comment">Feedback (obrigatorio)</Label>
+        <Label htmlFor="comment">Feedback (obrigatório)</Label>
         <Textarea
           id="comment"
           name="comment"
-          placeholder="Destaque a clareza do problema, a viabilidade da solucao, a arquitetura e a evidencia de validacao. Oriente o proximo passo."
+          placeholder="Destaque a clareza do problema, a viabilidade da solução, a arquitetura e a evidência de validação. Oriente o próximo passo."
           className="min-h-[140px]"
           required
         />
         <p className="text-xs text-muted-foreground">
-          O feedback fica visivel para o aluno na pagina do Boss Final.
+          O feedback fica visível para o aluno na página do Boss Final.
         </p>
       </div>
 

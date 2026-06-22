@@ -21,7 +21,7 @@ export interface BossStageMeta {
   key: BossStageKey;
   number: number;
   label: string;
-  /** Resumo curto exibido como subtitulo da etapa. */
+  /** Resumo curto exibido como subtítulo da etapa. */
   summary: string;
   /** Perguntas-guia para o aluno preencher a etapa. */
   prompt: string;
@@ -30,8 +30,8 @@ export interface BossStageMeta {
 }
 
 /**
- * As 5 etapas do Boss Final, na ordem narrativa (problema -> validacao).
- * Compartilhada entre o hub do aluno e a tela de avaliacao do professor.
+ * As 5 etapas do Boss Final, na ordem narrativa (problema -> validação).
+ * Compartilhada entre o hub do aluno e a tela de avaliação do professor.
  * Conecta-se diretamente as missoes da fase Arquiteto (Fase 5).
  */
 export const BOSS_STAGES: BossStageMeta[] = [
@@ -39,22 +39,22 @@ export const BOSS_STAGES: BossStageMeta[] = [
     key: "problem",
     number: 1,
     label: "Problema",
-    summary: "Que dor real voce vai resolver com IA?",
+    summary: "Que dor real você vai resolver com IA?",
     prompt:
       "Descreva o problema real, quem sofre com ele e por que vale a pena resolver. Seja concreto.",
     placeholder:
-      "Ex.: Pequenos comerciantes perdem tempo respondendo as mesmas duvidas no WhatsApp...",
+      "Ex.: Pequenos comerciantes perdem tempo respondendo as mesmas dúvidas no WhatsApp...",
     icon: Target,
   },
   {
     key: "solution",
     number: 2,
-    label: "Solucao",
+    label: "Solução",
     summary: "Como a IA ajuda a resolver?",
     prompt:
-      "Explique o que o seu produto faz, como a IA entra na solucao e qual o resultado para o usuario.",
+      "Explique o que o seu produto faz, como a IA entra na solução e qual o resultado para o usuário.",
     placeholder:
-      "Ex.: Um assistente que responde duvidas frequentes a partir de um roteiro aprovado pelo dono...",
+      "Ex.: Um assistente que responde dúvidas frequentes a partir de um roteiro aprovado pelo dono...",
     icon: Lightbulb,
   },
   {
@@ -65,16 +65,16 @@ export const BOSS_STAGES: BossStageMeta[] = [
     prompt:
       "Descreva os passos do fluxo, quais dados/ferramentas usa, onde a IA atua e o que um humano revisa.",
     placeholder:
-      "Ex.: Entrada do usuario -> busca no roteiro -> IA redige resposta -> dono aprova antes de enviar...",
+      "Ex.: Entrada do usuário -> busca no roteiro -> IA redige resposta -> dono aprova antes de enviar...",
     icon: Layers,
   },
   {
     key: "prototype",
     number: 4,
-    label: "Prototipo",
-    summary: "O que voce ja construiu ou esbocou?",
+    label: "Protótipo",
+    summary: "O que você já construiu ou esboçou?",
     prompt:
-      "Mostre o que existe hoje: um prompt reutilizavel, um esboco de tela, um link ou a descricao de um teste real.",
+      "Mostre o que existe hoje: um prompt reutilizável, um esboço de tela, um link ou a descrição de um teste real.",
     placeholder:
       "Ex.: Criei o prompt-modelo e testei com 5 perguntas reais; cole aqui o prompt e um exemplo...",
     icon: Hammer,
@@ -82,17 +82,17 @@ export const BOSS_STAGES: BossStageMeta[] = [
   {
     key: "validation",
     number: 5,
-    label: "Validacao",
-    summary: "Como voce sabe que funciona?",
+    label: "Validação",
+    summary: "Como você sabe que funciona?",
     prompt:
-      "Conte como testou com pessoas reais, o que deu certo, o que ajustaria e qual o proximo passo.",
+      "Conte como testou com pessoas reais, o que deu certo, o que ajustaria e qual o próximo passo.",
     placeholder:
-      "Ex.: Mostrei para 3 comerciantes; 2 usariam hoje, 1 pediu suporte a audio. Proximo passo: ...",
+      "Ex.: Mostrei para 3 comerciantes; 2 usariam hoje, 1 pediu suporte a áudio. Próximo passo: ...",
     icon: FlaskConical,
   },
 ];
 
-/** Conta quantas etapas estao preenchidas (texto nao vazio). */
+/** Conta quantas etapas estão preenchidas (texto nao vazio). */
 export function countFilledStages(project: BossProjectRow | null): number {
   if (!project) return 0;
   return BOSS_STAGES.filter(
@@ -100,7 +100,7 @@ export function countFilledStages(project: BossProjectRow | null): number {
   ).length;
 }
 
-/** True quando todas as etapas e o titulo estao preenchidos (pronto para enviar). */
+/** True quando todas as etapas e o título estão preenchidos (pronto para enviar). */
 export function isBossProjectComplete(project: BossProjectRow | null): boolean {
   if (!project) return false;
   const hasTitle = (project.title ?? "").trim().length > 0;

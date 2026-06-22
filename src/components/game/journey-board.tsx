@@ -55,7 +55,7 @@ export interface JourneyBoardViewModel {
 }
 
 const STATE_LABEL: Record<PhaseState, string> = {
-  complete: "Concluida",
+  complete: "Concluída",
   active: "Em andamento",
   locked: "Bloqueada",
   empty: "Em breve",
@@ -179,7 +179,7 @@ function PhaseStation({
         ) : null}
       </div>
 
-      {/* Conteudo da fase */}
+      {/* Conteúdo da fase */}
       <div
         className={cn(
           "mb-2 flex-1 rounded-3xl border bg-card/80 p-5",
@@ -234,7 +234,7 @@ function PhaseStation({
         ) : (
           <div className="mt-4 flex items-center gap-2 rounded-2xl border border-dashed border-border bg-background/30 px-4 py-4 text-sm text-muted-foreground">
             <Lock className="size-4 shrink-0" />
-            Novas missoes desta fase chegam em breve.
+            Novas missões desta fase chegam em breve.
           </div>
         )}
       </div>

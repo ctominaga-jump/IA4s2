@@ -30,9 +30,9 @@ export default async function OnboardingPage() {
           <div className="mb-6 text-center">
             <h1 className="text-2xl font-bold">Boas-vindas, {firstName}!</h1>
             <p className="mt-2 text-muted-foreground">
-              Aqui voce aprende fazendo: conclui missoes praticas, envia
+              Aqui você aprende fazendo: conclui missões práticas, envia
               entregas, recebe feedback de um professor e evolui com XP e
-              niveis. Voce nao precisa saber de IA para comecar.
+              níveis. Você não precisa saber de IA para começar.
             </p>
           </div>
           <OnboardingForm />

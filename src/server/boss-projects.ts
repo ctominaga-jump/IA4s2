@@ -26,7 +26,7 @@ const optionalStage = z
   .transform((v) => v ?? "");
 
 const draftSchema = z.object({
-  title: z.string().trim().max(140, "Titulo muito longo.").optional().transform((v) => v ?? ""),
+  title: z.string().trim().max(140, "Título muito longo.").optional().transform((v) => v ?? ""),
   problem: optionalStage,
   solution: optionalStage,
   architecture: optionalStage,
@@ -36,25 +36,25 @@ const draftSchema = z.object({
 
 const SUBMIT_ERRORS: Record<string, string> = {
   boss_project_incomplete:
-    "Preencha o titulo e as 5 etapas antes de enviar para validacao.",
+    "Preencha o título e as 5 etapas antes de enviar para validação.",
   boss_project_not_found: "Salve seu projeto antes de enviar.",
-  boss_project_forbidden: "Voce so pode enviar o seu proprio projeto.",
+  boss_project_forbidden: "Você só pode enviar o seu próprio projeto.",
   boss_project_already_submitted:
-    "Seu projeto ja foi enviado e esta aguardando validacao.",
-  boss_project_already_approved: "Seu projeto final ja foi aprovado.",
+    "Seu projeto já foi enviado e está aguardando validação.",
+  boss_project_already_approved: "Seu projeto final já foi aprovado.",
 };
 
 const REVIEW_ERRORS: Record<string, string> = {
-  feedback_required: "O feedback e obrigatorio para aprovar ou reprovar.",
-  boss_project_not_found: "Projeto nao encontrado.",
+  feedback_required: "O feedback é obrigatório para aprovar ou reprovar.",
+  boss_project_not_found: "Projeto não encontrado.",
   boss_project_not_submitted:
-    "Este projeto ja foi avaliado ou nao esta aguardando validacao.",
+    "Este projeto já foi avaliado ou não está aguardando validação.",
 };
 
 /**
  * Salva o rascunho do projeto final do aluno (upsert por aluno). Permitido
  * apenas enquanto o projeto esta em rascunho ou foi reprovado (reenvio).
- * Nao redireciona: mantem o aluno na pagina com indicacao de salvo.
+ * Nao redireciona: mantém o aluno na pagina com indicacao de salvo.
  */
 export async function saveBossDraftAction(
   _prev: BossDraftFormState,
@@ -72,7 +72,7 @@ export async function saveBossDraftAction(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message ?? "Dados invalidos." };
+    return { error: parsed.error.errors[0]?.message ?? "Dados inválidos." };
   }
 
   const service = createSupabaseServiceClient();
@@ -87,8 +87,8 @@ export async function saveBossDraftAction(
     return {
       error:
         existing.status === "approved"
-          ? "Seu projeto final ja foi aprovado e nao pode ser editado."
-          : "Seu projeto esta aguardando validacao e nao pode ser editado agora.",
+          ? "Seu projeto final já foi aprovado e não pode ser editado."
+          : "Seu projeto está aguardando validação e não pode ser editado agora.",
     };
   }
 
@@ -106,7 +106,7 @@ export async function saveBossDraftAction(
   );
 
   if (error) {
-    return { error: "Nao foi possivel salvar. Tente novamente." };
+    return { error: "Não foi possível salvar. Tente novamente." };
   }
 
   revalidatePath("/aluno/boss-final");
@@ -114,7 +114,7 @@ export async function saveBossDraftAction(
 }
 
 /**
- * Envia o projeto final para validacao via RPC (valida completude e dono).
+ * Envia o projeto final para validação via RPC (valida completude e dono).
  */
 export async function submitBossProjectAction(
   _prev: BossDraftFormState,
@@ -145,25 +145,25 @@ export async function submitBossProjectAction(
     return {
       error: known
         ? SUBMIT_ERRORS[known]
-        : "Nao foi possivel enviar o projeto. Tente novamente.",
+        : "Não foi possível enviar o projeto. Tente novamente.",
     };
   }
 
-  redirect("/aluno/boss-final?enviado=1");
+  redirect("/aluno/boss-finaláenviado=1");
 }
 
 const reviewSchema = z.object({
-  projectId: z.string().uuid("Projeto invalido."),
+  projectId: z.string().uuid("Projeto inválido."),
   decision: z.enum(["approved", "rejected"], {
     errorMap: () => ({ message: "Escolha aprovar ou reprovar." }),
   }),
   comment: z
     .string()
     .trim()
-    .min(1, "O feedback e obrigatorio para aprovar ou reprovar."),
+    .min(1, "O feedback é obrigatório para aprovar ou reprovar."),
 });
 
-/** Avaliacao do projeto final pelo professor via RPC. */
+/** Avaliação do projeto final pelo professor via RPC. */
 export async function reviewBossProjectAction(
   _prev: BossReviewFormState,
   formData: FormData,
@@ -177,7 +177,7 @@ export async function reviewBossProjectAction(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message ?? "Dados invalidos." };
+    return { error: parsed.error.errors[0]?.message ?? "Dados inválidos." };
   }
 
   const { projectId, decision, comment } = parsed.data;
@@ -197,9 +197,9 @@ export async function reviewBossProjectAction(
     return {
       error: known
         ? REVIEW_ERRORS[known]
-        : "Nao foi possivel registrar a avaliacao. Tente novamente.",
+        : "Não foi possível registrar a avaliação. Tente novamente.",
     };
   }
 
-  redirect("/professor/boss-final?avaliada=1");
+  redirect("/professor/boss-finaláavaliada=1");
 }

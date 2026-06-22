@@ -34,7 +34,7 @@ export default async function TeacherDashboardPage() {
         </div>
         <Button asChild>
           <Link href="/professor/fila">
-            Abrir fila de validacao <ArrowRight />
+            Abrir fila de validação <ArrowRight />
           </Link>
         </Button>
       </div>

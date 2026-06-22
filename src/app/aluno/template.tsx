@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
  * Transicao leve entre rotas do aluno (Fase 7A). O `template.tsx` remonta a
  * cada navegacao, entao um fade curto de opacidade da continuidade entre
  * Cockpit, Jornada, Boss Final e Progresso. So afeta opacidade; o shell
- * (header/nav) permanece estatico. Respeita `prefers-reduced-motion`.
+ * (header/nav) permanece estático. Respeita `prefers-reduced-motion`.
  */
 export default function StudentTemplate({
   children,

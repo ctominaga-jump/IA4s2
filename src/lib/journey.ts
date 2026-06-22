@@ -14,7 +14,7 @@ export interface PhaseGroup<T> {
 
 export interface JourneyMap<T> {
   groups: PhaseGroup<T>[];
-  /** Missoes publicadas sem fase associada (defesa contra conteudo orfao). */
+  /** Missões publicadas sem fase associada (defesa contra conteúdo orfao). */
   orphans: T[];
   /** Numero da fase em andamento, ou null se nenhuma fase tem missoes. */
   activePhaseNumber: number | null;
@@ -25,7 +25,7 @@ export interface JourneyMap<T> {
  * deriva o estado de cada fase. Funcao pura: nao acessa banco e e testavel.
  *
  * Regras de estado (em ordem de numero da fase):
- * - `empty`: fase sem missoes (conteudo futuro).
+ * - `empty`: fase sem missoes (conteúdo futuro).
  * - `complete`: todas as missoes da fase aprovadas.
  * - `active`: primeira fase com missoes ainda nao concluida.
  * - `locked`: fase com missoes depois da fase ativa.
@@ -89,7 +89,7 @@ export function buildJourneyMap<T>(
  *
  * - fase em andamento -> `activePhaseNumber - 1`;
  * - sem nenhuma missao em fase alguma -> 0 (Despertar);
- * - todas as fases com missoes concluidas -> ultima fase (Boss Final).
+ * - todas as fases com missoes concluídas -> ultima fase (Boss Final).
  */
 export function resolveCurrentPhaseIndex<T>(map: JourneyMap<T>): number {
   if (map.activePhaseNumber !== null) {

@@ -3,7 +3,7 @@ import { createBrowserClient } from "@supabase/ssr";
 /**
  * Cliente Supabase para uso no browser (client components).
  * Usa a chave publica (anon). Operacoes sensiveis NUNCA dependem
- * apenas deste cliente — a autorizacao real acontece no servidor.
+ * apenas deste cliente — a autorização real acontece no servidor.
  */
 export function createSupabaseBrowserClient() {
   return createBrowserClient(

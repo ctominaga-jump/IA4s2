@@ -45,8 +45,8 @@ export function GoalCard({ goal }: { goal: LearningGoalRow | null }) {
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">
-            Voce ainda nao registrou um objetivo. Defina o que voce quer
-            alcancar para dar contexto a sua jornada.
+            Você ainda não registrou um objetivo. Defina o que você quer
+            alcançar para dar contexto a sua jornada.
           </p>
         </CardContent>
       </Card>
@@ -115,7 +115,7 @@ export function GoalCard({ goal }: { goal: LearningGoalRow | null }) {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="goal-description">Descricao (opcional)</Label>
+              <Label htmlFor="goal-description">Descrição (opcional)</Label>
               <Textarea
                 id="goal-description"
                 name="description"

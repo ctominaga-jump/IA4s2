@@ -13,8 +13,8 @@ import type { Group } from "three";
 
 /**
  * Cena procedural leve (spike 7B). 100% gerada em codigo, SEM assets externos
- * (sem GLB/HDR/texturas): nucleo low-poly com material distorcido, casca
- * wireframe e particulas. Objetivo do spike e provar o pipeline R3F, nao o
+ * (sem GLB/HDR/texturas): núcleo low-poly com material distorcido, casca
+ * wireframe e partículas. Objetivo do spike e provar o pipeline R3F, nao o
  * 3D definitivo de marca/avatar.
  *
  * Performance: dpr limitado a [1, 1.5]; quando `prefers-reduced-motion` esta

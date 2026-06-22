@@ -7,8 +7,8 @@ import { useReducedMotion } from "framer-motion";
 import type { Group } from "three";
 
 /**
- * Cena procedural BRANDED v1 (Fase 7B-final) para o nucleo do "agente" no card
- * do hero da landing. 100% procedural (sem GLB/HDR/textura): nucleo low-poly
+ * Cena procedural BRANDED v1 (Fase 7B-final) para o núcleo do "agente" no card
+ * do hero da landing. 100% procedural (sem GLB/HDR/textura): núcleo low-poly
  * distorcido + casca wireframe + anel orbital com nos (metafora de
  * skills/missoes em torno do agente). Paleta dual ciano (#16D9E3) + violeta
  * (#6D5DF7) alinhada a 04-visual-direction.

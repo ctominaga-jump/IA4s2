@@ -13,7 +13,7 @@ export interface SubmissionFormState {
 }
 
 const submitSchema = z.object({
-  missionId: z.string().uuid("Missao invalida."),
+  missionId: z.string().uuid("Missão invalida."),
   content: z
     .string()
     .trim()
@@ -32,14 +32,14 @@ export async function submitMissionAction(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message ?? "Dados invalidos." };
+    return { error: parsed.error.errors[0]?.message ?? "Dados inválidos." };
   }
 
   const { missionId, content } = parsed.data;
 
   const mission = await getPublishedMissionById(missionId);
   if (!mission) {
-    return { error: "Missao nao encontrada ou indisponivel." };
+    return { error: "Missão não encontrada ou indisponível." };
   }
 
   const service = createSupabaseServiceClient();
@@ -53,11 +53,11 @@ export async function submitMissionAction(
   const subs = (existing ?? []) as SubmissionRow[];
 
   if (subs.some((s) => s.status === "approved")) {
-    return { error: "Esta missao ja foi aprovada e nao aceita novo envio." };
+    return { error: "Esta missão já foi aprovada e não aceita novo envio." };
   }
   if (subs.some((s) => s.status === "pending")) {
     return {
-      error: "Voce ja tem uma entrega aguardando validacao para esta missao.",
+      error: "Você já tem uma entrega aguardando validação para esta missão.",
     };
   }
 
@@ -74,13 +74,13 @@ export async function submitMissionAction(
   });
 
   if (error) {
-    // Conflito de indice unico (entrega concorrente).
+    // Conflito de indice único (entrega concorrente).
     if (error.code === "23505") {
       return {
-        error: "Ja existe uma entrega para esta missao. Atualize a pagina.",
+        error: "Já existe uma entrega para esta missão. Atualize a página.",
       };
     }
-    return { error: "Nao foi possivel enviar sua entrega. Tente novamente." };
+    return { error: "Não foi possível enviar sua entrega. Tente novamente." };
   }
 
   redirect(`/aluno/missoes/${missionId}?enviada=1`);

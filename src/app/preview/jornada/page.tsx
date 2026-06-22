@@ -9,7 +9,7 @@ import {
 export const dynamic = "force-dynamic";
 
 /**
- * Preview SEM autenticacao do mapa da jornada, usado apenas para validacao
+ * Preview SEM autenticação do mapa da jornada, usado apenas para validação
  * visual por screenshot. Dados ficticios; nao toca Supabase/XP/auth.
  * Reflete a jornada completa de 8 fases (Despertar -> Boss Final, 24 missoes).
  */
@@ -17,8 +17,8 @@ export const dynamic = "force-dynamic";
 const VM: JourneyBoardViewModel = {
   courseTitle: "Jornada IA para Vida Real",
   courseDescription:
-    "Do primeiro contato com IA ate desenhar suas proprias solucoes. Voce avanca por fases praticas, envia entregas reais e evolui com feedback de um mentor.",
-  goalTitle: "Usar IA para acelerar meus estudos de programacao",
+    "Do primeiro contato com IA até desenhar suas próprias soluções. Você avança por fases práticas, envia entregas reais e evolui com feedback de um mentor.",
+  goalTitle: "Usar IA para acelerar meus estudos de programação",
   overallApproved: 6,
   overallTotal: 24,
   overallPercent: 25,
@@ -26,7 +26,7 @@ const VM: JourneyBoardViewModel = {
     {
       number: 1,
       name: "Despertar",
-      tagline: "Descubra o que e IA e como ela ja aparece no seu dia a dia.",
+      tagline: "Descubra o que é IA e como ela já aparece no seu dia a dia.",
       state: "complete",
       total: 3,
       approved: 3,
@@ -37,7 +37,7 @@ const VM: JourneyBoardViewModel = {
           id: "m101",
           title: "Descubra a IA no seu dia",
           description:
-            "Perceba onde a IA ja aparece na sua rotina antes de comecar a usar.",
+            "Perceba onde a IA já aparece na sua rotina antes de começar a usar.",
           status: "approved",
           xpReward: 40,
           difficulty: "easy",
@@ -78,7 +78,7 @@ const VM: JourneyBoardViewModel = {
           id: "m002",
           title: "Resolva uma tarefa real com IA",
           description:
-            "Pegue uma necessidade concreta e chegue a um resultado util.",
+            "Pegue uma necessidade concreta e chegue a um resultado útil.",
           status: "approved",
           xpReward: 60,
           difficulty: "easy",
@@ -108,7 +108,7 @@ const VM: JourneyBoardViewModel = {
       number: 3,
       name: "Estrategista",
       tagline:
-        "Domine contexto, objetivo, formato e criterios nos seus prompts.",
+        "Domine contexto, objetivo, formato e critérios nos seus prompts.",
       state: "locked",
       total: 3,
       approved: 0,
@@ -126,7 +126,7 @@ const VM: JourneyBoardViewModel = {
         },
         {
           id: "m302",
-          title: "Prompt com criterios de qualidade",
+          title: "Prompt com critérios de qualidade",
           description: "Diga a IA o que torna uma boa resposta.",
           status: "not_started",
           xpReward: 85,
@@ -135,7 +135,7 @@ const VM: JourneyBoardViewModel = {
         },
         {
           id: "m303",
-          title: "Itere ate o resultado certo",
+          title: "Itere até o resultado certo",
           description: "Refine a resposta em rodadas com pedidos especificos.",
           status: "not_started",
           xpReward: 90,
@@ -175,7 +175,7 @@ const VM: JourneyBoardViewModel = {
         {
           id: "m403",
           title: "Monte um mini-projeto guiado",
-          description: "Una o que aprendeu em um projeto com inicio, meio e fim.",
+          description: "Una o que aprendeu em um projeto com início, meio e fim.",
           status: "not_started",
           xpReward: 120,
           difficulty: "hard",
@@ -187,7 +187,7 @@ const VM: JourneyBoardViewModel = {
       number: 5,
       name: "Operador de IA",
       tagline:
-        "Coloque a IA nos seus fluxos reais de trabalho: voce decide, revisa e reutiliza.",
+        "Coloque a IA nos seus fluxos reais de trabalho: você decide, revisa e reutiliza.",
       state: "locked",
       total: 4,
       approved: 0,
@@ -205,8 +205,8 @@ const VM: JourneyBoardViewModel = {
         },
         {
           id: "m502",
-          title: "Crie um prompt operacional reutilizavel",
-          description: "Um prompt-modelo com variaveis e checklist de revisao.",
+          title: "Crie um prompt operacional reutilizável",
+          description: "Um prompt-modelo com variáveis e checklist de revisão.",
           status: "not_started",
           xpReward: 100,
           difficulty: "medium",
@@ -215,7 +215,7 @@ const VM: JourneyBoardViewModel = {
         {
           id: "m504",
           title: "Execute o fluxo em uma ferramenta de trabalho",
-          description: "Rode o fluxo em 2 casos reais e revise cada saida.",
+          description: "Rode o fluxo em 2 casos reais e revise cada saída.",
           status: "not_started",
           xpReward: 130,
           difficulty: "hard",
@@ -234,9 +234,9 @@ const VM: JourneyBoardViewModel = {
     },
     {
       number: 6,
-      name: "Operador Tecnico",
+      name: "Operador Técnico",
       tagline:
-        "Pilote a IA em ambiente tecnico guiado, sem precisar virar programador.",
+        "Pilote a IA em ambiente técnico guiado, sem precisar virar programador.",
       state: "locked",
       total: 4,
       approved: 0,
@@ -255,7 +255,7 @@ const VM: JourneyBoardViewModel = {
         {
           id: "m1602",
           title: "Leia um erro com a IA",
-          description: "Separe mensagem, causa provavel e proximo passo.",
+          description: "Separe mensagem, causa provavel e próximo passo.",
           status: "not_started",
           xpReward: 80,
           difficulty: "medium",
@@ -263,8 +263,8 @@ const VM: JourneyBoardViewModel = {
         },
         {
           id: "m1603",
-          title: "Alteracao minima guiada em um arquivo",
-          description: "Uma mudanca pequena e reversivel, com antes/depois.",
+          title: "Alteração mínima guiada em um arquivo",
+          description: "Uma mudança pequena e reversível, com antes/depois.",
           status: "not_started",
           xpReward: 90,
           difficulty: "medium",
@@ -285,7 +285,7 @@ const VM: JourneyBoardViewModel = {
       number: 7,
       name: "Arquiteto de Agentes",
       tagline:
-        "Desenhe agentes como sistemas: objetivo, ferramentas, limites e validacao.",
+        "Desenhe agentes como sistemas: objetivo, ferramentas, limites e validação.",
       state: "locked",
       total: 4,
       approved: 0,
@@ -312,8 +312,8 @@ const VM: JourneyBoardViewModel = {
         },
         {
           id: "m602",
-          title: "Defina papeis de agentes",
-          description: "Responsabilidades, transferencia, conflito e decisao final.",
+          title: "Defina papéis de agentes",
+          description: "Responsabilidades, transferência, conflito e decisão final.",
           status: "not_started",
           xpReward: 130,
           difficulty: "hard",
@@ -322,7 +322,7 @@ const VM: JourneyBoardViewModel = {
         {
           id: "m603",
           title: "Plano do seu produto com IA",
-          description: "Plano de uma pagina com a sua propria rubrica de sucesso.",
+          description: "Plano de uma página com a sua própria rubrica de sucesso.",
           status: "not_started",
           xpReward: 150,
           difficulty: "hard",
@@ -333,7 +333,7 @@ const VM: JourneyBoardViewModel = {
     {
       number: 8,
       name: "Boss Final",
-      tagline: "Integre tudo em um produto com IA: do problema a validacao.",
+      tagline: "Integre tudo em um produto com IA: do problema a validação.",
       state: "empty",
       total: 0,
       approved: 0,

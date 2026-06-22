@@ -109,13 +109,13 @@ function HeroStrip({ vm }: { vm: CockpitViewModel }) {
         <div className="min-w-0">
           <span className="inline-flex items-center gap-2 rounded-full border border-[#16D9E3]/25 bg-[#16D9E3]/10 px-3 py-1 text-xs font-medium text-[#9CEBF0]">
             <Sparkles className="size-3.5" />
-            Cockpit de evolucao em IA
+            Cockpit de evolução em IA
           </span>
           <h1 className="mt-3 text-2xl font-bold tracking-tight md:text-3xl">
-            Ola, {vm.firstName}. Sua jornada esta ativa.
+            Olá, {vm.firstName}. Sua jornada está ativa.
           </h1>
           <p className="mt-1.5 max-w-xl text-sm leading-6 text-muted-foreground">
-            Avance pelas fases, acumule XP e prepare seu caminho ate o Boss
+            Avance pelas fases, acumule XP e prepare seu caminho até o Boss
             Final: criar um produto com IA.
           </p>
         </div>
@@ -124,10 +124,10 @@ function HeroStrip({ vm }: { vm: CockpitViewModel }) {
           <HeroMetric
             label="XP total"
             value={vm.totalXp}
-            detail={`Nivel ${vm.levelNumber}`}
+            detail={`Nível ${vm.levelNumber}`}
           />
           <HeroMetric
-            label="Missoes"
+            label="Missões"
             value={`${vm.approvedCount}/${vm.totalMissions}`}
             detail={`${vm.overallPercent}% feito`}
           />
@@ -175,7 +175,7 @@ function HeroMetric({
 }
 
 /* ------------------------------------------------------------------ */
-/* Avatar como identidade: anel de progresso + aura + nivel/classe.    */
+/* Avatar como identidade: anel de progresso + aura + nível/classe.    */
 /* ------------------------------------------------------------------ */
 function AvatarPanel({ vm }: { vm: CockpitViewModel }) {
   const pct = Math.min(100, Math.max(0, vm.levelProgressPercent));
@@ -223,7 +223,7 @@ function AvatarPanel({ vm }: { vm: CockpitViewModel }) {
         <p className="mt-2 text-[11px] leading-4 text-muted-foreground">
           {vm.nextLevelTitle
             ? `${vm.xpForNext} XP para ${vm.nextLevelTitle}.`
-            : "Nivel maximo. Continue refinando suas habilidades."}
+            : "Nível máximo. Continue refinando suas habilidades."}
         </p>
       </div>
     </section>
@@ -244,14 +244,14 @@ function NextQuestPanel({ vm }: { vm: CockpitViewModel }) {
       ? `Revisar: ${nextMission.title}`
       : nextMission.title
     : allDone
-      ? "Todas as missoes disponiveis foram concluidas"
-      : "Acompanhe suas entregas em validacao";
+      ? "Todas as missões disponíveis foram concluídas"
+      : "Acompanhe suas entregas em validação";
 
   const body = nextMission
     ? nextMission.description
     : allDone
-      ? "Excelente. O proximo passo e preparar desafios avancados e o Boss Final."
-      : "Quando uma entrega for avaliada, a proxima acao aparece aqui.";
+      ? "Excelente. O próximo passo é preparar desafios avançados e o Boss Final."
+      : "Quando uma entrega for avaliada, a próxima ação aparece aqui.";
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/[0.14] via-card/80 to-card/80 p-5 md:p-6">
@@ -260,7 +260,7 @@ function NextQuestPanel({ vm }: { vm: CockpitViewModel }) {
         <div className="min-w-0">
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#9CEBF0]">
             <Radio className="size-3.5" />
-            Missao ativa
+            Missão ativa
           </span>
           <h2 className="mt-2.5 text-xl font-bold leading-tight md:text-2xl">
             {heading}
@@ -281,7 +281,7 @@ function NextQuestPanel({ vm }: { vm: CockpitViewModel }) {
           className="shrink-0 shadow-[0_0_24px_rgba(109,93,247,0.4)]"
         >
           <Link href={href}>
-            {nextMission ? "Abrir missao" : "Ver jornada"}
+            {nextMission ? "Abrir missão" : "Ver jornada"}
             <ArrowRight />
           </Link>
         </Button>
@@ -406,11 +406,11 @@ function PhaseNode({
           </p>
           <p className="text-[11px] text-muted-foreground">
             {complete
-              ? "Concluida"
+              ? "Concluída"
               : active
                 ? "Em andamento"
                 : isBoss
-                  ? "Climax final"
+                  ? "Clímax final"
                   : "Bloqueada"}
           </p>
         </div>
@@ -476,8 +476,8 @@ function GoalContract({ goal }: { goal: CockpitViewModel["goal"] }) {
         </div>
       ) : (
         <p className="mt-3 text-sm text-muted-foreground">
-          Voce ainda nao registrou um objetivo. Defina o que quer alcancar para
-          dar contexto a cada missao.
+          Você ainda não registrou um objetivo. Defina o que quer alcançar para
+          dar contexto a cada missão.
         </p>
       )}
     </section>
@@ -494,7 +494,7 @@ function MissionStatusPanel({ vm }: { vm: CockpitViewModel }) {
         <div>
           <div className="flex items-center gap-2">
             <Compass className="size-4 text-primary" />
-            <h2 className="font-semibold">Status das missoes</h2>
+            <h2 className="font-semibold">Status das missões</h2>
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
             O loop principal: executar, enviar, validar e evoluir.
@@ -510,12 +510,12 @@ function MissionStatusPanel({ vm }: { vm: CockpitViewModel }) {
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <StatusTile
-          label="Nao iniciadas"
+          label="Não iniciadas"
           value={vm.counts.not_started}
           status="not_started"
         />
         <StatusTile
-          label="Em validacao"
+          label="Em validação"
           value={vm.counts.pending}
           status="pending"
         />

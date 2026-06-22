@@ -49,7 +49,7 @@ export function OnboardingForm() {
           ) : null}
 
           <div className="space-y-2">
-            <Label htmlFor="title">Qual e o seu objetivo real?</Label>
+            <Label htmlFor="title">Qual e o seu objetivo realá</Label>
             <Input
               id="title"
               name="title"
@@ -68,7 +68,7 @@ export function OnboardingForm() {
             <Textarea
               id="description"
               name="description"
-              placeholder="O que voce quer alcancar e por que isso importa para voce."
+              placeholder="O que você quer alcançar e por que isso importa para você."
             />
           </div>
 
@@ -92,7 +92,7 @@ export function OnboardingForm() {
 
             <div className="space-y-2">
               <Label htmlFor="declared_level">
-                Como voce se sente hoje? (opcional)
+                Como você se sente hoje? (opcional)
               </Label>
               <select
                 id="declared_level"
@@ -112,7 +112,7 @@ export function OnboardingForm() {
 
           <p className="rounded-lg bg-muted/60 px-3 py-2 text-xs text-muted-foreground">
             Seu objetivo aparece como contexto na sua jornada. No momento, as
-            missoes sao as mesmas para todos — nao geramos trilha automatica.
+            missões sao as mesmas para todos — não geramos trilha automatica.
           </p>
         </CardContent>
         <CardFooter>

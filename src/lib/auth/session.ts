@@ -14,8 +14,8 @@ export interface SessionUser {
 }
 
 /**
- * Identifica o usuario logado e carrega o usuario de aplicacao (tabela users).
- * Retorna null quando nao ha sessao valida ou quando o usuario de aplicacao
+ * Identifica o usuário logado e carrega o usuário de aplicação (tabela users).
+ * Retorna null quando nao ha sessão valida ou quando o usuário de aplicação
  * ainda nao existe / esta inativo.
  */
 export async function getSessionUser(): Promise<SessionUser | null> {
@@ -43,7 +43,7 @@ export interface StudentContext extends SessionUser {
 }
 
 /**
- * Garante que o usuario atual e um aluno ativo. Redireciona:
+ * Garante que o usuário atual e um aluno ativo. Redireciona:
  * - para /login se nao autenticado;
  * - para /professor se for professor tentando acessar area do aluno.
  */
@@ -70,7 +70,7 @@ export interface TeacherContext extends SessionUser {
 }
 
 /**
- * Garante que o usuario atual e um professor ativo. Redireciona:
+ * Garante que o usuário atual e um professor ativo. Redireciona:
  * - para /login se nao autenticado;
  * - para /aluno se for aluno tentando acessar area do professor.
  */

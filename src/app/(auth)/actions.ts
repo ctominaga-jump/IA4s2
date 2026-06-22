@@ -14,7 +14,7 @@ export interface AuthFormState {
 
 const signUpSchema = z.object({
   name: z.string().trim().min(2, "Informe seu nome completo."),
-  email: z.string().trim().toLowerCase().email("Informe um e-mail valido."),
+  email: z.string().trim().toLowerCase().email("Informe um e-mail válido."),
   password: z.string().min(6, "A senha deve ter ao menos 6 caracteres."),
   role: z.enum(["student", "teacher"], {
     errorMap: () => ({ message: "Escolha um perfil." }),
@@ -22,7 +22,7 @@ const signUpSchema = z.object({
 });
 
 const loginSchema = z.object({
-  email: z.string().trim().toLowerCase().email("Informe um e-mail valido."),
+  email: z.string().trim().toLowerCase().email("Informe um e-mail válido."),
   password: z.string().min(1, "Informe sua senha."),
   redirectTo: z.string().optional(),
 });
@@ -39,7 +39,7 @@ export async function signUpAction(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message ?? "Dados invalidos." };
+    return { error: parsed.error.errors[0]?.message ?? "Dados inválidos." };
   }
 
   const { name, email, password, role } = parsed.data;
@@ -53,17 +53,17 @@ export async function signUpAction(
 
   if (error) {
     if (error.message.toLowerCase().includes("already registered")) {
-      return { error: "Este e-mail ja esta cadastrado. Tente fazer login." };
+      return { error: "Este e-mail já está cadastrado. Tente fazer login." };
     }
-    return { error: "Nao foi possivel criar a conta. Tente novamente." };
+    return { error: "Não foi possível criar a conta. Tente novamente." };
   }
 
   const authUser = data.user;
   if (!authUser) {
-    return { error: "Nao foi possivel criar a conta. Tente novamente." };
+    return { error: "Não foi possível criar a conta. Tente novamente." };
   }
 
-  // Cria o usuario de aplicacao e o perfil correspondente (service role).
+  // Cria o usuário de aplicação e o perfil correspondente (service role).
   const service = createSupabaseServiceClient();
 
   const { data: appUser, error: userError } = await service
@@ -98,11 +98,11 @@ export async function signUpAction(
       .upsert({ user_id: appUser.id }, { onConflict: "user_id" });
   }
 
-  // Sem sessao => o projeto exige confirmacao de e-mail.
+  // Sem sessão => o projeto exige confirmacao de e-mail.
   if (!data.session) {
     return {
       message:
-        "Conta criada! Confirme seu e-mail para acessar o portal. Depois faca login.",
+        "Conta criada! Confirme seu e-mail para acessar o portal. Depois faça login.",
     };
   }
 
@@ -120,7 +120,7 @@ export async function loginAction(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message ?? "Dados invalidos." };
+    return { error: parsed.error.errors[0]?.message ?? "Dados inválidos." };
   }
 
   const { email, password, redirectTo } = parsed.data;
@@ -132,7 +132,7 @@ export async function loginAction(
   });
 
   if (error || !data.user) {
-    return { error: "E-mail ou senha invalidos." };
+    return { error: "E-mail ou senha inválidos." };
   }
 
   const service = createSupabaseServiceClient();
@@ -144,12 +144,12 @@ export async function loginAction(
 
   if (!appUser) {
     await supabase.auth.signOut();
-    return { error: "Perfil nao encontrado. Contate o suporte." };
+    return { error: "Perfil não encontrado. Contate o suporte." };
   }
 
   if (appUser.status !== "active") {
     await supabase.auth.signOut();
-    return { error: "Sua conta esta inativa. Contate o suporte." };
+    return { error: "Sua conta está inativa. Contate o suporte." };
   }
 
   await service

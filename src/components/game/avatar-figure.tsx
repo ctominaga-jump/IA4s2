@@ -47,8 +47,8 @@ const SIZES = {
  * Avatar evolutivo do aluno. A identidade combina:
  * - variante de cor escolhida (persistida em student_profiles.avatar_variant);
  * - icone da fase atual (derivado de phaseIndex);
- * - anel de progresso do nivel (derivado do XP);
- * - badge de nivel.
+ * - anel de progresso do nível (derivado do XP);
+ * - badge de nível.
  * Componente puro: sem 3D e sem estado, com fallback visual estavel.
  */
 export function AvatarFigure({

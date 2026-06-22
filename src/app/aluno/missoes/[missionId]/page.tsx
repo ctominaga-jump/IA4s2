@@ -71,7 +71,7 @@ export default async function MissionDetailPage({
           <CheckCircle2 />
           <AlertTitle>Entrega enviada!</AlertTitle>
           <AlertDescription>
-            Sua entrega esta aguardando validacao de um professor. Voce vera o
+            Sua entrega está aguardando validação de um professor. Você verá o
             feedback aqui.
           </AlertDescription>
         </Alert>
@@ -128,7 +128,7 @@ export default async function MissionDetailPage({
         <CardContent className="space-y-4 text-sm">
           <p className="whitespace-pre-line">{mission.instructions}</p>
           <div className="rounded-lg bg-muted/50 p-4">
-            <p className="font-medium">O que voce deve entregar</p>
+            <p className="font-medium">O que você deve entregar</p>
             <p className="mt-1 text-muted-foreground">
               {mission.expected_submission}
             </p>
@@ -141,7 +141,7 @@ export default async function MissionDetailPage({
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
               <Trophy className="size-4 text-primary" />
-              Criterio de aceite
+              Critério de aceite
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -162,7 +162,7 @@ export default async function MissionDetailPage({
           )}
           <AlertTitle>
             {latestFeedback.decision === "approved"
-              ? "Missao aprovada!"
+              ? "Missão aprovada!"
               : "Entrega reprovada — veja como melhorar"}
           </AlertTitle>
           <AlertDescription className="space-y-1">
@@ -202,7 +202,7 @@ export default async function MissionDetailPage({
             <div className="flex items-center gap-3 text-sm">
               <CheckCircle2 className="size-5 text-success" />
               <p>
-                Esta missao ja foi aprovada e nao aceita novo envio. Voce ganhou{" "}
+                Esta missão já foi aprovada e não aceita novo envio. Você ganhou{" "}
                 <span className="font-medium">{mission.xp_reward} XP</span>.
               </p>
             </div>
@@ -210,7 +210,7 @@ export default async function MissionDetailPage({
             <div className="flex items-center gap-3 text-sm">
               <Clock className="size-5 text-warning" />
               <p>
-                Sua entrega esta aguardando validacao. Voce podera reenviar
+                Sua entrega está aguardando validação. Você poderá reenviar
                 apenas se ela for reprovada.
               </p>
             </div>
@@ -219,7 +219,7 @@ export default async function MissionDetailPage({
               <p className="text-sm font-medium">
                 {status === "rejected"
                   ? "Revise com base no feedback e reenvie sua entrega."
-                  : "Pronto para comecar? Escreva e envie sua entrega."}
+                  : "Pronto para começar? Escreva e envie sua entrega."}
               </p>
               <SubmissionForm
                 missionId={mission.id}

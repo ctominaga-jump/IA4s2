@@ -83,7 +83,7 @@ export default async function SubmissionDetailPage({
           {mission ? (
             <Card>
               <CardHeader>
-                <CardTitle className="text-base">Contexto da missao</CardTitle>
+                <CardTitle className="text-base">Contexto da missão</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
                 <div>
@@ -108,7 +108,7 @@ export default async function SubmissionDetailPage({
                   <div className="rounded-lg border border-primary/30 bg-primary/5 p-3">
                     <p className="flex items-center gap-2 font-medium text-primary">
                       <CheckCircle2 className="size-4" />
-                      Criterio de aprovacao
+                      Critério de aprovacao
                     </p>
                     <p className="mt-1 text-muted-foreground">
                       {mission.acceptance_criteria}
@@ -152,10 +152,10 @@ export default async function SubmissionDetailPage({
             </Card>
           ) : null}
 
-          {/* Avaliacao */}
+          {/* Avaliação */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Avaliacao</CardTitle>
+              <CardTitle className="text-base">Avaliação</CardTitle>
             </CardHeader>
             <CardContent>
               {alreadyReviewed ? (
@@ -175,7 +175,7 @@ export default async function SubmissionDetailPage({
                       : "Entrega reprovada"}
                   </AlertTitle>
                   <AlertDescription className="space-y-1">
-                    <p>{feedback?.comment ?? "Sem comentario registrado."}</p>
+                    <p>{feedback?.comment ?? "Sem comentário registrado."}</p>
                     {submission.reviewed_at ? (
                       <p className="text-xs opacity-80">
                         Avaliada em {formatDateTime(submission.reviewed_at)}
@@ -224,7 +224,7 @@ export default async function SubmissionDetailPage({
                 </div>
               ) : (
                 <p className="text-muted-foreground">
-                  Este aluno ainda nao registrou um objetivo.
+                  Este aluno ainda não registrou um objetivo.
                 </p>
               )}
             </CardContent>
@@ -242,7 +242,7 @@ export default async function SubmissionDetailPage({
                 </Badge>
                 <p className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
                   <Clock className="size-3" />
-                  O XP e concedido apenas uma vez por missao.
+                  O XP e concedido apenas uma vez por missão.
                 </p>
               </CardContent>
             </Card>

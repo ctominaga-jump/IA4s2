@@ -50,7 +50,7 @@ export function SignUpForm() {
       <CardHeader>
         <CardTitle className="text-xl">Criar sua conta</CardTitle>
         <CardDescription>
-          Comece a aprender fazendo, com missoes reais e feedback humano.
+          Comece a aprender fazendo, com missões reais e feedback humano.
         </CardDescription>
       </CardHeader>
       <form action={formAction}>
@@ -106,7 +106,7 @@ export function SignUpForm() {
               name="email"
               type="email"
               autoComplete="email"
-              placeholder="voce@exemplo.com"
+              placeholder="você@exemplo.com"
               required
             />
           </div>
@@ -117,7 +117,7 @@ export function SignUpForm() {
               name="password"
               type="password"
               autoComplete="new-password"
-              placeholder="Minimo de 6 caracteres"
+              placeholder="Mínimo de 6 caracteres"
               minLength={6}
               required
             />
@@ -126,7 +126,7 @@ export function SignUpForm() {
         <CardFooter className="flex flex-col gap-3">
           <SubmitButton />
           <p className="text-center text-sm text-muted-foreground">
-            Ja tem conta?{" "}
+            Já tem conta?{" "}
             <Link href="/login" className="font-medium text-primary hover:underline">
               Entrar
             </Link>

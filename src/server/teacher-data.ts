@@ -73,7 +73,7 @@ function toQueueItems(
 ): QueueItem[] {
   return submissions.map((submission) => ({
     submission,
-    missionTitle: missionTitles.get(submission.mission_id) ?? "Missao",
+    missionTitle: missionTitles.get(submission.mission_id) ?? "Missão",
     studentName: studentNames.get(submission.student_profile_id) ?? "Aluno",
     isResubmission: submission.attempt_number > 1,
   }));
@@ -111,7 +111,7 @@ export async function getTeacherDashboard(): Promise<TeacherDashboard> {
 }
 
 /**
- * Fila de validacao. Pendentes primeiro (mais antigas no topo), depois
+ * Fila de validação. Pendentes primeiro (mais antigas no topo), depois
  * avaliadas (mais recentes no topo). Aceita filtro opcional por status.
  */
 export async function getValidationQueue(

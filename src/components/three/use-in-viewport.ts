@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 /**
  * Mount-on-visible: dispara `visible=true` quando o elemento (quase) entra na
  * viewport e desconecta o observer. Base do nao-bloqueio das cenas 3D — o
- * import dinamico so ocorre quando o container aparece. `enabled=false` mantem
- * o elemento sempre no estado inicial (usado para forcar fallback).
+ * import dinamico só ocorre quando o container aparece. `enabled=false` mantém
+ * o elemento sempre no estado inicial (usado para forçar fallback).
  */
 export function useInViewport<T extends Element>({
   rootMargin = "200px",

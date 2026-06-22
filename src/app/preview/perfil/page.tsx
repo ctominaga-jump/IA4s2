@@ -12,8 +12,8 @@ import type { AvatarVariant, LearningGoalRow } from "@/lib/database.types";
 export const dynamic = "force-dynamic";
 
 /**
- * Preview SEM autenticacao do perfil/identidade, apenas para screenshot.
- * `?variant=` troca a identidade; `?fallback=1` forca o AvatarFigure 2D.
+ * Preview SEM autenticação do perfil/identidade, apenas para screenshot.
+ * `?variant=` troca a identidade; `?fallback=1` força o AvatarFigure 2D.
  */
 
 const VARIANTS: AvatarVariant[] = ["aurora", "ember", "verdant", "nebula"];
@@ -44,9 +44,9 @@ const VM: ProfileViewModel = {
 const GOAL: LearningGoalRow = {
   id: "goal-preview",
   student_profile_id: "sp-preview",
-  title: "Usar IA para acelerar meus estudos de programacao",
+  title: "Usar IA para acelerar meus estudos de programação",
   description:
-    "Quero aprender a pesquisar, validar e prototipar com IA para evoluir mais rapido na faculdade.",
+    "Quero aprender a pesquisar, validar e prototipar com IA para evoluir mais rápido na faculdade.",
   category: "study",
   status: "active",
   created_at: "2026-05-20T12:00:00.000Z",

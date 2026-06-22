@@ -19,7 +19,7 @@ export interface PhaseMeta {
  * Metadata visual das 8 fases narrativas (Despertar -> Boss Final).
  * A ORDEM e a fonte de verdade e deve casar com `journey_phases.number`
  * (database/seeds/0004_advanced_curriculum.sql). Nomes curtos para caberem
- * nos nos do mapa; `Operador IA` (fluxos) e `Op. Tecnico` (ambiente tecnico)
+ * nos nos do mapa; `Operador IA` (fluxos) e `Op. Técnico` (ambiente tecnico)
  * usam icones distintos para nao se confundirem.
  */
 export const PHASES: PhaseMeta[] = [
@@ -28,7 +28,7 @@ export const PHASES: PhaseMeta[] = [
   { name: "Estrategista", icon: Target },
   { name: "Criador", icon: PenTool },
   { name: "Operador IA", icon: Workflow },
-  { name: "Op. Tecnico", icon: Terminal },
+  { name: "Op. Técnico", icon: Terminal },
   { name: "Arquiteto", icon: Network },
   { name: "Boss Final", icon: Crown },
 ];

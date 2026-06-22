@@ -10,9 +10,9 @@ import { shouldCelebrateLevelUp } from "@/lib/avatar";
 const STORAGE_KEY = "ia-last-seen-level";
 
 /**
- * Celebra um level up de forma autocontida: compara o nivel atual com o
- * ultimo nivel visto (localStorage) e exibe uma celebracao uma unica vez,
- * sempre que o aluno sobe de nivel. Nao depende de banco nem de eventos.
+ * Celebra um level up de forma autocontida: compara o nível atual com o
+ * ultimo nível visto (localStorage) e exibe uma celebracao uma unica vez,
+ * sempre que o aluno sobe de nível. Nao depende de banco nem de eventos.
  */
 export function LevelUpCelebration({
   currentLevelNumber,
@@ -46,7 +46,7 @@ export function LevelUpCelebration({
         <motion.div
           role="dialog"
           aria-modal="true"
-          aria-label="Voce subiu de nivel"
+          aria-label="Você subiu de nível"
           className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -96,12 +96,12 @@ export function LevelUpCelebration({
                 Level up
               </p>
               <h2 className="mt-1 text-3xl font-bold tabular-nums">
-                Nivel {currentLevelNumber}
+                Nível {currentLevelNumber}
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Voce evoluiu para{" "}
+                Você evoluiu para{" "}
                 <span className="font-medium text-foreground">{levelTitle}</span>.
-                Seu avatar tambem evoluiu.
+                Seu avatar também evoluiu.
               </p>
               <Button className="mt-5 w-full" onClick={() => setShow(false)}>
                 Continuar jornada

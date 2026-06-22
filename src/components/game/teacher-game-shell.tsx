@@ -12,7 +12,7 @@ const NAV_ITEMS: StudentNavItem[] = [
 
 /**
  * Shell premium da area do professor. Usa a mesma linguagem visual da area do
- * aluno, mas com tom operacional: fila, validacao e mentoria em primeiro plano.
+ * aluno, mas com tom operacional: fila, validação e mentoria em primeiro plano.
  */
 export function TeacherGameShell({
   userName,

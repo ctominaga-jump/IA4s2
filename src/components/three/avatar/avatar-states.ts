@@ -14,7 +14,7 @@ export const AVATAR_IDENTITIES: Record<AvatarVariant, AvatarIdentityConfig> = {
   aurora: {
     variant: "aurora",
     label: "Agente Aurora",
-    description: "Ciano/violeta, tecnologico e padrao.",
+    description: "Ciano/violeta, tecnolágico e padrão.",
     accent: "#16D9E3",
     secondary: "#6D5DF7",
     glow: "#16D9E3",
@@ -22,7 +22,7 @@ export const AVATAR_IDENTITIES: Record<AvatarVariant, AvatarIdentityConfig> = {
   ember: {
     variant: "ember",
     label: "Agente Brasa",
-    description: "Ambar/vermelho, energia e acao.",
+    description: "Âmbar/vermelho, energia e ação.",
     accent: "#FFC857",
     secondary: "#FF5C7A",
     glow: "#FF5C7A",
@@ -38,7 +38,7 @@ export const AVATAR_IDENTITIES: Record<AvatarVariant, AvatarIdentityConfig> = {
   nebula: {
     variant: "nebula",
     label: "Agente Nebulosa",
-    description: "Violeta/rosa, criatividade e estrategia.",
+    description: "Violeta/rosa, criatividade e estratégia.",
     accent: "#6D5DF7",
     secondary: "#FF5C7A",
     glow: "#6D5DF7",
@@ -64,7 +64,7 @@ export interface AvatarModelSource {
 }
 
 /**
- * Registry IDENTIDADE -> GLB. A identidade do avatar é o modelo base; a
+ * Registry IDENTIDADE -> GLB. A identidade do avatar e o modelo base; a
  * evolução por fase continua 100% procedural (AVATAR_STATES). Rollback por
  * variante: trocar a entrada por `null` volta o núcleo procedural sem remover
  * código (equivalente ao antigo `modelUrl=null`).
@@ -89,12 +89,12 @@ export const AVATAR_MODELS: Record<AvatarVariant, AvatarModelSource | null> = {
  * Os kits são acessórios/placas/halos/wireframes gerados por
  * `scripts/generate-evolution-kits.mjs` (ver
  * docs/product-evolution/15-evolution-kits-design-spec.md). Índice do array =
- * phaseIndex (0..7); Despertar (0) é sempre `null` — o estado base não tem kit.
+ * phaseIndex (0..7); Despertar (0) e sempre `null` — o estado base não tem kit.
  *
  * Operador Tecnico (índice 5) ainda NÃO tem GLB próprio: reusa o kit
  * `operador` como fallback consciente (a diferenciação visual vem das camadas
  * procedurais em AVATAR_STATES). Follow-up: gerar
- * `avatar-{variante}-kit-operador-tecnico.glb` e trocar o slug aqui.
+ * `avatar-{variante}-kit-operador-técnico.glb` e trocar o slug aqui.
  *
  * Rollback por variante/fase: trocar a entrada por `null` volta àquela fase
  * sem kit (camadas procedurais continuam), sem remover código nem asset.

@@ -15,9 +15,9 @@ export interface PublishedJourney {
 }
 
 /**
- * Carrega o conteudo publicado visivel para alunos: apenas missoes
- * publicadas que pertencem a modulos publicados de cursos publicados.
- * Ordena por posicao do modulo e da missao.
+ * Carrega o conteúdo publicado visível para alunos: apenas missoes
+ * publicadas que pertencem a módulos publicados de cursos publicados.
+ * Ordena por posição do módulo e da missao.
  */
 export async function getPublishedJourney(): Promise<PublishedJourney> {
   const service = createSupabaseServiceClient();

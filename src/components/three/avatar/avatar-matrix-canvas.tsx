@@ -15,7 +15,7 @@ import type { AvatarVariant } from "@/lib/database.types";
  * Matriz 4 identidades x 8 estados num ÚNICO `<Canvas>` (1 contexto WebGL).
  *
  * 28 canvases estourariam o limite de contextos do browser (~16); como o
- * `ProceduralAvatar` é scene-graph puro (sem canvas próprio, com
+ * `ProceduralAvatar` e scene-graph puro (sem canvas próprio, com
  * `position`/`scale` para uso em lote), a matriz inteira cabe num contexto.
  * Geometria/texturas dos GLBs são compartilhadas entre células (useGLTF cache
  * + clone). Reduced motion congela rotação/flutuação e usa frameloop demand.

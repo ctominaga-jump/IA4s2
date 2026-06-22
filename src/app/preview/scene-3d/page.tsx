@@ -6,22 +6,22 @@ import { LazyScene } from "@/components/three/lazy-scene";
 export const dynamic = "force-dynamic";
 
 /**
- * Preview SEM autenticacao do spike 3D (Fase 7B-spike). Isolado: nao toca
- * landing, cockpit, auth, XP, server, review nem banco. Disponivel apenas
- * fora de producao. `?fallback=1` forca o estado estatico (para QA/print do
+ * Preview SEM autenticação do spike 3D (Fase 7B-spike). Isolado: nao toca
+ * landing, cockpit, auth, XP, server, review nem banco. Disponível apenas
+ * fora de produção. `?fallback=1` força o estado estático (para QA/print do
  * fallback sem depender de WebGL no ambiente).
  */
 
 const notes = [
   {
     icon: ShieldCheck,
-    title: "Fallback obrigatorio",
-    body: "Sem WebGL ou em erro, a cena cai para um placeholder estatico on-brand.",
+    title: "Fallback obrigatório",
+    body: "Sem WebGL ou em erro, a cena cai para um placeholder estático on-brand.",
   },
   {
     icon: Gauge,
     title: "Sob demanda",
-    body: "O chunk do three.js so baixa quando a cena entra na viewport (ssr:false + IntersectionObserver).",
+    body: "O chunk do three.js só baixa quando a cena entra na viewport (ssr:false + IntersectionObserver).",
   },
   {
     icon: FlaskConical,
@@ -50,16 +50,16 @@ export default async function Scene3DPreviewPage({
           Spike 7B - cena procedural leve
         </span>
         <h1 className="mt-5 max-w-2xl text-3xl font-bold tracking-tight md:text-4xl">
-          Pipeline 3D isolado, com fallback e sem bloquear conteudo.
+          Pipeline 3D isolado, com fallback e sem bloquear conteúdo.
         </h1>
         <p className="mt-3 max-w-2xl text-slate-300">
-          Esta pagina renderiza por completo no servidor. A cena 3D e um
-          componente client carregado sob demanda; este texto e os cartoes
+          Está página renderiza por completo no servidor. A cena 3D é um
+          componente client carregado sob demanda; este texto e os cartões
           abaixo aparecem independente de o WebGL existir ou de a cena terminar
           de carregar.
         </p>
 
-        {/* Conteudo principal ANTES da cena: prova que nada espera o 3D. */}
+        {/* Conteúdo principal ANTES da cena: prova que nada espera o 3D. */}
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {notes.map((n) => (
             <article
@@ -78,7 +78,7 @@ export default async function Scene3DPreviewPage({
         {/* A cena (ou seu fallback). Altura fixa: sem CLS quando o 3D monta. */}
         <div className="mt-8">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
-            {forceFallback ? "Fallback estatico (forcado)" : "Cena procedural"}
+            {forceFallback ? "Fallback estático (forçado)" : "Cena procedural"}
           </p>
           <LazyScene
             height={460}
@@ -87,15 +87,15 @@ export default async function Scene3DPreviewPage({
           />
         </div>
 
-        {/* Conteudo DEPOIS da cena: continua acessivel/rolavel normalmente. */}
+        {/* Conteúdo DEPOIS da cena: continua acessivel/rolavel normalmente. */}
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6">
           <h2 className="font-semibold">O que este spike valida</h2>
           <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-slate-300">
             <li>three + @react-three/fiber + @react-three/drei sob React 19.</li>
             <li>dynamic import com ssr:false (chunk fora do First Load JS).</li>
-            <li>fallback estatico obrigatorio em loading e em erro de WebGL.</li>
+            <li>fallback estático obrigatório em loading e em erro de WebGL.</li>
             <li>prefers-reduced-motion para a cena (sem animacao continua).</li>
-            <li>impacto de bundle medido no build, isolado a esta rota.</li>
+            <li>impacto de bundle medido no build, isolado a está rota.</li>
           </ul>
         </div>
       </div>

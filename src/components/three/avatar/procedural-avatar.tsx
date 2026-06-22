@@ -14,11 +14,11 @@ import { SceneErrorBoundary } from "@/components/three/scene-error-boundary";
  * usado isolado (EvolvingAvatar) ou em lote (strip/matriz de preview). A
  * evolução combina camadas PROCEDURAIS (anéis, partículas, coroa) com o
  * Evolution Kit da fase (`config.kitUrl`, GLB modular gerado por
- * `scripts/generate-evolution-kits.mjs`). O núcleo central é o PLUG POINT: se
+ * `scripts/generate-evolution-kits.mjs`). O núcleo central e o PLUG POINT: se
  * `config.model` existir (GLB da IDENTIDADE da variante), carrega o GLB dentro
  * de `<Suspense>`; senão, usa o núcleo procedural.
  *
- * O kit é autorado no MESMO espaço do GLB base (Y-up, origem central, altura
+ * O kit e autorado no MESMO espaço do GLB base (Y-up, origem central, altura
  * 1.0), então entra no grupo de spin com a mesma escala/rotação do modelo —
  * acompanha rotação e flutuação. Harmonização: a coroa procedural do Boss é
  * suprimida quando o kit Boss Final está ativo (o kit já entrega halo +
@@ -48,6 +48,7 @@ export function ProceduralAvatar({
   });
 
   const rings = Array.from({ length: config.rings }, (_, i) => i);
+  const model = config.model;
 
   return (
     <group position={position} scale={scale}>
@@ -58,14 +59,14 @@ export function ProceduralAvatar({
         floatIntensity={animate ? 0.5 : 0}
       >
         <group ref={spin}>
-          {config.model ? (
+          {model ? (
             <Suspense fallback={<ProceduralCore config={config} animate={animate} />}>
               {/* scale/rotation do AvatarModelSource: ~1.9 de altura visual
                   (≈ diâmetro do núcleo procedural, anéis em r 1.25+ visíveis). */}
               <AvatarModel
-                url={config.model.url}
-                scale={config.model.scale}
-                rotation={config.model.rotation}
+                url={model.url}
+                scale={model.scale}
+                rotation={model.rotation}
               />
             </Suspense>
           ) : (
@@ -79,8 +80,8 @@ export function ProceduralAvatar({
               <Suspense fallback={null}>
                 <AvatarModel
                   url={config.kitUrl}
-                  scale={config.model?.scale ?? KIT_FALLBACK_SCALE}
-                  rotation={config.model?.rotation ?? [0, 0, 0]}
+                  scale={model?.scale ?? KIT_FALLBACK_SCALE}
+                  rotation={model?.rotation ?? [0, 0, 0]}
                 />
               </Suspense>
             </SceneErrorBoundary>

@@ -11,7 +11,7 @@ import type { AvatarVariant } from "@/lib/database.types";
 /**
  * Envelope lazy da matriz 4x7 (mesmo padrão do `EvolvingAvatar`):
  * mount-on-visible + dynamic(ssr:false) + ErrorBoundary. O fallback (antes de
- * visível, sem WebGL, erro ou `forceFallback`) é a grade 2D de
+ * visível, sem WebGL, erro ou `forceFallback`) e a grade 2D de
  * `AvatarFigure` — o conteúdo nunca some.
  */
 

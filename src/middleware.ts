@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Aplica em todas as rotas, exceto arquivos estaticos e otimizacoes
+     * Aplica em todas as rotas, exceto arquivos estáticos e otimizacoes
      * internas do Next.
      */
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",

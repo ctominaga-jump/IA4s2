@@ -49,12 +49,12 @@ export function SubmissionForm({
         <Textarea
           id="content"
           name="content"
-          placeholder="Escreva aqui a sua resposta para a missao..."
+          placeholder="Escreva aqui a sua resposta para a missão..."
           className="min-h-[200px]"
           required
         />
         <p className="text-xs text-muted-foreground">
-          Sua entrega sera enviada para validacao de um professor.
+          Sua entrega será enviada para validação de um professor.
         </p>
       </div>
       <SubmitButton isResubmission={isResubmission} />

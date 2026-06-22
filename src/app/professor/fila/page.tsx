@@ -42,7 +42,7 @@ export default async function QueuePage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Fila de validacao</h1>
+        <h1 className="text-2xl font-bold">Fila de validação</h1>
         <p className="text-muted-foreground">
           Entregas pendentes aparecem primeiro. Abra uma entrega para avaliar.
         </p>
@@ -52,7 +52,7 @@ export default async function QueuePage({
         <Alert variant="success">
           <CheckCircle2 />
           <AlertDescription>
-            Avaliacao registrada com sucesso.
+            Avaliação registrada com sucesso.
           </AlertDescription>
         </Alert>
       ) : null}
@@ -84,7 +84,7 @@ export default async function QueuePage({
           title="Nenhuma entrega neste filtro"
           description={
             active === "pending"
-              ? "Nao ha entregas pendentes. Tudo em dia por aqui!"
+              ? "Não há entregas pendentes. Tudo em dia por aqui!"
               : "Nenhuma entrega encontrada para o filtro selecionado."
           }
         />

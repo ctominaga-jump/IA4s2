@@ -18,14 +18,14 @@ const reviewSchema = z.object({
   comment: z
     .string()
     .trim()
-    .min(1, "O feedback e obrigatorio para aprovar ou reprovar."),
+    .min(1, "O feedback é obrigatório para aprovar ou reprovar."),
 });
 
 const ERROR_MESSAGES: Record<string, string> = {
-  feedback_required: "O feedback e obrigatorio para aprovar ou reprovar.",
-  submission_not_found: "Entrega nao encontrada.",
+  feedback_required: "O feedback é obrigatório para aprovar ou reprovar.",
+  submission_not_found: "Entrega não encontrada.",
   submission_not_pending:
-    "Esta entrega ja foi avaliada e nao pode ser alterada.",
+    "Esta entrega já foi avaliada e não pode ser alterada.",
 };
 
 export async function reviewSubmissionAction(
@@ -41,7 +41,7 @@ export async function reviewSubmissionAction(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.errors[0]?.message ?? "Dados invalidos." };
+    return { error: parsed.error.errors[0]?.message ?? "Dados inválidos." };
   }
 
   const { submissionId, decision, comment } = parsed.data;
@@ -61,7 +61,7 @@ export async function reviewSubmissionAction(
     return {
       error: known
         ? ERROR_MESSAGES[known]
-        : "Nao foi possivel registrar a avaliacao. Tente novamente.",
+        : "Não foi possível registrar a avaliação. Tente novamente.",
     };
   }
 

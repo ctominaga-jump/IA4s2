@@ -1,6 +1,6 @@
 -- ============================================================
 -- IA para Vida Real — Seed inicial (idempotente)
--- Cria niveis, curso, modulo e missoes publicadas para permitir
+-- Cria niveis, curso, módulo e missoes publicadas para permitir
 -- testar o ciclo completo sem editor administrativo.
 --
 -- Re-executavel: usa UUIDs fixos + ON CONFLICT DO UPDATE.
@@ -27,7 +27,7 @@ insert into public.courses (id, title, description, status) values
   (
     '00000000-0000-0000-0000-0000000c0001',
     'Primeiros Passos com IA',
-    'Jornada inicial para usar IA em tarefas reais de estudo, trabalho e vida. Voce vai praticar, enviar entregas e melhorar com feedback.',
+    'Jornada inicial para usar IA em tarefas reais de estudo, trabalho e vida. Você vai praticar, enviar entregas e melhorar com feedback.',
     'published'
   )
 on conflict (id) do update
@@ -36,7 +36,7 @@ on conflict (id) do update
       status = excluded.status;
 
 -- ------------------------------------------------------------
--- Modulo publicado
+-- Módulo publicado
 -- ------------------------------------------------------------
 insert into public.modules (id, course_id, title, description, position, status) values
   (
@@ -64,19 +64,19 @@ values
     '00000000-0000-0000-0000-0000000e0001',
     '00000000-0000-0000-0000-0000000d0001',
     'Crie um prompt claro',
-    'Use IA para apoiar uma tarefa real de estudo ou trabalho que voce precisa resolver agora.',
+    'Use IA para apoiar uma tarefa real de estudo ou trabalho que você precisa resolver agora.',
     'Aprender a formular pedidos especificos para uma ferramenta de IA.',
-    'Escolha uma tarefa real e escreva um prompt com tres partes: contexto, objetivo e formato esperado da resposta.',
-    'Envie o prompt criado e explique em uma frase por que ele esta claro.',
+    'Escolha uma tarefa real e escreva um prompt com três partes: contexto, objetivo e formato esperado da resposta.',
+    'Envie o prompt criado e explique em uma frase por que ele está claro.',
     50, 1, 'published'
   ),
   (
     '00000000-0000-0000-0000-0000000e0002',
     '00000000-0000-0000-0000-0000000d0001',
     'Resolva uma tarefa real com IA',
-    'Pegue uma necessidade concreta do seu dia e use IA para chegar a um resultado util.',
-    'Praticar o uso de IA para produzir um resultado aplicavel.',
-    'Descreva a tarefa, o prompt que voce usou e o resultado que a IA gerou. Diga o que aproveitou.',
+    'Pegue uma necessidade concreta do seu dia e use IA para chegar a um resultado útil.',
+    'Praticar o uso de IA para produzir um resultado aplicável.',
+    'Descreva a tarefa, o prompt que você usou e o resultado que a IA gerou. Diga o que aproveitou.',
     'Envie a tarefa escolhida, o prompt e um resumo do resultado obtido.',
     60, 2, 'published'
   ),
@@ -86,8 +86,8 @@ values
     'Revise e melhore um texto com IA',
     'Use IA como apoio para revisar um texto seu (e-mail, mensagem, resumo) sem perder a sua voz.',
     'Aprender a usar IA para revisar mantendo autonomia sobre o resultado.',
-    'Cole o texto original, peca uma revisao a IA e decida o que aceitar. Explique uma mudanca que voce recusou e por que.',
-    'Envie o texto original, a versao revisada e a sua decisao sobre uma sugestao.',
+    'Cole o texto original, peça uma revisão a IA e decida o que aceitar. Explique uma mudança que você recusou e por que.',
+    'Envie o texto original, a versao revisada e a sua decisão sobre uma sugestão.',
     70, 3, 'published'
   ),
   (
@@ -96,18 +96,18 @@ values
     'Planeje um objetivo em passos',
     'Conecte seu objetivo real a um plano pratico, usando IA para quebrar o problema em etapas.',
     'Aprender a decompor um objetivo grande em passos executaveis com apoio de IA.',
-    'Descreva seu objetivo real e peca a IA um plano em 3 a 5 passos. Ajuste o plano com as suas proprias palavras.',
-    'Envie seu objetivo, o plano em passos e o ajuste que voce fez manualmente.',
+    'Descreva seu objetivo real e peça a IA um plano em 3 a 5 passos. Ajuste o plano com as suas próprias palavras.',
+    'Envie seu objetivo, o plano em passos e o ajuste que você fez manualmente.',
     80, 4, 'published'
   ),
   (
     '00000000-0000-0000-0000-0000000e0005',
     '00000000-0000-0000-0000-0000000d0001',
     'Use IA para aprender algo novo',
-    'Escolha um tema que voce quer aprender e use IA como tutor para dar o primeiro passo.',
+    'Escolha um tema que você quer aprender e use IA como tutor para dar o primeiro passo.',
     'Aprender a usar IA como apoio de estudo ativo, sem depender de respostas prontas.',
-    'Escolha um tema, peca a IA uma explicacao simples e depois explique o tema com as suas palavras para mostrar que entendeu.',
-    'Envie o tema, a explicacao que recebeu e a sua propria explicacao final.',
+    'Escolha um tema, peça a IA uma explicação simples e depois explique o tema com as suas palavras para mostrar que entendeu.',
+    'Envie o tema, a explicação que recebeu e a sua própria explicação final.',
     100, 5, 'published'
   )
 on conflict (id) do update

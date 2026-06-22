@@ -8,16 +8,16 @@ import { useInViewport } from "@/components/three/use-in-viewport";
 
 /**
  * API publica do spike 3D. Garante que a cena NUNCA bloqueie navegacao ou
- * conteudo principal:
+ * conteúdo principal:
  *
  * 1. `dynamic(..., { ssr: false })` — o chunk do three.js sai do First Load JS;
- *    so e baixado no client.
- * 2. mount-on-visible (useInViewport) — o import dinamico so dispara quando o
+ *    s? e baixado no client.
+ * 2. mount-on-visible (useInViewport) — o import dinamico s? dispara quando o
  *    container entra (perto de) na viewport. Antes disso, e enquanto o chunk
- *    carrega, mostra o fallback estatico.
- * 3. SceneErrorBoundary — sem WebGL / em erro, cai para o fallback estatico.
+ *    carrega, mostra o fallback estático.
+ * 3. SceneErrorBoundary — sem WebGL / em erro, cai para o fallback estático.
  *
- * `forceFallback` renderiza apenas o estado estatico (preview/QA).
+ * `forceFallback` renderiza apenas o estado estático (preview/QA).
  */
 
 const ProceduralScene = dynamic(

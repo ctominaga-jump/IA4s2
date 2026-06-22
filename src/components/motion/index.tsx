@@ -4,10 +4,10 @@
  * Motion primitives (Fase 7A).
  *
  * Wrappers client isolados sobre framer-motion. Server Components continuam
- * server e passam conteudo como `children`; estes wrappers so adicionam
+ * server e passam conteúdo como `children`; estes wrappers só adicionam
  * opacity/transform. TODA primitive respeita `prefers-reduced-motion` via
  * `useReducedMotion()`: quando ativo, degrada para opacidade simples ou estado
- * final imediato, sem transform. Conteudo sempre presente no DOM.
+ * final imediato, sem transform. Conteúdo sempre presente no DOM.
  */
 
 import {
@@ -23,7 +23,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /**
  * Classe-âncora para o fallback sem JS. framer-motion renderiza o estado
  * `initial` (opacity:0) inline no SSR; se o JS não hidratar (no-script ou
- * falha de chunk), o `<noscript>` global em app/layout.tsx força esta classe
+ * falha de chunk), o `<noscript>` global em app/layout.tsx força está classe
  * a opacity:1, evitando conteúdo preso invisível na landing pública.
  */
 const FALLBACK = "m-reveal";
@@ -152,8 +152,8 @@ export function StaggerItem({
 }
 
 /* ------------------------------------------------------------------ */
-/* HoverLift: realce de hover/tap para cartoes interativos.            */
-/* Mantem o conteudo (Link/article) como filho.                        */
+/* HoverLift: realce de hover/tap para cartões interativos.            */
+/* Mantem o conteúdo (Link/article) como filho.                        */
 /* ------------------------------------------------------------------ */
 export function HoverLift({
   children,
@@ -179,8 +179,8 @@ export function HoverLift({
 }
 
 /* ------------------------------------------------------------------ */
-/* FloatLoop: flutuacao sutil e continua (elementos ilustrativos).     */
-/* Reduced-motion: estatico.                                           */
+/* FloatLoop: flutuacao sútil e continua (elementos ilustrativos).     */
+/* Reduced-motion: estático.                                           */
 /* ------------------------------------------------------------------ */
 export function FloatLoop({
   children,

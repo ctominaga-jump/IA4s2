@@ -10,13 +10,13 @@ import type { AvatarVariant } from "@/lib/database.types";
 export const dynamic = "force-dynamic";
 
 /**
- * Rota de preview SEM autenticacao usada apenas para validacao visual por
+ * Rota de preview SEM autenticação usada apenas para validação visual por
  * screenshot (Visual Reviewer / QA). Renderiza o cockpit com dados ficticios,
- * sem tocar em Supabase, XP, review ou auth. Nunca disponivel em producao.
+ * sem tocar em Supabase, XP, review ou auth. Nunca disponível em produção.
  *
- * Query params (evidencia do EvolvingAvatar 3D no painel "Seu agente"):
+ * Query params (evidência do EvolvingAvatar 3D no painel "Seu agente"):
  * `?variant=aurora|ember|verdant|nebula` troca a identidade da fixture;
- * `?phase=0..7` troca a fase (kit); `?fallback=1` forca o AvatarFigure 2D.
+ * `?phase=0..7` troca a fase (kit); `?fallback=1` força o AvatarFigure 2D.
  */
 
 const VARIANTS: AvatarVariant[] = ["aurora", "ember", "verdant", "nebula"];
@@ -39,7 +39,7 @@ const VM: CockpitViewModel = {
     id: "preview-mission",
     title: "Transforme um prompt fraco em um prompt forte",
     description:
-      "Pegue um prompt generico e reescreva com objetivo, contexto, formato e criterios. Compare as duas respostas e justifique a melhor escolha.",
+      "Pegue um prompt genérico e reescreva com objetivo, contexto, formato e critérios. Compare as duas respostas e justifique a melhor escolha.",
     xpReward: 80,
     status: "not_started",
   },
@@ -51,7 +51,7 @@ const VM: CockpitViewModel = {
       missionTitle: "Compare duas respostas de IA",
       approved: true,
       comment:
-        "Otima analise de criterios. Voce justificou bem por que a segunda resposta era mais confiavel. Continue assim.",
+        "Ótima análise de critérios. Você justificou bem por que a segunda resposta era mais confiável. Continue assim.",
       createdAt: "28/05/2026 14:32",
     },
     {
@@ -60,14 +60,14 @@ const VM: CockpitViewModel = {
       missionTitle: "Crie uma playlist inteligente com IA",
       approved: true,
       comment:
-        "Boa entrega. Na proxima, descreva o passo a passo do prompt que usou para gerar a lista.",
+        "Boa entrega. Na próxima, descreva o passo a passo do prompt que usou para gerar a lista.",
       createdAt: "26/05/2026 09:10",
     },
   ],
   goal: {
-    title: "Usar IA para acelerar meus estudos de programacao",
+    title: "Usar IA para acelerar meus estudos de programação",
     description:
-      "Quero aprender a pesquisar, validar e prototipar com IA para evoluir mais rapido na faculdade.",
+      "Quero aprender a pesquisar, validar e prototipar com IA para evoluir mais rápido na faculdade.",
     categoryLabel: "Estudos",
   },
 };

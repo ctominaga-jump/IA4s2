@@ -37,7 +37,7 @@ export default async function BossQueuePage({
         </h1>
         <p className="text-muted-foreground">
           {pending > 0
-            ? `${pending} projeto(s) aguardando validacao.`
+            ? `${pending} projeto(s) aguardando validação.`
             : "Projetos finais enviados pelos alunos aparecem aqui."}
         </p>
       </div>
@@ -45,7 +45,7 @@ export default async function BossQueuePage({
       {avaliada ? (
         <Alert variant="success">
           <CheckCircle2 />
-          <AlertDescription>Avaliacao registrada com sucesso.</AlertDescription>
+          <AlertDescription>Avaliação registrada com sucesso.</AlertDescription>
         </Alert>
       ) : null}
 
@@ -53,7 +53,7 @@ export default async function BossQueuePage({
         <EmptyState
           icon={Crown}
           title="Nenhum projeto final ainda"
-          description="Quando um aluno enviar o Boss Final, ele aparecera nesta fila para validacao."
+          description="Quando um aluno enviar o Boss Final, ele aparecera nesta fila para validação."
         />
       ) : (
         <Card>

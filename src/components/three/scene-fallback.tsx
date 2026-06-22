@@ -1,12 +1,12 @@
 import { Boxes } from "lucide-react";
 
 /**
- * Fallback estatico OBRIGATORIO da cena 3D (spike 7B).
+ * Fallback estático OBRIGATORIO da cena 3D (spike 7B).
  *
  * Renderizado em tres situacoes:
  * - enquanto o chunk do three.js carrega (loading do dynamic import);
- * - quando o WebGL nao esta disponivel / a cena lanca erro (ErrorBoundary);
- * - quando se quer forcar o modo estatico (prefers-reduced-motion forte / preview).
+ * - quando o WebGL nao esta disponível / a cena lanca erro (ErrorBoundary);
+ * - quando se quer forçar o modo estático (prefers-reduced-motion forte / preview).
  *
  * Componente puro, sem hooks e sem dependencia de three: funciona no SSR e como
  * placeholder leve. Visual alinhado ao dark premium (paleta de 04-visual-direction).

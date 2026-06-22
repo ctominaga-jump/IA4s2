@@ -61,7 +61,7 @@ export function LoginForm({ redirectTo }: { redirectTo?: string }) {
               name="email"
               type="email"
               autoComplete="email"
-              placeholder="voce@exemplo.com"
+              placeholder="você@exemplo.com"
               required
             />
           </div>
@@ -79,7 +79,7 @@ export function LoginForm({ redirectTo }: { redirectTo?: string }) {
         <CardFooter className="flex flex-col gap-3">
           <SubmitButton />
           <p className="text-center text-sm text-muted-foreground">
-            Ainda nao tem conta?{" "}
+            Ainda não tem conta?{" "}
             <Link href="/cadastro" className="font-medium text-primary hover:underline">
               Cadastre-se
             </Link>

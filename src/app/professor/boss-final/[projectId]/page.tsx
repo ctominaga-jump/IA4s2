@@ -71,7 +71,7 @@ export default async function BossProjectDetailPage({
             <p className="text-sm text-muted-foreground">
               {project.submitted_at
                 ? `Enviado em ${formatDateTime(project.submitted_at)}`
-                : "Ainda nao enviado"}
+                : "Ainda não enviado"}
             </p>
           </div>
         </div>
@@ -101,17 +101,17 @@ export default async function BossProjectDetailPage({
             );
           })}
 
-          {/* Avaliacao */}
+          {/* Avaliação */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Avaliacao</CardTitle>
+              <CardTitle className="text-base">Avaliação</CardTitle>
             </CardHeader>
             <CardContent>
               {isPending ? (
                 <BossReviewForm projectId={project.id} />
               ) : project.status === "draft" ? (
                 <p className="text-sm text-muted-foreground">
-                  O aluno ainda nao enviou este projeto para validacao.
+                  O aluno ainda não enviou este projeto para validação.
                 </p>
               ) : (
                 <Alert
@@ -130,7 +130,7 @@ export default async function BossProjectDetailPage({
                       : "Projeto reprovado — aluno pode reenviar"}
                   </AlertTitle>
                   <AlertDescription className="space-y-1">
-                    <p>{project.feedback ?? "Sem comentario registrado."}</p>
+                    <p>{project.feedback ?? "Sem comentário registrado."}</p>
                     {project.reviewed_at ? (
                       <p className="text-xs opacity-80">
                         Avaliado em {formatDateTime(project.reviewed_at)}
@@ -174,7 +174,7 @@ export default async function BossProjectDetailPage({
                 </div>
               ) : (
                 <p className="text-muted-foreground">
-                  Este aluno ainda nao registrou um objetivo.
+                  Este aluno ainda não registrou um objetivo.
                 </p>
               )}
             </CardContent>

@@ -16,7 +16,7 @@
  * chunk three.js — o AvatarFigure 2D (mesma dimensão) permanece.
  *
  * Server-only: lê env não-NEXT_PUBLIC. Se este módulo vazar para bundle de
- * client, a env é `undefined` e o gate falha FECHADO (2D) — direção segura.
+ * client, a env e `undefined` e o gate falha FECHADO (2D) — direção segura.
  */
 export function avatar3dEnabledInApp(): boolean {
   if (process.env.NODE_ENV === "production") {

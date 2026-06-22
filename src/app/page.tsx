@@ -30,28 +30,28 @@ const phaseRows = [
   {
     name: "Despertar",
     title: "Entenda IA no mundo real",
-    description: "Primeiras missoes para usar IA em tarefas concretas.",
+    description: "Primeiras missões para usar IA em tarefas concretas.",
     icon: Sparkles,
     tone: "from-cyan-300 to-violet-300",
   },
   {
     name: "Explorador",
     title: "Converse melhor com IA",
-    description: "Prompts basicos, pesquisa e validacao de respostas.",
+    description: "Prompts básicos, pesquisa e validação de respostas.",
     icon: Compass,
     tone: "from-emerald-300 to-cyan-300",
   },
   {
     name: "Estrategista",
-    title: "Domine contexto e criterio",
-    description: "Objetivo, formato, restricoes e comparacao de respostas.",
+    title: "Domine contexto e critério",
+    description: "Objetivo, formato, restrições e comparação de respostas.",
     icon: BrainCircuit,
     tone: "from-violet-300 to-fuchsia-300",
   },
   {
     name: "Criador",
     title: "Construa pequenos projetos",
-    description: "Ideias, fluxos, prototipos e documentacao guiada por IA.",
+    description: "Ideias, fluxos, prototipos e documentação guiada por IA.",
     icon: FlaskConical,
     tone: "from-amber-200 to-cyan-300",
   },
@@ -64,8 +64,8 @@ const phaseRows = [
     tone: "from-cyan-300 to-emerald-300",
   },
   {
-    name: "Operador Tecnico",
-    title: "Pilote IA no ambiente tecnico",
+    name: "Operador Técnico",
+    title: "Pilote IA no ambiente técnico",
     description:
       "Use terminal e editor de forma guiada, com a IA de copiloto, sem virar programador.",
     icon: TerminalSquare,
@@ -75,14 +75,14 @@ const phaseRows = [
     name: "Arquiteto de Agentes",
     title: "Desenhe agentes e cadeias",
     description:
-      "Planeje objetivos, papeis, etapas e limites de agentes de IA no papel.",
+      "Planeje objetivos, papéis, etapas e limites de agentes de IA no papel.",
     icon: Network,
     tone: "from-violet-300 to-cyan-300",
   },
   {
     name: "Boss Final",
     title: "Crie seu produto com IA",
-    description: "Problema, solucao, arquitetura, prototipo e validacao.",
+    description: "Problema, solução, arquitetura, protótipo e validação.",
     icon: Rocket,
     tone: "from-amber-200 to-violet-300",
   },
@@ -91,7 +91,7 @@ const phaseRows = [
 const valuePillars = [
   {
     icon: Target,
-    title: "Missoes praticas",
+    title: "Missões práticas",
     description:
       "Cada etapa termina com uma entrega concreta, conectada ao objetivo do aluno.",
   },
@@ -99,19 +99,19 @@ const valuePillars = [
     icon: MessageSquareText,
     title: "Feedback humano",
     description:
-      "O professor valida a missao, orienta melhorias e mantem a jornada confiavel.",
+      "O professor valida a missão, orienta melhorias e mantém a jornada confiável.",
   },
   {
     icon: Trophy,
-    title: "XP, niveis e conquistas",
+    title: "XP, níveis e conquistas",
     description:
-      "Progresso visivel transforma aprendizado em evolucao, sem perder rigor.",
+      "Progresso visível transforma aprendizado em evolução, sem perder rigor.",
   },
   {
     icon: Bot,
     title: "Boss Final",
     description:
-      "A trilha culmina na criacao de um produto com IA, apresentavel e validado.",
+      "A trilha culmina na criação de um produto com IA, apresentavel e validado.",
   },
 ];
 
@@ -170,14 +170,14 @@ export default async function HomePage() {
           <Appear className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-4 py-1.5 text-sm font-medium text-cyan-100">
               <Zap className="size-4 text-cyan-200" />
-              Uma jornada gamificada ate seu produto com IA
+              Uma jornada gamificada até seu produto com IA
             </span>
             <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-white md:text-6xl">
-              Desbloqueie sua evolucao em IA, missao por missao.
+              Desbloqueie sua evolução em IA, missão por missão.
             </h1>
             <p className="mt-5 max-w-2xl text-balance text-lg leading-8 text-slate-300">
-              Voce nao esta entrando em um curso comum. Esta iniciando uma
-              trilha de evolucao com XP, niveis, feedback humano e um Boss
+              Você não está entrando em um curso comum. Está iniciando uma
+              trilha de evolução com XP, níveis, feedback humano e um Boss
               Final: criar um produto real com IA.
             </p>
 
@@ -199,14 +199,14 @@ export default async function HomePage() {
                   asChild
                   className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
                 >
-                  <Link href="/login">Ja tenho conta</Link>
+                  <Link href="/login">Já tenho conta</Link>
                 </Button>
               ) : null}
             </div>
 
             <div className="mt-8 grid gap-3 text-sm text-slate-300 sm:grid-cols-3">
               <ProofPoint value="8 fases" label="do despertar ao Boss Final" />
-              <ProofPoint value="XP real" label="ganho por missao aprovada" />
+              <ProofPoint value="XP real" label="ganho por missão aprovada" />
               <ProofPoint value="Mentoria" label="feedback humano no loop" />
             </div>
           </Appear>
@@ -223,12 +223,12 @@ export default async function HomePage() {
                 Do zero ao produto
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                Uma trilha de evolucao com fases claras
+                Uma trilha de evolução com fases claras
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-slate-300">
-              Cada fase ensina uma habilidade pratica de IA e prepara o aluno
-              para o proximo desbloqueio.
+              Cada fase ensina uma habilidade prática de IA e prepara o aluno
+              para o próximo desbloqueio.
             </p>
           </div>
 
@@ -297,8 +297,8 @@ export default async function HomePage() {
               Aprenda IA criando algo que pode ser apresentado.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-slate-300">
-              A jornada termina com problema, solucao, arquitetura, prototipo e
-              validacao. O resultado nao e so certificado: e produto.
+              A jornada termina com problema, solução, arquitetura, protótipo e
+              validação. O resultado não é só certificado: é produto.
             </p>
             <Button
               size="lg"
@@ -306,7 +306,7 @@ export default async function HomePage() {
               className="mt-7 bg-white text-[#070A12] hover:bg-cyan-100"
             >
               <Link href={primaryHref}>
-                {session ? "Abrir portal" : "Comecar agora"}
+                {session ? "Abrir portal" : "Começar agora"}
                 <ArrowRight />
               </Link>
             </Button>
@@ -316,7 +316,7 @@ export default async function HomePage() {
 
       <footer className="border-t border-white/10">
         <div className="container py-6 text-center text-sm text-slate-500">
-          IA para Vida Real - evolucao pratica em IA, validada por missoes.
+          IA para Vida Real - evolução prática em IA, validada por missões.
         </div>
       </footer>
     </div>
@@ -342,10 +342,10 @@ function HeroCockpit() {
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200">
               Cockpit do aluno
             </p>
-            <p className="mt-1 text-lg font-semibold">Agente em evolucao</p>
+            <p className="mt-1 text-lg font-semibold">Agente em evolução</p>
           </div>
           <span className="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-3 py-1 text-xs font-medium text-emerald-200">
-            Nivel 04
+            Nível 04
           </span>
         </div>
 
@@ -354,7 +354,7 @@ function HeroCockpit() {
             <HeroAgentCore />
             <div className="mt-4 rounded-xl bg-black/20 p-3">
               <div className="flex items-center justify-between text-xs text-slate-300">
-                <span>XP para proxima fase</span>
+                <span>XP para próxima fase</span>
                 <span>72%</span>
               </div>
               <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/10">
@@ -367,7 +367,7 @@ function HeroCockpit() {
             <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
               <div className="flex items-center gap-2 text-sm font-semibold text-white">
                 <ShieldCheck className="size-4 text-emerald-200" />
-                Proxima missao
+                Próxima missão
               </div>
               <p className="mt-2 text-sm text-slate-300">
                 Desenhar a arquitetura do primeiro agente de IA.
@@ -379,14 +379,14 @@ function HeroCockpit() {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <MiniMetric label="Missoes" value="18/27" />
+              <MiniMetric label="Missões" value="18/27" />
               <MiniMetric label="Badges" value="06" />
             </div>
 
             <div className="rounded-2xl border border-violet-300/20 bg-violet-300/10 p-4">
               <div className="flex items-center gap-2 text-sm font-semibold">
                 <CheckCircle2 className="size-4 text-violet-100" />
-                Rota ate o Boss Final
+                Rota até o Boss Final
               </div>
               <div className="mt-4 flex items-center gap-2">
                 {[1, 2, 3, 4, 5].map((item) => (

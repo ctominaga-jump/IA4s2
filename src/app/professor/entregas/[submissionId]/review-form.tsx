@@ -24,7 +24,7 @@ function ConfirmButton({ decision }: { decision: Decision | null }) {
     >
       {pending ? <Loader2 className="animate-spin" /> : null}
       {decision === "rejected"
-        ? "Confirmar reprovacao"
+        ? "Confirmar reprovação"
         : "Confirmar aprovacao"}
     </Button>
   );
@@ -82,17 +82,17 @@ export function ReviewForm({
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="comment">Feedback (obrigatorio)</Label>
+        <Label htmlFor="comment">Feedback (obrigatório)</Label>
         <Textarea
           id="comment"
           name="comment"
-          placeholder="Explique o que ficou bom e o que pode melhorar. Seja claro e incentive o proximo passo."
+          placeholder="Explique o que ficou bom e o que pode melhorar. Seja claro e incentive o próximo passo."
           className="min-h-[140px]"
           required
         />
         <p className="text-xs text-muted-foreground">
-          O feedback e obrigatorio tanto para aprovar quanto para reprovar e
-          ficara visivel para o aluno.
+          O feedback é obrigatório tanto para aprovar quanto para reprovar é
+          ficará visível para o aluno.
         </p>
       </div>
 

@@ -29,7 +29,7 @@ export function LevelProgress({
           </span>
           <div>
             <p className="text-sm text-muted-foreground">
-              Nivel {current?.number ?? 1}
+              Nível {current?.number ?? 1}
             </p>
             <p className="font-semibold leading-tight">
               {current?.title ?? "Explorador"}
@@ -51,8 +51,8 @@ export function LevelProgress({
 
       <p className="text-xs text-muted-foreground">
         {next
-          ? `Faltam ${xpForNext} XP para o nivel ${next.number} — ${next.title}.`
-          : "Voce alcancou o nivel maximo. Continue evoluindo!"}
+          ? `Faltam ${xpForNext} XP para o nível ${next.number} — ${next.title}.`
+          : "Você alcançou o nível máximo. Continue evoluindo!"}
       </p>
     </div>
   );

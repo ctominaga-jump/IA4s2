@@ -82,7 +82,7 @@ export function ProfileView({
               {vm.name}
             </h1>
             <p className="text-sm text-muted-foreground">
-              Nivel {vm.levelNumber} · {vm.levelTitle} · Fase {phase.name}
+              Nível {vm.levelNumber} · {vm.levelTitle} · Fase {phase.name}
             </p>
 
             <div className="mt-4 max-w-md">
@@ -99,14 +99,14 @@ export function ProfileView({
               <p className="mt-1.5 text-[11px] text-muted-foreground">
                 {vm.nextLevelTitle
                   ? `${vm.xpForNext} XP para ${vm.nextLevelTitle}.`
-                  : "Nivel maximo alcancado."}
+                  : "Nível máximo alcançado."}
               </p>
             </div>
 
             <div className="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
               <StatChip label="XP total" value={vm.totalXp} />
               <StatChip
-                label="Missoes aprovadas"
+                label="Missões aprovadas"
                 value={`${vm.approvedCount}/${vm.totalMissions}`}
               />
               <StatChip label="Fase atual" value={phase.name} />
@@ -121,14 +121,14 @@ export function ProfileView({
 
           <section className="rounded-3xl border border-border bg-card/80 p-5">
             <h2 className="font-semibold">
-              Missoes aprovadas ({vm.approvedMissions.length})
+              Missões aprovadas ({vm.approvedMissions.length})
             </h2>
             <div className="mt-3">
               {vm.approvedMissions.length === 0 ? (
                 <EmptyState
                   icon={CheckCircle2}
-                  title="Nenhuma missao aprovada ainda"
-                  description="Conclua sua primeira missao para comecar a somar XP."
+                  title="Nenhuma missão aprovada ainda"
+                  description="Conclua sua primeira missão para começar a somar XP."
                   className="px-4 py-8"
                   action={
                     <Link
@@ -162,7 +162,7 @@ export function ProfileView({
 
           {vm.inProgressMissions.length > 0 ? (
             <section className="rounded-3xl border border-border bg-card/80 p-5">
-              <h2 className="font-semibold">Missoes em andamento</h2>
+              <h2 className="font-semibold">Missões em andamento</h2>
               <ul className="mt-3 space-y-2">
                 {vm.inProgressMissions.map((m) => (
                   <li key={m.id}>
@@ -209,8 +209,8 @@ export function ProfileView({
             </div>
             <div className="mt-4 flex items-start gap-2 rounded-2xl border border-border bg-background/40 p-3 text-xs text-muted-foreground">
               <Zap className="mt-0.5 size-3.5 shrink-0 text-warning" />
-              Seu nivel sobe automaticamente conforme voce acumula XP em missoes
-              aprovadas. Cada missao concede XP uma unica vez.
+              Seu nível sobe automaticamente conforme você acumula XP em missões
+              aprovadas. Cada missão concede XP uma única vez.
             </div>
           </section>
         </div>

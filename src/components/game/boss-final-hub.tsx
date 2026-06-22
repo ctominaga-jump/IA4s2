@@ -58,9 +58,9 @@ export function BossFinalHub(vm: BossFinalViewModel) {
       {vm.justSubmitted ? (
         <Alert variant="success">
           <CheckCircle2 />
-          <AlertTitle>Projeto enviado para validacao!</AlertTitle>
+          <AlertTitle>Projeto enviado para validação!</AlertTitle>
           <AlertDescription>
-            Um professor vai avaliar seu produto final. Voce vera o resultado
+            Um professor vai avaliar seu produto final. Você verá o resultado
             aqui.
           </AlertDescription>
         </Alert>
@@ -69,7 +69,7 @@ export function BossFinalHub(vm: BossFinalViewModel) {
       {vm.status === "approved" ? (
         <Alert variant="success">
           <Crown />
-          <AlertTitle>Projeto final aprovado! Voce concluiu a jornada.</AlertTitle>
+          <AlertTitle>Projeto final aprovado! Você concluiu a jornada.</AlertTitle>
           <AlertDescription className="space-y-1">
             {vm.feedback ? <p>{vm.feedback}</p> : null}
             {vm.reviewedAt ? (
@@ -82,7 +82,7 @@ export function BossFinalHub(vm: BossFinalViewModel) {
       {vm.status === "rejected" && vm.feedback ? (
         <Alert variant="destructive">
           <RotateCcw />
-          <AlertTitle>Quase la — ajuste e reenvie</AlertTitle>
+          <AlertTitle>Quase lá — ajuste e reenvie</AlertTitle>
           <AlertDescription className="space-y-1">
             <p>{vm.feedback}</p>
             {vm.reviewedAt ? (
@@ -96,9 +96,9 @@ export function BossFinalHub(vm: BossFinalViewModel) {
         <div className="flex items-start gap-3 rounded-2xl border border-warning/30 bg-warning/5 px-4 py-3 text-sm">
           <Sparkles className="mt-0.5 size-4 shrink-0 text-warning" />
           <p className="text-muted-foreground">
-            Voce ja pode esbocar seu projeto agora.{" "}
+            Você ja pode esbocar seu projeto agora.{" "}
             <span className="font-medium text-foreground">
-              {vm.journeyApproved}/{vm.journeyTotal} missoes aprovadas
+              {vm.journeyApproved}/{vm.journeyTotal} missões aprovadas
             </span>{" "}
             — conclua a jornada para deixar seu Boss Final ainda mais forte.
           </p>
@@ -134,7 +134,7 @@ function BossHeader({ vm }: { vm: BossFinalViewModel }) {
         </h1>
         <p className="mt-1.5 max-w-xl text-sm leading-6 text-muted-foreground">
           O grande desafio da jornada: transforme tudo o que aprendeu em um
-          produto real com IA — do problema a validacao com pessoas.
+          produto real com IA — do problema a validação com pessoas.
         </p>
 
         <div className="mt-5">
@@ -163,7 +163,7 @@ function BossReadOnly({ vm }: { vm: BossFinalViewModel }) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
           Produto
         </p>
-        <h2 className="mt-1 text-xl font-bold">{vm.title || "Sem titulo"}</h2>
+        <h2 className="mt-1 text-xl font-bold">{vm.title || "Sem título"}</h2>
       </div>
       <ol className="space-y-3">
         {BOSS_STAGES.map((stage) => {
@@ -210,7 +210,7 @@ function SubmitButton({ disabled }: { disabled: boolean }) {
   return (
     <Button type="submit" variant="success" disabled={pending || disabled}>
       {pending ? <Loader2 className="animate-spin" /> : <Send />}
-      Enviar para validacao
+      Enviar para validação
     </Button>
   );
 }
@@ -226,7 +226,7 @@ function BossEditor({ vm }: { vm: BossFinalViewModel }) {
   >(submitBossProjectAction, {});
 
   // Espelha localmente o estado de completude para habilitar o envio sem
-  // depender de salvar primeiro nesta sessao (a fonte de verdade e o servidor).
+  // depender de salvar primeiro nesta sessão (a fonte de verdade e o servidor).
   const [title, setTitle] = useState(vm.title);
   const [stageValues, setStageValues] = useState<Record<string, string>>(
     Object.fromEntries(BOSS_STAGES.map((s) => [s.key, vm.stages[s.key]])),
@@ -237,7 +237,7 @@ function BossEditor({ vm }: { vm: BossFinalViewModel }) {
   ).length;
   const localComplete =
     title.trim().length > 0 && localFilled === BOSS_STAGES.length;
-  // So habilita o envio quando o conteudo completo ja foi salvo (sem edicoes
+  // Só habilita o envio quando o conteúdo completo já foi salvo (sem edições
   // pendentes). Compara com o que o servidor tem.
   const dirty =
     title !== vm.title ||
@@ -340,13 +340,13 @@ function BossEditor({ vm }: { vm: BossFinalViewModel }) {
             {localComplete
               ? dirty
                 ? "Salve o rascunho para liberar o envio."
-                : "Tudo pronto! Voce ja pode enviar para validacao."
-              : `Preencha o titulo e as 5 etapas (${localFilled}/${BOSS_STAGES.length}).`}
+                : "Tudo pronto! Você já pode enviar para validação."
+              : `Preencha o título e as 5 etapas (${localFilled}/${BOSS_STAGES.length}).`}
           </p>
         </div>
       </form>
 
-      {/* Envio para validacao (form separado: usa o que ja foi salvo) */}
+      {/* Envio para validação (form separado: usa o que já foi salvo) */}
       <form
         action={submitAction}
         className="flex flex-col gap-3 rounded-2xl border border-border bg-background/40 p-5 sm:flex-row sm:items-center sm:justify-between"
@@ -359,8 +359,8 @@ function BossEditor({ vm }: { vm: BossFinalViewModel }) {
           )}
           <span>
             {vm.status === "rejected"
-              ? "Ajustou com base no feedback? Reenvie para uma nova avaliacao."
-              : "Quando o projeto estiver completo e salvo, envie para a validacao do professor."}
+              ? "Ajustou com base no feedback? Reenvie para uma nova avaliação."
+              : "Quando o projeto estiver completo e salvo, envie para a validação do professor."}
           </span>
         </div>
         {submitState.error ? (

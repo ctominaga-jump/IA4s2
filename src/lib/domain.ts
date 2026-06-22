@@ -11,8 +11,8 @@ import type {
 export type MissionStatus = "not_started" | "pending" | "approved" | "rejected";
 
 export const MISSION_STATUS_LABEL: Record<MissionStatus, string> = {
-  not_started: "Nao iniciada",
-  pending: "Aguardando validacao",
+  not_started: "Não iniciada",
+  pending: "Aguardando validação",
   approved: "Aprovada",
   rejected: "Reprovada",
 };
@@ -63,7 +63,7 @@ export const MISSION_DIFFICULTY_VARIANT: Record<
 
 export const BOSS_PROJECT_STATUS_LABEL: Record<BossProjectStatus, string> = {
   draft: "Rascunho",
-  submitted: "Aguardando validacao",
+  submitted: "Aguardando validação",
   approved: "Aprovado",
   rejected: "Revisar e reenviar",
 };

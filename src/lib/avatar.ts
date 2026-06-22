@@ -13,8 +13,8 @@ export function isAvatarVariant(value: string): value is AvatarVariant {
 }
 
 /**
- * Decide se deve celebrar um level up. So celebra quando ja havia um nivel
- * conhecido anteriormente (`lastSeen`) e o nivel atual e maior — evita
+ * Decide se deve celebrar um level up. So celebra quando ja havia um nível
+ * conhecido anteriormente (`lastSeen`) e o nível atual e maior — evita
  * celebrar no primeiro carregamento, quando nao ha referencia.
  */
 export function shouldCelebrateLevelUp(

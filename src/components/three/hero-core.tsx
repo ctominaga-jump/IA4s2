@@ -11,7 +11,7 @@ import { useInViewport } from "@/components/three/use-in-viewport";
  *
  * Integracao controlada: troca APENAS o disco do avatar do HeroCockpit pela
  * cena procedural; copy, CTAs, metricas e layout da 7A ficam intactos. O
- * fallback estatico (disco + icone Bot) tem a MESMA dimensao do disco e e
+ * fallback estático (disco + icone Bot) tem a MESMA dimensao do disco e e
  * usado em: SSR, enquanto o chunk carrega, sem WebGL (ErrorBoundary) e antes
  * de a cena entrar na viewport. Se a cena nao puder rodar, o card volta a ser
  * exatamente o da 7A.
@@ -22,7 +22,7 @@ const HeroCoreScene = dynamic(
   { ssr: false, loading: () => <CoreFallback /> },
 );
 
-/** Fallback estatico: o nucleo Bot da 7A, centralizado no disco. */
+/** Fallback estático: o núcleo Bot da 7A, centralizado no disco. */
 function CoreFallback() {
   return (
     <div className="flex size-24 items-center justify-center rounded-full border border-white/20 bg-[#141B2E] shadow-[0_0_42px_rgba(22,217,227,0.28)]">
