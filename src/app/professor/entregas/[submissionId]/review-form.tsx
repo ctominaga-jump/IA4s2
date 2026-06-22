@@ -1,10 +1,18 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useState, useTransition } from "react";
 import { useFormStatus } from "react-dom";
-import { AlertCircle, CheckCircle2, Loader2, XCircle } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle2,
+  Loader2,
+  Sparkles,
+  XCircle,
+} from "lucide-react";
 
 import { reviewSubmissionAction, type ReviewFormState } from "@/server/reviews";
+import { suggestEvaluationAction } from "@/server/ai-evaluation";
+import type { AiSuggestion } from "@/lib/ai/evaluation";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -12,6 +20,12 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
 
 type Decision = "approved" | "rejected";
+
+const CONFIDENCE_LABEL: Record<AiSuggestion["confidence"], string> = {
+  alta: "confiança alta",
+  media: "confiança média",
+  baixa: "confiança baixa",
+};
 
 function ConfirmButton({ decision }: { decision: Decision | null }) {
   const { pending } = useFormStatus();
@@ -25,7 +39,7 @@ function ConfirmButton({ decision }: { decision: Decision | null }) {
       {pending ? <Loader2 className="animate-spin" /> : null}
       {decision === "rejected"
         ? "Confirmar reprovação"
-        : "Confirmar aprovacao"}
+        : "Confirmar aprovação"}
     </Button>
   );
 }
@@ -33,21 +47,79 @@ function ConfirmButton({ decision }: { decision: Decision | null }) {
 export function ReviewForm({
   submissionId,
   xpReward,
+  aiEnabled = false,
 }: {
   submissionId: string;
   xpReward: number;
+  aiEnabled?: boolean;
 }) {
   const [state, formAction] = useActionState<ReviewFormState, FormData>(
     reviewSubmissionAction,
     {},
   );
   const [decision, setDecision] = useState<Decision | null>(null);
+  const [comment, setComment] = useState("");
+
+  const [aiPending, startAi] = useTransition();
+  const [aiError, setAiError] = useState<string | null>(null);
+  const [suggestion, setSuggestion] = useState<AiSuggestion | null>(null);
+
+  function handleSuggest() {
+    setAiError(null);
+    startAi(async () => {
+      const result = await suggestEvaluationAction(submissionId);
+      if (result.error || !result.suggestion) {
+        setAiError(result.error ?? "Não foi possível gerar a sugestão.");
+        return;
+      }
+      setSuggestion(result.suggestion);
+      setDecision(result.suggestion.decision);
+      setComment(result.suggestion.comment);
+    });
+  }
 
   return (
     <form action={formAction} className="space-y-4">
       <input type="hidden" name="submissionId" value={submissionId} />
       {decision ? (
         <input type="hidden" name="decision" value={decision} />
+      ) : null}
+
+      {aiEnabled ? (
+        <div className="space-y-2">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleSuggest}
+            disabled={aiPending}
+            className="w-full sm:w-auto"
+          >
+            {aiPending ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              <Sparkles className="size-4" />
+            )}
+            Gerar sugestão com IA
+          </Button>
+          {suggestion ? (
+            <Alert>
+              <Sparkles className="size-4" />
+              <AlertDescription>
+                Sugestão da IA ({CONFIDENCE_LABEL[suggestion.confidence]}):{" "}
+                <span className="font-medium">
+                  {suggestion.decision === "approved" ? "aprovar" : "reprovar"}
+                </span>
+                . Revise e ajuste antes de confirmar — a decisão é sua.
+              </AlertDescription>
+            </Alert>
+          ) : null}
+          {aiError ? (
+            <Alert variant="destructive">
+              <AlertCircle />
+              <AlertDescription>{aiError}</AlertDescription>
+            </Alert>
+          ) : null}
+        </div>
       ) : null}
 
       {state.error ? (
@@ -58,7 +130,7 @@ export function ReviewForm({
       ) : null}
 
       <div className="space-y-2">
-        <Label>Decisao</Label>
+        <Label>Decisão</Label>
         <div className="grid gap-3 sm:grid-cols-2">
           <DecisionOption
             value="approved"
@@ -66,7 +138,7 @@ export function ReviewForm({
             onSelect={setDecision}
             icon={<CheckCircle2 className="size-5" />}
             label="Aprovar"
-            hint={`Concede ${xpReward} XP ao aluno (uma unica vez).`}
+            hint={`Concede ${xpReward} XP ao aluno (uma única vez).`}
             activeClass="border-success bg-success/10 text-success"
           />
           <DecisionOption
@@ -86,12 +158,14 @@ export function ReviewForm({
         <Textarea
           id="comment"
           name="comment"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
           placeholder="Explique o que ficou bom e o que pode melhorar. Seja claro e incentive o próximo passo."
           className="min-h-[140px]"
           required
         />
         <p className="text-xs text-muted-foreground">
-          O feedback é obrigatório tanto para aprovar quanto para reprovar é
+          O feedback é obrigatório tanto para aprovar quanto para reprovar e
           ficará visível para o aluno.
         </p>
       </div>

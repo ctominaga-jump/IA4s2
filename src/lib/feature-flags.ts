@@ -24,3 +24,20 @@ export function avatar3dEnabledInApp(): boolean {
   }
   return process.env.ENABLE_3D_AVATAR_IN_APP !== "0";
 }
+
+/**
+ * Avaliação assistida por IA (sugestão de decisão + feedback ao professor).
+ *
+ * Falha FECHADO: sem `GEMINI_API_KEY` o recurso nunca liga, independente do
+ * ambiente. Com a chave presente, segue o mesmo padrão conservador do avatar
+ * 3D — em produção exige `ENABLE_AI_EVALUATION=1` (lançamento controlado;
+ * rollback = remover a env var + deploy); em dev/preview liga por padrão
+ * (desligável com `=0`).
+ */
+export function aiEvaluationEnabled(): boolean {
+  if (!process.env.GEMINI_API_KEY) return false;
+  if (process.env.NODE_ENV === "production") {
+    return process.env.ENABLE_AI_EVALUATION === "1";
+  }
+  return process.env.ENABLE_AI_EVALUATION !== "0";
+}

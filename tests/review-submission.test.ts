@@ -41,7 +41,7 @@ describe("review submission action", () => {
       }),
     );
 
-    expect(result.error).toBe("O feedback e obrigatorio para aprovar ou reprovar.");
+    expect(result.error).toBe("O feedback é obrigatório para aprovar ou reprovar.");
     expect(mocks.rpc).not.toHaveBeenCalled();
   });
 
@@ -81,7 +81,7 @@ describe("review submission action", () => {
       }),
     );
 
-    expect(result.error).toBe("Esta entrega ja foi avaliada e nao pode ser alterada.");
+    expect(result.error).toBe("Esta entrega já foi avaliada e não pode ser alterada.");
   });
 });
 

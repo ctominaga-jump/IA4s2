@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { requireTeacherContext } from "@/lib/auth/session";
+import { aiEvaluationEnabled } from "@/lib/feature-flags";
 import { getSubmissionDetail } from "@/server/teacher-data";
 import {
   Card,
@@ -187,6 +188,7 @@ export default async function SubmissionDetailPage({
                 <ReviewForm
                   submissionId={submission.id}
                   xpReward={mission?.xp_reward ?? 0}
+                  aiEnabled={aiEvaluationEnabled()}
                 />
               )}
             </CardContent>

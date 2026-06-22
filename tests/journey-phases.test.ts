@@ -17,7 +17,7 @@ describe("PHASES (metadata visual)", () => {
       "Estrategista",
       "Criador",
       "Operador IA",
-      "Op. Tecnico",
+      "Op. Técnico",
       "Arquiteto",
       "Boss Final",
     ]);
