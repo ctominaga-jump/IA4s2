@@ -27,6 +27,50 @@ const loginSchema = z.object({
   redirectTo: z.string().optional(),
 });
 
+/**
+ * Traduz um erro do Supabase Auth em mensagem para o usuário.
+ *
+ * Só devolve "e-mail ou senha inválidos" quando a credencial foi de fato
+ * rejeitada. Falhas de rede/configuracao (projeto fora do ar, URL ou chave
+ * erradas) ganham mensagem propria — antes elas apareciam como senha
+ * incorreta e mandavam o usuário caçar o problema no lugar errado.
+ */
+function describeAuthError(error: {
+  message: string;
+  code?: string;
+  status?: number;
+  name?: string;
+}): string {
+  const code = error.code ?? "";
+  const message = error.message.toLowerCase();
+
+  if (code === "invalid_credentials" || message.includes("invalid login")) {
+    return "E-mail ou senha inválidos.";
+  }
+
+  if (code === "email_not_confirmed" || message.includes("not confirmed")) {
+    return "Confirme seu e-mail antes de entrar. Verifique sua caixa de entrada.";
+  }
+
+  if (code === "over_request_rate_limit" || error.status === 429) {
+    return "Muitas tentativas seguidas. Aguarde alguns instantes e tente de novo.";
+  }
+
+  if (
+    error.name === "AuthRetryableFetchError" ||
+    !error.status ||
+    error.status >= 500 ||
+    message.includes("fetch failed")
+  ) {
+    // Não é credencial: o servidor não conseguiu falar com o Supabase.
+    console.error("[auth] falha ao contatar o Supabase:", error);
+    return "Não foi possível contatar o serviço de autenticação. Tente novamente em instantes.";
+  }
+
+  console.error("[auth] erro inesperado no login:", error);
+  return "Não foi possível entrar agora. Tente novamente.";
+}
+
 export async function signUpAction(
   _prevState: AuthFormState,
   formData: FormData,
@@ -55,7 +99,7 @@ export async function signUpAction(
     if (error.message.toLowerCase().includes("already registered")) {
       return { error: "Este e-mail já está cadastrado. Tente fazer login." };
     }
-    return { error: "Não foi possível criar a conta. Tente novamente." };
+    return { error: describeAuthError(error) };
   }
 
   const authUser = data.user;
@@ -131,7 +175,11 @@ export async function loginAction(
     password,
   });
 
-  if (error || !data.user) {
+  if (error) {
+    return { error: describeAuthError(error) };
+  }
+
+  if (!data.user) {
     return { error: "E-mail ou senha inválidos." };
   }
 
